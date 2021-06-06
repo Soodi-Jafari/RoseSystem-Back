@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaseInfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="BaseInfoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TPurposeOfIssues" EntityType="BaseInfoModel.TPurposeOfIssue" />
+    <EntitySet Name="t0001ProjectCustomers" EntityType="BaseInfoModel.t0001ProjectCustomers" />
+    <EntitySet Name="t0002Customers" EntityType="BaseInfoModel.t0002Customers" />
+    <AssociationSet Name="FK_t0001ProjectCustomers_t0002Customers" Association="BaseInfoModel.FK_t0001ProjectCustomers_t0002Customers">
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+      <End Role="t0001ProjectCustomers" EntitySet="t0001ProjectCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t0002Customers_t0002Customers" Association="BaseInfoModel.FK_t0002Customers_t0002Customers">
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+      <End Role="t0002Customers1" EntitySet="t0002Customers" />
+    </AssociationSet>
+    <EntitySet Name="t0001CustomerType" EntityType="BaseInfoModel.t0001CustomerType" />
+    <AssociationSet Name="FK_t0002Customers_t0001CustomerType" Association="BaseInfoModel.FK_t0002Customers_t0001CustomerType">
+      <End Role="t0001CustomerType" EntitySet="t0001CustomerType" />
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+    </AssociationSet>
+    <EntitySet Name="TPCTConditions" EntityType="BaseInfoModel.TPCTCondition" />
+    <EntitySet Name="VPMISProjects" EntityType="BaseInfoModel.VPMISProject" />
+    <EntitySet Name="TPCTLevels" EntityType="BaseInfoModel.TPCTLevel" />
+    <AssociationSet Name="FK_TPCTLevels_t0002Customers" Association="BaseInfoModel.FK_TPCTLevels_t0002Customers">
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+      <End Role="TPCTLevel" EntitySet="TPCTLevels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTConditions_TPCTLevels" Association="BaseInfoModel.FK_TPCTConditions_TPCTLevels">
+      <End Role="TPCTLevel" EntitySet="TPCTLevels" />
+      <End Role="TPCTCondition" EntitySet="TPCTConditions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTLevels_TPurposeOfIssues" Association="BaseInfoModel.FK_TPCTLevels_TPurposeOfIssues">
+      <End Role="TPurposeOfIssue" EntitySet="TPurposeOfIssues" />
+      <End Role="TPCTLevel" EntitySet="TPCTLevels" />
+    </AssociationSet>
+    <EntitySet Name="VDocumentTypes" EntityType="BaseInfoModel.VDocumentType" />
+    <EntitySet Name="VProjectCustomers" EntityType="BaseInfoModel.VProjectCustomer" />
+  </EntityContainer>
+  <EntityType Name="TPurposeOfIssue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="TPCTLevels" Relationship="BaseInfoModel.FK_TPCTLevels_TPurposeOfIssues" FromRole="TPurposeOfIssue" ToRole="TPCTLevel" />
+  </EntityType>
+  <EntityType Name="t0001ProjectCustomers">
+    <Key>
+      <PropertyRef Name="ProjectCustomerID" />
+    </Key>
+    <Property Name="ProjectCustomerID" Type="Guid" Nullable="false" />
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="TransmittalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BasicTransmittal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t0002Customers" Relationship="BaseInfoModel.FK_t0001ProjectCustomers_t0002Customers" FromRole="t0001ProjectCustomers" ToRole="t0002Customers" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="t0002Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="Binary" MaxLength="50" FixedLength="true" />
+    <Property Name="CustomerTypeID" Type="Guid" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="CityID" Type="Int64" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="t0001ProjectCustomers" Relationship="BaseInfoModel.FK_t0001ProjectCustomers_t0002Customers" FromRole="t0002Customers" ToRole="t0001ProjectCustomers" />
+    <NavigationProperty Name="t0002Customers1" Relationship="BaseInfoModel.FK_t0002Customers_t0002Customers" FromRole="t0002Customers" ToRole="t0002Customers1" />
+    <NavigationProperty Name="t0002Customers2" Relationship="BaseInfoModel.FK_t0002Customers_t0002Customers" FromRole="t0002Customers1" ToRole="t0002Customers" />
+    <NavigationProperty Name="t0001CustomerType" Relationship="BaseInfoModel.FK_t0002Customers_t0001CustomerType" FromRole="t0002Customers" ToRole="t0001CustomerType" />
+    <NavigationProperty Name="TPCTLevels" Relationship="BaseInfoModel.FK_TPCTLevels_t0002Customers" FromRole="t0002Customers" ToRole="TPCTLevel" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="FK_t0001ProjectCustomers_t0002Customers">
+    <End Type="BaseInfoModel.t0002Customers" Role="t0002Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BaseInfoModel.t0001ProjectCustomers" Role="t0001ProjectCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0002Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="t0001ProjectCustomers">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t0002Customers_t0002Customers">
+    <End Type="BaseInfoModel.t0002Customers" Role="t0002Customers" Multiplicity="1" />
+    <End Type="BaseInfoModel.t0002Customers" Role="t0002Customers1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="t0002Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="t0002Customers1">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="t0001CustomerType">
+    <Key>
+      <PropertyRef Name="CustomerTypeID" />
+    </Key>
+    <Property Name="CustomerTypeID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Byte" Nullable="false" />
+    <Property Name="CustomerType" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t0002Customers" Relationship="BaseInfoModel.FK_t0002Customers_t0001CustomerType" FromRole="t0001CustomerType" ToRole="t0002Customers" />
+  </EntityType>
+  <Association Name="FK_t0002Customers_t0001CustomerType">
+    <End Type="BaseInfoModel.t0001CustomerType" Role="t0001CustomerType" Multiplicity="1" />
+    <End Type="BaseInfoModel.t0002Customers" Role="t0002Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001CustomerType">
+        <PropertyRef Name="CustomerTypeID" />
+      </Principal>
+      <Dependent Role="t0002Customers">
+        <PropertyRef Name="CustomerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TPCTCondition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Feild" Type="Byte" Nullable="false" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PCTLevelID" Type="Int32" Nullable="false" />
+    <Property Name="ConditionOprand" Type="Byte" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TPCTLevel" Relationship="BaseInfoModel.FK_TPCTConditions_TPCTLevels" FromRole="TPCTCondition" ToRole="TPCTLevel" />
+  </EntityType>
+  <EntityType Name="VPMISProject">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ProjectName" />
+    </Key>
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectP3ID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TPCTLevel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PurposeOfIssueID" Type="Int32" Nullable="false" />
+    <Property Name="PCT" Type="Double" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t0002Customers" Relationship="BaseInfoModel.FK_TPCTLevels_t0002Customers" FromRole="TPCTLevel" ToRole="t0002Customers" />
+    <NavigationProperty Name="TPCTConditions" Relationship="BaseInfoModel.FK_TPCTConditions_TPCTLevels" FromRole="TPCTLevel" ToRole="TPCTCondition" />
+    <NavigationProperty Name="TPurposeOfIssue" Relationship="BaseInfoModel.FK_TPCTLevels_TPurposeOfIssues" FromRole="TPCTLevel" ToRole="TPurposeOfIssue" />
+  </EntityType>
+  <Association Name="FK_TPCTLevels_t0002Customers">
+    <End Type="BaseInfoModel.t0002Customers" Role="t0002Customers" Multiplicity="1" />
+    <End Type="BaseInfoModel.TPCTLevel" Role="TPCTLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0002Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="TPCTLevel">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTConditions_TPCTLevels">
+    <End Type="BaseInfoModel.TPCTLevel" Role="TPCTLevel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="BaseInfoModel.TPCTCondition" Role="TPCTCondition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPCTLevel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTCondition">
+        <PropertyRef Name="PCTLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTLevels_TPurposeOfIssues">
+    <End Type="BaseInfoModel.TPurposeOfIssue" Role="TPurposeOfIssue" Multiplicity="1" />
+    <End Type="BaseInfoModel.TPCTLevel" Role="TPCTLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTLevel">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VDocumentType">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VProjectCustomer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="CustomerType" />
+    </Key>
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="CustomerType" Type="Byte" Nullable="false" />
+    <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

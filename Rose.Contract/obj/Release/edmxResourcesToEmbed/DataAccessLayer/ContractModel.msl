@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ContractModelStoreContainer" CdmEntityContainer="ROSEDBContractEntities">
+    <EntitySetMapping Name="TMRPs">
+      <EntityTypeMapping TypeName="ContractModel.TMRP">
+        <MappingFragment StoreEntitySet="TMRP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="DeciplineID" ColumnName="DeciplineID" />
+          <ScalarProperty Name="DesciplineName" ColumnName="DesciplineName" />
+          <ScalarProperty Name="MRDocumentID" ColumnName="MRDocumentID" />
+          <ScalarProperty Name="MRPNo" ColumnName="MRPNo" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="WBSMRNo" ColumnName="WBSMRNo" />
+          <ScalarProperty Name="PlanInquiryStart" ColumnName="PlanInquiryStart" />
+          <ScalarProperty Name="PlanInquiryEnd" ColumnName="PlanInquiryEnd" />
+          <ScalarProperty Name="PlanTBEDate" ColumnName="PlanTBEDate" />
+          <ScalarProperty Name="PlanCBEDate" ColumnName="PlanCBEDate" />
+          <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TMRPItems">
+      <EntityTypeMapping TypeName="ContractModel.TMRPItem">
+        <MappingFragment StoreEntitySet="TMRPItems">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="MRPID" ColumnName="MRPID" />
+          <ScalarProperty Name="TagNo" ColumnName="TagNo" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ESTUnitPrice" ColumnName="ESTUnitPrice" />
+          <ScalarProperty Name="ESTCurrencyID" ColumnName="ESTCurrencyID" />
+          <ScalarProperty Name="ESTWeight" ColumnName="ESTWeight" />
+          <ScalarProperty Name="NeedCertificate" ColumnName="NeedCertificate" />
+          <ScalarProperty Name="Contigency" ColumnName="Contigency" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LastAttachID" ColumnName="LastAttachID" />
+          <ScalarProperty Name="LastAttachedURL" ColumnName="LastAttachedURL" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TMRPVendors">
+      <EntityTypeMapping TypeName="ContractModel.TMRPVendor">
+        <MappingFragment StoreEntitySet="TMRPVendors">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+          <ScalarProperty Name="MRPID" ColumnName="MRPID" />
+          <ScalarProperty Name="MRPVersion" ColumnName="MRPVersion" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TProcurementItems">
+      <EntityTypeMapping TypeName="ContractModel.TProcurementItem">
+        <MappingFragment StoreEntitySet="TProcurementItems">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="DeciplineID" ColumnName="DeciplineID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DesciplineName" ColumnName="DesciplineName" />
+          <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TVendors">
+      <EntityTypeMapping TypeName="ContractModel.TVendor">
+        <MappingFragment StoreEntitySet="TVendors">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="VendorManager" ColumnName="VendorManager" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+          <ScalarProperty Name="Scopes" ColumnName="Scopes" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t000Units">
+      <EntityTypeMapping TypeName="ContractModel.t000Units">
+        <MappingFragment StoreEntitySet="t000Units">
+          <ScalarProperty Name="sort" ColumnName="sort" />
+          <ScalarProperty Name="Abriviation" ColumnName="Abriviation" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TContractItems">
+      <EntityTypeMapping TypeName="ContractModel.TContractItem">
+        <MappingFragment StoreEntitySet="TContractItems">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+          <ScalarProperty Name="TermOfDelivery" ColumnName="TermOfDelivery" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="CurrencyUnitID" ColumnName="CurrencyUnitID" />
+          <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TagNo" ColumnName="TagNo" />
+          <ScalarProperty Name="MRPItemID" ColumnName="MRPItemID" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TContractTermOfPayments">
+      <EntityTypeMapping TypeName="ContractModel.TContractTermOfPayment">
+        <MappingFragment StoreEntitySet="TContractTermOfPayments">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Percent" ColumnName="Percent" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TContractItemGuaranties">
+      <EntityTypeMapping TypeName="ContractModel.TContractItemGuaranty">
+        <MappingFragment StoreEntitySet="TContractItemGuaranties">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="GuarantyType" ColumnName="GuarantyType" />
+          <ScalarProperty Name="IsPG" ColumnName="IsPG" />
+          <ScalarProperty Name="IsAPG" ColumnName="IsAPG" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ContractItemID" ColumnName="ContractItemID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TVendorTransmittals">
+      <EntityTypeMapping TypeName="ContractModel.TVendorTransmittal">
+        <MappingFragment StoreEntitySet="TVendorTransmittals">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="TransmittalType" ColumnName="TransmittalType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="TransmittalDate" ColumnName="TransmittalDate" />
+          <ScalarProperty Name="TransmittalNo" ColumnName="TransmittalNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TVendorTransmittalDocuments">
+      <EntityTypeMapping TypeName="ContractModel.TVendorTransmittalDocument">
+        <MappingFragment StoreEntitySet="TVendorTransmittalDocuments">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CurrentState" ColumnName="CurrentState" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SheetNo" ColumnName="SheetNo" />
+          <ScalarProperty Name="PurposeOfIssueID" ColumnName="PurposeOfIssueID" />
+          <ScalarProperty Name="VPISID" ColumnName="VPISID" />
+          <ScalarProperty Name="VendorTransmittalID" ColumnName="VendorTransmittalID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TVPIS">
+      <EntityTypeMapping TypeName="ContractModel.TVPIS">
+        <MappingFragment StoreEntitySet="TVPIS">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Classification" ColumnName="Classification" />
+          <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
+          <ScalarProperty Name="DesciplineName" ColumnName="DesciplineName" />
+          <ScalarProperty Name="DesciplineID" ColumnName="DesciplineID" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TContracts">
+      <EntityTypeMapping TypeName="ContractModel.TContract">
+        <MappingFragment StoreEntitySet="TContracts">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="LCDate" ColumnName="LCDate" />
+          <ScalarProperty Name="LCNo" ColumnName="LCNo" />
+          <ScalarProperty Name="KOMDate" ColumnName="KOMDate" />
+          <ScalarProperty Name="InstallationDate" ColumnName="InstallationDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
+          <ScalarProperty Name="TermsOfEffectivness" ColumnName="TermsOfEffectivness" />
+          <ScalarProperty Name="ItemCurrencyPrice" ColumnName="ItemCurrencyPrice" />
+          <ScalarProperty Name="ItemsBasePrice" ColumnName="ItemsBasePrice" />
+          <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+          <ScalarProperty Name="CurrencyUnitID" ColumnName="CurrencyUnitID" />
+          <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
+          <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+          <ScalarProperty Name="DurationUnit" ColumnName="DurationUnit" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="CancelationDate" ColumnName="CancelationDate" />
+          <ScalarProperty Name="EffectivenessDate" ColumnName="EffectivenessDate" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="PODate" ColumnName="PODate" />
+          <ScalarProperty Name="PONO" ColumnName="PONO" />
+          <ScalarProperty Name="MRPVendorID" ColumnName="MRPVendorID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPurposeOfIssues">
+      <EntityTypeMapping TypeName="ContractModel.TPurposeOfIssue">
+        <MappingFragment StoreEntitySet="TPurposeOfIssues">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TApprovalFlows">
+      <EntityTypeMapping TypeName="ContractModel.TApprovalFlow">
+        <MappingFragment StoreEntitySet="TApprovalFlows">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="ExpertUserID" ColumnName="ExpertUserID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+          <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

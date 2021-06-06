@@ -1,0 +1,556 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ContractModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t000Units">
+    <Key>
+      <PropertyRef Name="UnitID" />
+    </Key>
+    <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Abriviation" Type="nvarchar" MaxLength="50" />
+    <Property Name="sort" Type="int" />
+  </EntityType>
+  <EntityType Name="TApprovalFlows">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityID" Type="int" Nullable="false" />
+    <Property Name="EntityType" Type="tinyint" Nullable="false" />
+    <Property Name="FlowState" Type="int" Nullable="false" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExpertUserID" Type="int" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TContractItemGuaranties">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractItemID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="IsAPG" Type="bit" Nullable="false" />
+    <Property Name="IsPG" Type="bit" Nullable="false" />
+    <Property Name="GuarantyType" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TContractItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractID" Type="int" Nullable="false" />
+    <Property Name="MRPItemID" Type="int" Nullable="false" />
+    <Property Name="TagNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="Quantity" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="CurrencyPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyUnitID" Type="int" />
+    <Property Name="BasePrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TermOfDelivery" Type="nvarchar" MaxLength="500" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TContracts">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MRPVendorID" Type="int" Nullable="false" />
+    <Property Name="PONO" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="PODate" Type="datetime" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" />
+    <Property Name="EffectivenessDate" Type="datetime" />
+    <Property Name="CancelationDate" Type="datetime" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="DurationUnit" Type="int" />
+    <Property Name="BasePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyUnitID" Type="int" />
+    <Property Name="ExchangeRate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ItemsBasePrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ItemCurrencyPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="TermsOfEffectivness" Type="int" />
+    <Property Name="TermsOfDelivery" Type="nvarchar" MaxLength="500" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="InstallationDate" Type="datetime" />
+    <Property Name="KOMDate" Type="datetime" />
+    <Property Name="LCNo" Type="nvarchar" MaxLength="250" />
+    <Property Name="LCDate" Type="datetime" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TContractTermOfPayments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractID" Type="int" Nullable="false" />
+    <Property Name="PaymentType" Type="int" Nullable="false" />
+    <Property Name="Percent" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TMRP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DeciplineID" Type="int" Nullable="false" />
+    <Property Name="DesciplineName" Type="nvarchar" MaxLength="150" />
+    <Property Name="MRDocumentID" Type="int" Nullable="false" />
+    <Property Name="MRPNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="WBSMRNo" Type="nvarchar" MaxLength="250" />
+    <Property Name="PlanInquiryStart" Type="datetime" />
+    <Property Name="PlanInquiryEnd" Type="datetime" />
+    <Property Name="PlanTBEDate" Type="datetime" />
+    <Property Name="PlanCBEDate" Type="datetime" />
+    <Property Name="StatusType" Type="int" Nullable="false" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TMRPItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemID" Type="int" Nullable="false" />
+    <Property Name="MRPID" Type="int" Nullable="false" />
+    <Property Name="TagNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ESTUnitPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ESTCurrencyID" Type="int" />
+    <Property Name="ESTWeight" Type="float" />
+    <Property Name="NeedCertificate" Type="bit" Nullable="false" />
+    <Property Name="Contigency" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="LastAttachID" Type="int" />
+    <Property Name="LastAttachedURL" Type="nvarchar" MaxLength="276" />
+    <Property Name="Path" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TMRPVendors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorID" Type="int" Nullable="false" />
+    <Property Name="MRPID" Type="int" Nullable="false" />
+    <Property Name="MRPVersion" Type="nvarchar" MaxLength="150" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TProcurementItems">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="DeciplineID" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="50" />
+    <Property Name="DesciplineName" Type="nvarchar" MaxLength="100" />
+    <Property Name="UnitOfMeasureID" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TPurposeOfIssues">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Description" Type="nchar" MaxLength="200" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TVendors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="VendorManager" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+    <Property Name="WebSite" Type="nvarchar" MaxLength="250" />
+    <Property Name="Scopes" Type="nvarchar(max)" />
+    <Property Name="CountryID" Type="uniqueidentifier" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TVendorTransmittalDocuments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VendorTransmittalID" Type="int" Nullable="false" />
+    <Property Name="VPISID" Type="int" Nullable="false" />
+    <Property Name="PurposeOfIssueID" Type="int" Nullable="false" />
+    <Property Name="SheetNo" Type="int" />
+    <Property Name="Revision" Type="nvarchar" MaxLength="50" />
+    <Property Name="CurrentState" Type="int" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="Deadline" Type="date" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TVendorTransmittals">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransmittalNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TransmittalDate" Type="date" Nullable="false" />
+    <Property Name="ContractID" Type="int" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransmittalType" Type="tinyint" Nullable="false" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TVPIS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContractID" Type="int" Nullable="false" />
+    <Property Name="DocumentNo" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DesciplineID" Type="int" Nullable="false" />
+    <Property Name="DesciplineName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="PlanDate" Type="datetime" />
+    <Property Name="Classification" Type="nvarchar" MaxLength="200" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <Association Name="FK_MRPItems_MRP">
+    <End Role="TMRP" Type="Self.TMRP" Multiplicity="1" />
+    <End Role="TMRPItems" Type="Self.TMRPItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPItems">
+        <PropertyRef Name="MRPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPItems_ProcurementItems">
+    <End Role="TProcurementItems" Type="Self.TProcurementItems" Multiplicity="1" />
+    <End Role="TMRPItems" Type="Self.TMRPItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TProcurementItems">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPItems">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPVendors_MRP">
+    <End Role="TMRP" Type="Self.TMRP" Multiplicity="1" />
+    <End Role="TMRPVendors" Type="Self.TMRPVendors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPVendors">
+        <PropertyRef Name="MRPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPVendors_Vendors">
+    <End Role="TVendors" Type="Self.TVendors" Multiplicity="1" />
+    <End Role="TMRPVendors" Type="Self.TMRPVendors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TVendors">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPVendors">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItem_TContracts">
+    <End Role="TContracts" Type="Self.TContracts" Multiplicity="1" />
+    <End Role="TContractItems" Type="Self.TContractItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContracts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractItems">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItemGuaranties_TContractItems">
+    <End Role="TContractItems" Type="Self.TContractItems" Multiplicity="1" />
+    <End Role="TContractItemGuaranties" Type="Self.TContractItemGuaranties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContractItems">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractItemGuaranties">
+        <PropertyRef Name="ContractItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItems_t000Units">
+    <End Role="t000Units" Type="Self.t000Units" Multiplicity="0..1" />
+    <End Role="TContractItems" Type="Self.TContractItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TContractItems">
+        <PropertyRef Name="CurrencyUnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItems_TMRPItems">
+    <End Role="TMRPItems" Type="Self.TMRPItems" Multiplicity="1" />
+    <End Role="TContractItems" Type="Self.TContractItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRPItems">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractItems">
+        <PropertyRef Name="MRPItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContracts_t000Units">
+    <End Role="t000Units" Type="Self.t000Units" Multiplicity="0..1" />
+    <End Role="TContracts" Type="Self.TContracts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TContracts">
+        <PropertyRef Name="CurrencyUnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContracts_TMRPVendors">
+    <End Role="TMRPVendors" Type="Self.TMRPVendors" Multiplicity="1" />
+    <End Role="TContracts" Type="Self.TContracts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRPVendors">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContracts">
+        <PropertyRef Name="MRPVendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractTermOfPayments_TContracts">
+    <End Role="TContracts" Type="Self.TContracts" Multiplicity="1" />
+    <End Role="TContractTermOfPayments" Type="Self.TContractTermOfPayments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContracts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractTermOfPayments">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TMRPItems_t000Units">
+    <End Role="t000Units" Type="Self.t000Units" Multiplicity="0..1" />
+    <End Role="TMRPItems" Type="Self.TMRPItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TMRPItems">
+        <PropertyRef Name="ESTCurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TVendorTransmittalDocuments_TPurposeOfIssue">
+    <End Role="TPurposeOfIssues" Type="Self.TPurposeOfIssues" Multiplicity="1" />
+    <End Role="TVendorTransmittalDocuments" Type="Self.TVendorTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssues">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TVendorTransmittalDocuments">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TVendorTransmittalDocuments_TVendorTransmittals">
+    <End Role="TVendorTransmittals" Type="Self.TVendorTransmittals" Multiplicity="1" />
+    <End Role="TVendorTransmittalDocuments" Type="Self.TVendorTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TVendorTransmittals">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TVendorTransmittalDocuments">
+        <PropertyRef Name="VendorTransmittalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TVendorTransmittalDocuments_TVPIS">
+    <End Role="TVPIS" Type="Self.TVPIS" Multiplicity="1" />
+    <End Role="TVendorTransmittalDocuments" Type="Self.TVendorTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TVPIS">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TVendorTransmittalDocuments">
+        <PropertyRef Name="VPISID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TVendorTransmittals_TContracts">
+    <End Role="TContracts" Type="Self.TContracts" Multiplicity="1" />
+    <End Role="TVendorTransmittals" Type="Self.TVendorTransmittals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContracts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TVendorTransmittals">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TVPISs_TContracts">
+    <End Role="TContracts" Type="Self.TContracts" Multiplicity="1" />
+    <End Role="TVPIS" Type="Self.TVPIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContracts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TVPIS">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ContractModelStoreContainer">
+    <EntitySet Name="t000Units" EntityType="Self.t000Units" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TApprovalFlows" EntityType="Self.TApprovalFlows" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TContractItemGuaranties" EntityType="Self.TContractItemGuaranties" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TContractItems" EntityType="Self.TContractItems" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TContracts" EntityType="Self.TContracts" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TContractTermOfPayments" EntityType="Self.TContractTermOfPayments" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TMRP" EntityType="Self.TMRP" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TMRPItems" EntityType="Self.TMRPItems" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TMRPVendors" EntityType="Self.TMRPVendors" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TProcurementItems" EntityType="Self.TProcurementItems" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TPurposeOfIssues" EntityType="Self.TPurposeOfIssues" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TVendors" EntityType="Self.TVendors" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TVendorTransmittalDocuments" EntityType="Self.TVendorTransmittalDocuments" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TVendorTransmittals" EntityType="Self.TVendorTransmittals" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TVPIS" EntityType="Self.TVPIS" Schema="Prc" store:Type="Tables" />
+    <AssociationSet Name="FK_MRPItems_MRP" Association="Self.FK_MRPItems_MRP">
+      <End Role="TMRP" EntitySet="TMRP" />
+      <End Role="TMRPItems" EntitySet="TMRPItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPItems_ProcurementItems" Association="Self.FK_MRPItems_ProcurementItems">
+      <End Role="TProcurementItems" EntitySet="TProcurementItems" />
+      <End Role="TMRPItems" EntitySet="TMRPItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPVendors_MRP" Association="Self.FK_MRPVendors_MRP">
+      <End Role="TMRP" EntitySet="TMRP" />
+      <End Role="TMRPVendors" EntitySet="TMRPVendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPVendors_Vendors" Association="Self.FK_MRPVendors_Vendors">
+      <End Role="TVendors" EntitySet="TVendors" />
+      <End Role="TMRPVendors" EntitySet="TMRPVendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItem_TContracts" Association="Self.FK_TContractItem_TContracts">
+      <End Role="TContracts" EntitySet="TContracts" />
+      <End Role="TContractItems" EntitySet="TContractItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItemGuaranties_TContractItems" Association="Self.FK_TContractItemGuaranties_TContractItems">
+      <End Role="TContractItems" EntitySet="TContractItems" />
+      <End Role="TContractItemGuaranties" EntitySet="TContractItemGuaranties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItems_t000Units" Association="Self.FK_TContractItems_t000Units">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TContractItems" EntitySet="TContractItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItems_TMRPItems" Association="Self.FK_TContractItems_TMRPItems">
+      <End Role="TMRPItems" EntitySet="TMRPItems" />
+      <End Role="TContractItems" EntitySet="TContractItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContracts_t000Units" Association="Self.FK_TContracts_t000Units">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TContracts" EntitySet="TContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContracts_TMRPVendors" Association="Self.FK_TContracts_TMRPVendors">
+      <End Role="TMRPVendors" EntitySet="TMRPVendors" />
+      <End Role="TContracts" EntitySet="TContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractTermOfPayments_TContracts" Association="Self.FK_TContractTermOfPayments_TContracts">
+      <End Role="TContracts" EntitySet="TContracts" />
+      <End Role="TContractTermOfPayments" EntitySet="TContractTermOfPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TMRPItems_t000Units" Association="Self.FK_TMRPItems_t000Units">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TMRPItems" EntitySet="TMRPItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TVendorTransmittalDocuments_TPurposeOfIssue" Association="Self.FK_TVendorTransmittalDocuments_TPurposeOfIssue">
+      <End Role="TPurposeOfIssues" EntitySet="TPurposeOfIssues" />
+      <End Role="TVendorTransmittalDocuments" EntitySet="TVendorTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TVendorTransmittalDocuments_TVendorTransmittals" Association="Self.FK_TVendorTransmittalDocuments_TVendorTransmittals">
+      <End Role="TVendorTransmittals" EntitySet="TVendorTransmittals" />
+      <End Role="TVendorTransmittalDocuments" EntitySet="TVendorTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TVendorTransmittalDocuments_TVPIS" Association="Self.FK_TVendorTransmittalDocuments_TVPIS">
+      <End Role="TVPIS" EntitySet="TVPIS" />
+      <End Role="TVendorTransmittalDocuments" EntitySet="TVendorTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TVendorTransmittals_TContracts" Association="Self.FK_TVendorTransmittals_TContracts">
+      <End Role="TContracts" EntitySet="TContracts" />
+      <End Role="TVendorTransmittals" EntitySet="TVendorTransmittals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TVPISs_TContracts" Association="Self.FK_TVPISs_TContracts">
+      <End Role="TContracts" EntitySet="TContracts" />
+      <End Role="TVPIS" EntitySet="TVPIS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

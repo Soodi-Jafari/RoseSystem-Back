@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsMan" Type="bit" />
+    <Property Name="SexID" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="CellPhone" Type="nvarchar" MaxLength="11" />
+    <Property Name="ExtensionNo" Type="nvarchar" MaxLength="3" />
+    <Property Name="StartJob" Type="datetime" />
+    <Property Name="CompanyEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonalEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pic" Type="image" />
+    <Property Name="PicName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PicSize" Type="int" />
+    <Property Name="PicContentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="HisUserName" Type="nvarchar" MaxLength="120" />
+    <Property Name="HisPassword" Type="nvarchar" MaxLength="120" />
+    <Property Name="IsChangedUserPassword" Type="bit" />
+    <Property Name="NoMandateTimesheet" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TPCTConditions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Feild" Type="tinyint" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PCTLevelID" Type="int" Nullable="false" />
+    <Property Name="ConditionOprand" Type="tinyint" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TPCTLevels">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="PurposeOfIssueID" Type="int" Nullable="false" />
+    <Property Name="PCT" Type="float" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TPurposeOfIssues">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TTaskApprovals">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskID" Type="int" Nullable="false" />
+    <Property Name="FlowState" Type="tinyint" Nullable="false" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExpertUserID" Type="int" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TTasks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskType" Type="tinyint" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Revision" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DocumentTitle" Type="nvarchar(max)" />
+    <Property Name="TaskStatus" Type="tinyint" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="ActualStart" Type="datetime" />
+    <Property Name="ActualFinish" Type="datetime" />
+    <Property Name="ProgressPercent" Type="int" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="DisciplineID" Type="int" />
+    <Property Name="DisciplineName" Type="nvarchar" MaxLength="200" />
+    <Property Name="EstimateManHour" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="UserAssignedID" Type="int" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TTransmittalDocuments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransmittalID" Type="int" Nullable="false" />
+    <Property Name="DocumnetNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DocumentTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Revision" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DisciplineID" Type="int" Nullable="false" />
+    <Property Name="DisciplineName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PurposeOfIssueID" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="TaskID" Type="int" />
+    <Property Name="SheetNo" Type="int" />
+    <Property Name="PageType" Type="tinyint" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TTransmittals">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransmittalNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TransmittalDate" Type="date" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TransmittalType" Type="tinyint" Nullable="false" />
+    <Property Name="CopiedTransmittalID" Type="int" />
+    <Property Name="IsArchived" Type="bit" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsk.VPCTTransmitalDocuments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VPCTTransmitalDocuments">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="TransmittalID" />
+      <PropertyRef Name="DocumnetNo" />
+      <PropertyRef Name="DocumentTitle" />
+      <PropertyRef Name="Revision" />
+      <PropertyRef Name="DisciplineID" />
+      <PropertyRef Name="DisciplineName" />
+      <PropertyRef Name="PurposeOfIssueID" />
+      <PropertyRef Name="TransmittalNo" />
+      <PropertyRef Name="TransmittalDate" />
+      <PropertyRef Name="TransmittalType" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="PurposeOfIssueTitle" />
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="TransmittalID" Type="int" Nullable="false" />
+    <Property Name="DocumnetNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DocumentTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Revision" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DisciplineID" Type="int" Nullable="false" />
+    <Property Name="DisciplineName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="PurposeOfIssueID" Type="int" Nullable="false" />
+    <Property Name="TransmittalNo" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TransmittalDate" Type="date" Nullable="false" />
+    <Property Name="TransmittalType" Type="tinyint" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="PurposeOfIssueTitle" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="doc_catg_name" Type="varchar" MaxLength="100" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsk.VProjectCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VProjectCustomers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="CustomerType" />
+    </Key>
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerType" Type="tinyint" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsk.VTaskDocument' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VTaskDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="DocTitle" />
+      <PropertyRef Name="DisciplineType" />
+      <PropertyRef Name="DisciplineShort" />
+      <PropertyRef Name="DisciplineId" />
+      <PropertyRef Name="wbs_id" />
+      <PropertyRef Name="task_id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProjId" Type="int" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DocShortName" Type="varchar" MaxLength="32" />
+    <Property Name="DocTitle" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="DisciplineType" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="DisciplineShort" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="DisciplineName" Type="varchar" MaxLength="120" />
+    <Property Name="DisciplineId" Type="int" Nullable="false" />
+    <Property Name="doc_catg_id" Type="int" />
+    <Property Name="doc_catg_name" Type="varchar" MaxLength="100" />
+    <Property Name="wbs_id" Type="int" Nullable="false" />
+    <Property Name="Start" Type="datetime" />
+    <Property Name="Finish" Type="datetime" />
+    <Property Name="task_id" Type="int" Nullable="false" />
+    <Property Name="PlanManHour" Type="numeric" Precision="17" Scale="6" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsk.VWbsDocuments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VWbsDocuments">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="proj_id" />
+      <PropertyRef Name="doc_name" />
+      <PropertyRef Name="doc_id" />
+      <PropertyRef Name="wbs_id" />
+      <PropertyRef Name="task_id" />
+    </Key>
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="proj_id" Type="int" Nullable="false" />
+    <Property Name="doc_name" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="doc_short_name" Type="varchar" MaxLength="32" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="doc_id" Type="int" Nullable="false" />
+    <Property Name="wbs_id" Type="int" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="doc_catg_name" Type="varchar" MaxLength="100" />
+    <Property Name="dueDate" Type="datetime" />
+    <Property Name="task_id" Type="int" Nullable="false" />
+    <Property Name="actv_code_name" Type="varchar" MaxLength="120" />
+    <Property Name="SubcontractorWeight" Type="float" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsk.VWBSProjects' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VWBSProjects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="proj_id" />
+      <PropertyRef Name="wbs_short_name" />
+      <PropertyRef Name="wbs_id" />
+      <PropertyRef Name="wbs_name" />
+    </Key>
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="proj_id" Type="int" Nullable="false" />
+    <Property Name="wbs_short_name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="parent_wbs_id" Type="int" />
+    <Property Name="wbs_id" Type="int" Nullable="false" />
+    <Property Name="wbs_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="delete_session_id" Type="int" />
+  </EntityType>
+  <Association Name="FK_TPCTConditions_TPCTLevels">
+    <End Role="TPCTLevels" Type="Self.TPCTLevels" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TPCTConditions" Type="Self.TPCTConditions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPCTLevels">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTConditions">
+        <PropertyRef Name="PCTLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTLevels_TPurposeOfIssues">
+    <End Role="TPurposeOfIssues" Type="Self.TPurposeOfIssues" Multiplicity="1" />
+    <End Role="TPCTLevels" Type="Self.TPCTLevels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssues">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTLevels">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPlannedTasks_TPlannedTasks1">
+    <End Role="TTasks" Type="Self.TTasks" Multiplicity="0..1" />
+    <End Role="TTasks1" Type="Self.TTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTasks">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTasks1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTaskApprovals_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TTaskApprovals" Type="Self.TTaskApprovals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTaskApprovals">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTaskApprovals_t100SecurityUsers1">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TTaskApprovals" Type="Self.TTaskApprovals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTaskApprovals">
+        <PropertyRef Name="ExpertUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTaskApprovals_TTasks">
+    <End Role="TTasks" Type="Self.TTasks" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TTaskApprovals" Type="Self.TTaskApprovals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTasks">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTaskApprovals">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTasks_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TTasks" Type="Self.TTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTasks">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTasks_t100SecurityUsers1">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TTasks" Type="Self.TTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTasks">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTasks_t100SecurityUsers2">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TTasks" Type="Self.TTasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTasks">
+        <PropertyRef Name="UserAssignedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TTransmittalDocuments" Type="Self.TTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocuments">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_t100SecurityUsers1">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TTransmittalDocuments" Type="Self.TTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocuments">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_TPurposeOfIssues">
+    <End Role="TPurposeOfIssues" Type="Self.TPurposeOfIssues" Multiplicity="1" />
+    <End Role="TTransmittalDocuments" Type="Self.TTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssues">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocuments">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_TTasks">
+    <End Role="TTasks" Type="Self.TTasks" Multiplicity="0..1" />
+    <End Role="TTransmittalDocuments" Type="Self.TTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTasks">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocuments">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_TTransmittalDocuments">
+    <End Role="TTransmittalDocuments" Type="Self.TTransmittalDocuments" Multiplicity="0..1" />
+    <End Role="TTransmittalDocuments1" Type="Self.TTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTransmittalDocuments">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocuments1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_TTransmittals">
+    <End Role="TTransmittals" Type="Self.TTransmittals" Multiplicity="1" />
+    <End Role="TTransmittalDocuments" Type="Self.TTransmittalDocuments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTransmittals">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocuments">
+        <PropertyRef Name="TransmittalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittals_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TTransmittals" Type="Self.TTransmittals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittals">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittals_t100SecurityUsers1">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TTransmittals" Type="Self.TTransmittals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittals">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TaskModelStoreContainer">
+    <EntitySet Name="t100SecurityUsers" EntityType="Self.t100SecurityUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TPCTConditions" EntityType="Self.TPCTConditions" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="TPCTLevels" EntityType="Self.TPCTLevels" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="TPurposeOfIssues" EntityType="Self.TPurposeOfIssues" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TTaskApprovals" EntityType="Self.TTaskApprovals" Schema="Tsk" store:Type="Tables" />
+    <EntitySet Name="TTasks" EntityType="Self.TTasks" Schema="Tsk" store:Type="Tables" />
+    <EntitySet Name="TTransmittalDocuments" EntityType="Self.TTransmittalDocuments" Schema="Tsk" store:Type="Tables" />
+    <EntitySet Name="TTransmittals" EntityType="Self.TTransmittals" Schema="Tsk" store:Type="Tables" />
+    <EntitySet Name="VPCTTransmitalDocuments" EntityType="Self.VPCTTransmitalDocuments" store:Type="Views" store:Schema="Tsk">
+      <DefiningQuery>SELECT 
+    [VPCTTransmitalDocuments].[ID] AS [ID], 
+    [VPCTTransmitalDocuments].[TransmittalID] AS [TransmittalID], 
+    [VPCTTransmitalDocuments].[DocumnetNo] AS [DocumnetNo], 
+    [VPCTTransmitalDocuments].[DocumentTitle] AS [DocumentTitle], 
+    [VPCTTransmitalDocuments].[Revision] AS [Revision], 
+    [VPCTTransmitalDocuments].[DisciplineID] AS [DisciplineID], 
+    [VPCTTransmitalDocuments].[DisciplineName] AS [DisciplineName], 
+    [VPCTTransmitalDocuments].[PurposeOfIssueID] AS [PurposeOfIssueID], 
+    [VPCTTransmitalDocuments].[TransmittalNo] AS [TransmittalNo], 
+    [VPCTTransmitalDocuments].[TransmittalDate] AS [TransmittalDate], 
+    [VPCTTransmitalDocuments].[TransmittalType] AS [TransmittalType], 
+    [VPCTTransmitalDocuments].[CreationDate] AS [CreationDate], 
+    [VPCTTransmitalDocuments].[PurposeOfIssueTitle] AS [PurposeOfIssueTitle], 
+    [VPCTTransmitalDocuments].[CustomerID] AS [CustomerID], 
+    [VPCTTransmitalDocuments].[Class] AS [Class], 
+    [VPCTTransmitalDocuments].[doc_catg_name] AS [doc_catg_name], 
+    [VPCTTransmitalDocuments].[ProjectID] AS [ProjectID]
+    FROM [Tsk].[VPCTTransmitalDocuments] AS [VPCTTransmitalDocuments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VProjectCustomers" EntityType="Self.VProjectCustomers" store:Type="Views" store:Schema="Tsk">
+      <DefiningQuery>SELECT 
+    [VProjectCustomers].[CustomerID] AS [CustomerID], 
+    [VProjectCustomers].[Name] AS [Name], 
+    [VProjectCustomers].[ProjectID] AS [ProjectID], 
+    [VProjectCustomers].[CustomerType] AS [CustomerType], 
+    [VProjectCustomers].[ContactName] AS [ContactName]
+    FROM [Tsk].[VProjectCustomers] AS [VProjectCustomers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VTaskDocument" EntityType="Self.VTaskDocument" store:Type="Views" store:Schema="Tsk">
+      <DefiningQuery>SELECT 
+    [VTaskDocument].[Id] AS [Id], 
+    [VTaskDocument].[ProjId] AS [ProjId], 
+    [VTaskDocument].[ProjectID] AS [ProjectID], 
+    [VTaskDocument].[DocShortName] AS [DocShortName], 
+    [VTaskDocument].[DocTitle] AS [DocTitle], 
+    [VTaskDocument].[DisciplineType] AS [DisciplineType], 
+    [VTaskDocument].[DisciplineShort] AS [DisciplineShort], 
+    [VTaskDocument].[DisciplineName] AS [DisciplineName], 
+    [VTaskDocument].[DisciplineId] AS [DisciplineId], 
+    [VTaskDocument].[doc_catg_id] AS [doc_catg_id], 
+    [VTaskDocument].[doc_catg_name] AS [doc_catg_name], 
+    [VTaskDocument].[wbs_id] AS [wbs_id], 
+    [VTaskDocument].[Start] AS [Start], 
+    [VTaskDocument].[Finish] AS [Finish], 
+    [VTaskDocument].[task_id] AS [task_id], 
+    [VTaskDocument].[PlanManHour] AS [PlanManHour]
+    FROM [Tsk].[VTaskDocument] AS [VTaskDocument]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VWbsDocuments" EntityType="Self.VWbsDocuments" store:Type="Views" store:Schema="Tsk">
+      <DefiningQuery>SELECT 
+    [VWbsDocuments].[ProjectID] AS [ProjectID], 
+    [VWbsDocuments].[proj_id] AS [proj_id], 
+    [VWbsDocuments].[doc_name] AS [doc_name], 
+    [VWbsDocuments].[doc_short_name] AS [doc_short_name], 
+    [VWbsDocuments].[Weight] AS [Weight], 
+    [VWbsDocuments].[doc_id] AS [doc_id], 
+    [VWbsDocuments].[wbs_id] AS [wbs_id], 
+    [VWbsDocuments].[Class] AS [Class], 
+    [VWbsDocuments].[doc_catg_name] AS [doc_catg_name], 
+    [VWbsDocuments].[dueDate] AS [dueDate], 
+    [VWbsDocuments].[task_id] AS [task_id], 
+    [VWbsDocuments].[actv_code_name] AS [actv_code_name], 
+    [VWbsDocuments].[SubcontractorWeight] AS [SubcontractorWeight]
+    FROM [Tsk].[VWbsDocuments] AS [VWbsDocuments]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VWBSProjects" EntityType="Self.VWBSProjects" store:Type="Views" store:Schema="Tsk">
+      <DefiningQuery>SELECT 
+    [VWBSProjects].[ProjectID] AS [ProjectID], 
+    [VWBSProjects].[proj_id] AS [proj_id], 
+    [VWBSProjects].[wbs_short_name] AS [wbs_short_name], 
+    [VWBSProjects].[parent_wbs_id] AS [parent_wbs_id], 
+    [VWBSProjects].[wbs_id] AS [wbs_id], 
+    [VWBSProjects].[wbs_name] AS [wbs_name], 
+    [VWBSProjects].[delete_session_id] AS [delete_session_id]
+    FROM [Tsk].[VWBSProjects] AS [VWBSProjects]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TPCTConditions_TPCTLevels" Association="Self.FK_TPCTConditions_TPCTLevels">
+      <End Role="TPCTLevels" EntitySet="TPCTLevels" />
+      <End Role="TPCTConditions" EntitySet="TPCTConditions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTLevels_TPurposeOfIssues" Association="Self.FK_TPCTLevels_TPurposeOfIssues">
+      <End Role="TPurposeOfIssues" EntitySet="TPurposeOfIssues" />
+      <End Role="TPCTLevels" EntitySet="TPCTLevels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPlannedTasks_TPlannedTasks1" Association="Self.FK_TPlannedTasks_TPlannedTasks1">
+      <End Role="TTasks" EntitySet="TTasks" />
+      <End Role="TTasks1" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTaskApprovals_t100SecurityUsers" Association="Self.FK_TTaskApprovals_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTaskApprovals" EntitySet="TTaskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTaskApprovals_t100SecurityUsers1" Association="Self.FK_TTaskApprovals_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTaskApprovals" EntitySet="TTaskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTaskApprovals_TTasks" Association="Self.FK_TTaskApprovals_TTasks">
+      <End Role="TTasks" EntitySet="TTasks" />
+      <End Role="TTaskApprovals" EntitySet="TTaskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTasks_t100SecurityUsers" Association="Self.FK_TTasks_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTasks" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTasks_t100SecurityUsers1" Association="Self.FK_TTasks_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTasks" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTasks_t100SecurityUsers2" Association="Self.FK_TTasks_t100SecurityUsers2">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTasks" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_t100SecurityUsers" Association="Self.FK_TTransmittalDocuments_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittalDocuments" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_t100SecurityUsers1" Association="Self.FK_TTransmittalDocuments_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittalDocuments" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_TPurposeOfIssues" Association="Self.FK_TTransmittalDocuments_TPurposeOfIssues">
+      <End Role="TPurposeOfIssues" EntitySet="TPurposeOfIssues" />
+      <End Role="TTransmittalDocuments" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_TTasks" Association="Self.FK_TTransmittalDocuments_TTasks">
+      <End Role="TTasks" EntitySet="TTasks" />
+      <End Role="TTransmittalDocuments" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_TTransmittalDocuments" Association="Self.FK_TTransmittalDocuments_TTransmittalDocuments">
+      <End Role="TTransmittalDocuments" EntitySet="TTransmittalDocuments" />
+      <End Role="TTransmittalDocuments1" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_TTransmittals" Association="Self.FK_TTransmittalDocuments_TTransmittals">
+      <End Role="TTransmittals" EntitySet="TTransmittals" />
+      <End Role="TTransmittalDocuments" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittals_t100SecurityUsers" Association="Self.FK_TTransmittals_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittals" EntitySet="TTransmittals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittals_t100SecurityUsers1" Association="Self.FK_TTransmittals_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittals" EntitySet="TTransmittals" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

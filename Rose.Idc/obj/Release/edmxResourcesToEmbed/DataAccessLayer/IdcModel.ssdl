@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IdcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsMan" Type="bit" />
+    <Property Name="SexID" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="CellPhone" Type="nvarchar" MaxLength="11" />
+    <Property Name="ExtensionNo" Type="nvarchar" MaxLength="3" />
+    <Property Name="StartJob" Type="datetime" />
+    <Property Name="CompanyEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonalEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pic" Type="image" />
+    <Property Name="PicName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PicSize" Type="int" />
+    <Property Name="PicContentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="HisUserName" Type="nvarchar" MaxLength="120" />
+    <Property Name="HisPassword" Type="nvarchar" MaxLength="120" />
+    <Property Name="IsChangedUserPassword" Type="bit" />
+    <Property Name="NoMandateTimesheet" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t100SecutityUserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent" Type="int" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" />
+    <Property Name="Disable" Type="bit" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="Code" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TAutoIDCs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentDiscipline" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DocumentDisciplineID" Type="int" />
+    <Property Name="DocumentType" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DocumentTypeID" Type="int" />
+    <Property Name="Civil" Type="tinyint" />
+    <Property Name="Electrical" Type="tinyint" />
+    <Property Name="Instrument" Type="tinyint" />
+    <Property Name="HVAC" Type="tinyint" />
+    <Property Name="MechanicalRotary" Type="tinyint" />
+    <Property Name="MechanicalFix" Type="tinyint" />
+    <Property Name="Piping" Type="tinyint" />
+    <Property Name="Process" Type="tinyint" />
+    <Property Name="Safety" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="TIDCDistributions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDCID" Type="int" Nullable="false" />
+    <Property Name="DesciplineID" Type="int" Nullable="false" />
+    <Property Name="ResponseStatus" Type="tinyint" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ReplyComment" Type="nvarchar(max)" />
+    <Property Name="FilePath" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="250" />
+    <Property Name="IsCompleted" Type="bit" Nullable="false" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TIDCs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityID" Type="int" Nullable="false" />
+    <Property Name="EntityType" Type="tinyint" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DesciplineID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Gnr.VDocument' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="DocTitle" />
+      <PropertyRef Name="DisciplineType" />
+      <PropertyRef Name="DisciplineShort" />
+      <PropertyRef Name="DisciplineId" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ProjId" Type="int" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DocShortName" Type="varchar" MaxLength="32" />
+    <Property Name="DocTitle" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="DisciplineType" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="DisciplineShort" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="DisciplineName" Type="varchar" MaxLength="120" />
+    <Property Name="DisciplineId" Type="int" Nullable="false" />
+    <Property Name="doc_catg_id" Type="int" />
+    <Property Name="doc_catg_name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_t100SecutityUserType_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="0..1" />
+    <End Role="t100SecutityUserType1" Type="Self.t100SecutityUserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecutityUserType1">
+        <PropertyRef Name="Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCDistributions_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TIDCDistributions" Type="Self.TIDCDistributions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TIDCDistributions">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCDistributions_t100SecurityUsers1">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TIDCDistributions" Type="Self.TIDCDistributions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TIDCDistributions">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCDistributions_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="1" />
+    <End Role="TIDCDistributions" Type="Self.TIDCDistributions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TIDCDistributions">
+        <PropertyRef Name="DesciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCDistributions_TIDCs">
+    <End Role="TIDCs" Type="Self.TIDCs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TIDCDistributions" Type="Self.TIDCDistributions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIDCs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TIDCDistributions">
+        <PropertyRef Name="IDCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCs_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TIDCs" Type="Self.TIDCs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TIDCs">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCs_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="1" />
+    <End Role="TIDCs" Type="Self.TIDCs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TIDCs">
+        <PropertyRef Name="DesciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IdcModelStoreContainer">
+    <EntitySet Name="t100SecurityUsers" EntityType="Self.t100SecurityUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecutityUserType" EntityType="Self.t100SecutityUserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAutoIDCs" EntityType="Self.TAutoIDCs" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="TIDCDistributions" EntityType="Self.TIDCDistributions" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="TIDCs" EntityType="Self.TIDCs" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="VDocument" EntityType="Self.VDocument" store:Type="Views" store:Schema="Gnr">
+      <DefiningQuery>SELECT 
+    [VDocument].[Id] AS [Id], 
+    [VDocument].[ProjId] AS [ProjId], 
+    [VDocument].[ProjectID] AS [ProjectID], 
+    [VDocument].[DocShortName] AS [DocShortName], 
+    [VDocument].[DocTitle] AS [DocTitle], 
+    [VDocument].[DisciplineType] AS [DisciplineType], 
+    [VDocument].[DisciplineShort] AS [DisciplineShort], 
+    [VDocument].[DisciplineName] AS [DisciplineName], 
+    [VDocument].[DisciplineId] AS [DisciplineId], 
+    [VDocument].[doc_catg_id] AS [doc_catg_id], 
+    [VDocument].[doc_catg_name] AS [doc_catg_name]
+    FROM [Gnr].[VDocument] AS [VDocument]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_t100SecutityUserType_t100SecutityUserType" Association="Self.FK_t100SecutityUserType_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecutityUserType1" EntitySet="t100SecutityUserType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCDistributions_t100SecurityUsers" Association="Self.FK_TIDCDistributions_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TIDCDistributions" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCDistributions_t100SecurityUsers1" Association="Self.FK_TIDCDistributions_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TIDCDistributions" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCDistributions_t100SecutityUserType" Association="Self.FK_TIDCDistributions_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TIDCDistributions" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCDistributions_TIDCs" Association="Self.FK_TIDCDistributions_TIDCs">
+      <End Role="TIDCs" EntitySet="TIDCs" />
+      <End Role="TIDCDistributions" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCs_t100SecurityUsers" Association="Self.FK_TIDCs_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TIDCs" EntitySet="TIDCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCs_t100SecutityUserType" Association="Self.FK_TIDCs_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TIDCs" EntitySet="TIDCs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

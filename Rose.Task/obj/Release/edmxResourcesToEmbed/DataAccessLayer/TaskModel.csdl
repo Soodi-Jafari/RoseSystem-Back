@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ROSEDBTaskEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TTaskApprovals" EntityType="TaskModel.TTaskApproval" />
+    <EntitySet Name="TPurposeOfIssues" EntityType="TaskModel.TPurposeOfIssue" />
+    <EntitySet Name="TPCTConditions" EntityType="TaskModel.TPCTCondition" />
+    <EntitySet Name="TPCTLevels" EntityType="TaskModel.TPCTLevel" />
+    <AssociationSet Name="FK_TPCTConditions_TPCTLevels" Association="TaskModel.FK_TPCTConditions_TPCTLevels">
+      <End Role="TPCTLevel" EntitySet="TPCTLevels" />
+      <End Role="TPCTCondition" EntitySet="TPCTConditions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTLevels_TPurposeOfIssues" Association="TaskModel.FK_TPCTLevels_TPurposeOfIssues">
+      <End Role="TPurposeOfIssue" EntitySet="TPurposeOfIssues" />
+      <End Role="TPCTLevel" EntitySet="TPCTLevels" />
+    </AssociationSet>
+    <EntitySet Name="TTransmittalDocuments" EntityType="TaskModel.TTransmittalDocument" />
+    <AssociationSet Name="FK_TTransmittalDocuments_TPurposeOfIssues" Association="TaskModel.FK_TTransmittalDocuments_TPurposeOfIssues">
+      <End Role="TPurposeOfIssue" EntitySet="TPurposeOfIssues" />
+      <End Role="TTransmittalDocument" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_TTransmittalDocuments" Association="TaskModel.FK_TTransmittalDocuments_TTransmittalDocuments">
+      <End Role="TTransmittalDocument" EntitySet="TTransmittalDocuments" />
+      <End Role="TTransmittalDocument1" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <EntitySet Name="VWBSProjects" EntityType="TaskModel.VWBSProject" />
+    <EntitySet Name="VPCTTransmitalDocuments" EntityType="TaskModel.VPCTTransmitalDocument" />
+    <EntitySet Name="VProjectCustomers" EntityType="TaskModel.VProjectCustomer" />
+    <EntitySet Name="VWbsDocuments" EntityType="TaskModel.VWbsDocument" />
+    <EntitySet Name="TTransmittals" EntityType="TaskModel.TTransmittal" />
+    <AssociationSet Name="FK_TTransmittalDocuments_TTransmittals" Association="TaskModel.FK_TTransmittalDocuments_TTransmittals">
+      <End Role="TTransmittal" EntitySet="TTransmittals" />
+      <End Role="TTransmittalDocument" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <EntitySet Name="t100SecurityUsers" EntityType="TaskModel.t100SecurityUsers" />
+    <AssociationSet Name="FK_TTaskApprovals_t100SecurityUsers" Association="TaskModel.FK_TTaskApprovals_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTaskApproval" EntitySet="TTaskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTaskApprovals_t100SecurityUsers1" Association="TaskModel.FK_TTaskApprovals_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTaskApproval" EntitySet="TTaskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_t100SecurityUsers" Association="TaskModel.FK_TTransmittalDocuments_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittalDocument" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_t100SecurityUsers1" Association="TaskModel.FK_TTransmittalDocuments_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittalDocument" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittals_t100SecurityUsers" Association="TaskModel.FK_TTransmittals_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittal" EntitySet="TTransmittals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittals_t100SecurityUsers1" Association="TaskModel.FK_TTransmittals_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittal" EntitySet="TTransmittals" />
+    </AssociationSet>
+    <EntitySet Name="VTaskDocuments" EntityType="TaskModel.VTaskDocument" />
+    <EntitySet Name="TTasks" EntityType="TaskModel.TTask" />
+    <AssociationSet Name="FK_TTasks_t100SecurityUsers" Association="TaskModel.FK_TTasks_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTask" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTasks_t100SecurityUsers1" Association="TaskModel.FK_TTasks_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTask" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTasks_t100SecurityUsers2" Association="TaskModel.FK_TTasks_t100SecurityUsers2">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTask" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTaskApprovals_TTasks" Association="TaskModel.FK_TTaskApprovals_TTasks">
+      <End Role="TTask" EntitySet="TTasks" />
+      <End Role="TTaskApproval" EntitySet="TTaskApprovals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPlannedTasks_TPlannedTasks1" Association="TaskModel.FK_TPlannedTasks_TPlannedTasks1">
+      <End Role="TTask" EntitySet="TTasks" />
+      <End Role="TTask1" EntitySet="TTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittalDocuments_TTasks" Association="TaskModel.FK_TTransmittalDocuments_TTasks">
+      <End Role="TTask" EntitySet="TTasks" />
+      <End Role="TTransmittalDocument" EntitySet="TTransmittalDocuments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TTaskApproval">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int32" Nullable="false" />
+    <Property Name="FlowState" Type="Byte" Nullable="false" />
+    <Property Name="FileDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExpertUserID" Type="Int32" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="TaskModel.FK_TTaskApprovals_t100SecurityUsers" FromRole="TTaskApproval" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="TaskModel.FK_TTaskApprovals_t100SecurityUsers1" FromRole="TTaskApproval" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="TTask" Relationship="TaskModel.FK_TTaskApprovals_TTasks" FromRole="TTaskApproval" ToRole="TTask" />
+  </EntityType>
+  <EntityType Name="TPurposeOfIssue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="TPCTLevels" Relationship="TaskModel.FK_TPCTLevels_TPurposeOfIssues" FromRole="TPurposeOfIssue" ToRole="TPCTLevel" />
+    <NavigationProperty Name="TTransmittalDocuments" Relationship="TaskModel.FK_TTransmittalDocuments_TPurposeOfIssues" FromRole="TPurposeOfIssue" ToRole="TTransmittalDocument" />
+  </EntityType>
+  <EntityType Name="TPCTCondition">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Feild" Type="Byte" Nullable="false" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PCTLevelID" Type="Int32" Nullable="false" />
+    <Property Name="ConditionOprand" Type="Byte" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TPCTLevel" Relationship="TaskModel.FK_TPCTConditions_TPCTLevels" FromRole="TPCTCondition" ToRole="TPCTLevel" />
+  </EntityType>
+  <EntityType Name="TPCTLevel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PurposeOfIssueID" Type="Int32" Nullable="false" />
+    <Property Name="PCT" Type="Double" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TPCTConditions" Relationship="TaskModel.FK_TPCTConditions_TPCTLevels" FromRole="TPCTLevel" ToRole="TPCTCondition" />
+    <NavigationProperty Name="TPurposeOfIssue" Relationship="TaskModel.FK_TPCTLevels_TPurposeOfIssues" FromRole="TPCTLevel" ToRole="TPurposeOfIssue" />
+  </EntityType>
+  <Association Name="FK_TPCTConditions_TPCTLevels">
+    <End Type="TaskModel.TPCTLevel" Role="TPCTLevel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TaskModel.TPCTCondition" Role="TPCTCondition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPCTLevel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTCondition">
+        <PropertyRef Name="PCTLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTLevels_TPurposeOfIssues">
+    <End Type="TaskModel.TPurposeOfIssue" Role="TPurposeOfIssue" Multiplicity="1" />
+    <End Type="TaskModel.TPCTLevel" Role="TPCTLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTLevel">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TTransmittalDocument">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransmittalID" Type="Int32" Nullable="false" />
+    <Property Name="DocumnetNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Revision" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DisciplineID" Type="Int32" Nullable="false" />
+    <Property Name="DisciplineName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PurposeOfIssueID" Type="Int32" Nullable="false" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="SheetNo" Type="Int32" />
+    <Property Name="PageType" Type="Byte" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TPurposeOfIssue" Relationship="TaskModel.FK_TTransmittalDocuments_TPurposeOfIssues" FromRole="TTransmittalDocument" ToRole="TPurposeOfIssue" />
+    <NavigationProperty Name="TTransmittalDocuments1" Relationship="TaskModel.FK_TTransmittalDocuments_TTransmittalDocuments" FromRole="TTransmittalDocument" ToRole="TTransmittalDocument1" />
+    <NavigationProperty Name="TTransmittalDocument1" Relationship="TaskModel.FK_TTransmittalDocuments_TTransmittalDocuments" FromRole="TTransmittalDocument1" ToRole="TTransmittalDocument" />
+    <NavigationProperty Name="TTransmittal" Relationship="TaskModel.FK_TTransmittalDocuments_TTransmittals" FromRole="TTransmittalDocument" ToRole="TTransmittal" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="TaskModel.FK_TTransmittalDocuments_t100SecurityUsers" FromRole="TTransmittalDocument" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="TaskModel.FK_TTransmittalDocuments_t100SecurityUsers1" FromRole="TTransmittalDocument" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="TTask" Relationship="TaskModel.FK_TTransmittalDocuments_TTasks" FromRole="TTransmittalDocument" ToRole="TTask" />
+  </EntityType>
+  <Association Name="FK_TTransmittalDocuments_TPurposeOfIssues">
+    <End Type="TaskModel.TPurposeOfIssue" Role="TPurposeOfIssue" Multiplicity="1" />
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocument">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_TTransmittalDocuments">
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument" Multiplicity="0..1" />
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTransmittalDocument">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocument1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VWBSProject">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="proj_id" />
+      <PropertyRef Name="wbs_short_name" />
+      <PropertyRef Name="wbs_id" />
+      <PropertyRef Name="wbs_name" />
+    </Key>
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="proj_id" Type="Int32" Nullable="false" />
+    <Property Name="wbs_short_name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="parent_wbs_id" Type="Int32" />
+    <Property Name="wbs_id" Type="Int32" Nullable="false" />
+    <Property Name="wbs_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="delete_session_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VPCTTransmitalDocument">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="TransmittalID" />
+      <PropertyRef Name="DocumnetNo" />
+      <PropertyRef Name="DocumentTitle" />
+      <PropertyRef Name="Revision" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="DisciplineID" />
+      <PropertyRef Name="DisciplineName" />
+      <PropertyRef Name="PurposeOfIssueID" />
+      <PropertyRef Name="TransmittalNo" />
+      <PropertyRef Name="TransmittalDate" />
+      <PropertyRef Name="TransmittalType" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="PurposeOfIssueTitle" />
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TransmittalID" Type="Int32" Nullable="false" />
+    <Property Name="DocumnetNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Revision" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DisciplineID" Type="Int32" Nullable="false" />
+    <Property Name="DisciplineName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PurposeOfIssueID" Type="Int32" Nullable="false" />
+    <Property Name="TransmittalNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TransmittalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TransmittalType" Type="Byte" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PurposeOfIssueTitle" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="doc_catg_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VProjectCustomer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="CustomerType" />
+    </Key>
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="CustomerType" Type="Byte" Nullable="false" />
+    <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VWbsDocument">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="proj_id" />
+      <PropertyRef Name="doc_name" />
+      <PropertyRef Name="doc_id" />
+      <PropertyRef Name="wbs_id" />
+      <PropertyRef Name="task_id" />
+    </Key>
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="proj_id" Type="Int32" Nullable="false" />
+    <Property Name="doc_name" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="doc_short_name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="doc_id" Type="Int32" Nullable="false" />
+    <Property Name="wbs_id" Type="Int32" Nullable="false" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="doc_catg_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="dueDate" Type="DateTime" Precision="3" />
+    <Property Name="task_id" Type="Int32" Nullable="false" />
+    <Property Name="actv_code_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="SubcontractorWeight" Type="Double" />
+  </EntityType>
+  <EntityType Name="TTransmittal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransmittalNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TransmittalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="CustomerID" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransmittalType" Type="Byte" Nullable="false" />
+    <Property Name="CopiedTransmittalID" Type="Int32" />
+    <Property Name="IsArchived" Type="Boolean" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TTransmittalDocuments" Relationship="TaskModel.FK_TTransmittalDocuments_TTransmittals" FromRole="TTransmittal" ToRole="TTransmittalDocument" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="TaskModel.FK_TTransmittals_t100SecurityUsers" FromRole="TTransmittal" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="TaskModel.FK_TTransmittals_t100SecurityUsers1" FromRole="TTransmittal" ToRole="t100SecurityUsers" />
+  </EntityType>
+  <Association Name="FK_TTransmittalDocuments_TTransmittals">
+    <End Type="TaskModel.TTransmittal" Role="TTransmittal" Multiplicity="1" />
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTransmittal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocument">
+        <PropertyRef Name="TransmittalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMan" Type="Boolean" />
+    <Property Name="SexID" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="CellPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="ExtensionNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="StartJob" Type="DateTime" Precision="3" />
+    <Property Name="CompanyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PicName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PicSize" Type="Int32" />
+    <Property Name="PicContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="HisUserName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="HisPassword" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="IsChangedUserPassword" Type="Boolean" />
+    <Property Name="NoMandateTimesheet" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TTaskApprovals" Relationship="TaskModel.FK_TTaskApprovals_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTaskApproval" />
+    <NavigationProperty Name="TTaskApprovals1" Relationship="TaskModel.FK_TTaskApprovals_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TTaskApproval" />
+    <NavigationProperty Name="TTransmittalDocuments" Relationship="TaskModel.FK_TTransmittalDocuments_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTransmittalDocument" />
+    <NavigationProperty Name="TTransmittalDocuments1" Relationship="TaskModel.FK_TTransmittalDocuments_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TTransmittalDocument" />
+    <NavigationProperty Name="TTransmittals" Relationship="TaskModel.FK_TTransmittals_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTransmittal" />
+    <NavigationProperty Name="TTransmittals1" Relationship="TaskModel.FK_TTransmittals_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TTransmittal" />
+    <NavigationProperty Name="TTasks" Relationship="TaskModel.FK_TTasks_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTask" />
+    <NavigationProperty Name="TTasks1" Relationship="TaskModel.FK_TTasks_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TTask" />
+    <NavigationProperty Name="TTasks2" Relationship="TaskModel.FK_TTasks_t100SecurityUsers2" FromRole="t100SecurityUsers" ToRole="TTask" />
+  </EntityType>
+  <Association Name="FK_TTaskApprovals_t100SecurityUsers">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="TaskModel.TTaskApproval" Role="TTaskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTaskApproval">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTaskApprovals_t100SecurityUsers1">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="TaskModel.TTaskApproval" Role="TTaskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTaskApproval">
+        <PropertyRef Name="ExpertUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_t100SecurityUsers">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocument">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_t100SecurityUsers1">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocument">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittals_t100SecurityUsers">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="TaskModel.TTransmittal" Role="TTransmittal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittal">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittals_t100SecurityUsers1">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="TaskModel.TTransmittal" Role="TTransmittal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittal">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VTaskDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="DocTitle" />
+      <PropertyRef Name="DisciplineType" />
+      <PropertyRef Name="DisciplineShort" />
+      <PropertyRef Name="DisciplineId" />
+      <PropertyRef Name="wbs_id" />
+      <PropertyRef Name="task_id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ProjId" Type="Int32" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DocShortName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DocTitle" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineShort" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineName" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+    <Property Name="doc_catg_id" Type="Int32" />
+    <Property Name="doc_catg_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="wbs_id" Type="Int32" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Precision="3" />
+    <Property Name="Finish" Type="DateTime" Precision="3" />
+    <Property Name="task_id" Type="Int32" Nullable="false" />
+    <Property Name="PlanManHour" Type="Decimal" Precision="17" Scale="6" />
+  </EntityType>
+  <EntityType Name="TTask">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskType" Type="Byte" Nullable="false" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Revision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TaskStatus" Type="Byte" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="ActualStart" Type="DateTime" Precision="3" />
+    <Property Name="ActualFinish" Type="DateTime" Precision="3" />
+    <Property Name="ProgressPercent" Type="Int32" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="DisciplineID" Type="Int32" />
+    <Property Name="DisciplineName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EstimateManHour" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FileDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserAssignedID" Type="Int32" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="TaskModel.FK_TTasks_t100SecurityUsers" FromRole="TTask" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="TaskModel.FK_TTasks_t100SecurityUsers1" FromRole="TTask" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers2" Relationship="TaskModel.FK_TTasks_t100SecurityUsers2" FromRole="TTask" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="TTaskApprovals" Relationship="TaskModel.FK_TTaskApprovals_TTasks" FromRole="TTask" ToRole="TTaskApproval" />
+    <NavigationProperty Name="TTasks1" Relationship="TaskModel.FK_TPlannedTasks_TPlannedTasks1" FromRole="TTask" ToRole="TTask1" />
+    <NavigationProperty Name="TTask1" Relationship="TaskModel.FK_TPlannedTasks_TPlannedTasks1" FromRole="TTask1" ToRole="TTask" />
+    <NavigationProperty Name="TTransmittalDocuments" Relationship="TaskModel.FK_TTransmittalDocuments_TTasks" FromRole="TTask" ToRole="TTransmittalDocument" />
+  </EntityType>
+  <Association Name="FK_TTasks_t100SecurityUsers">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="TaskModel.TTask" Role="TTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTask">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTasks_t100SecurityUsers1">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="TaskModel.TTask" Role="TTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTask">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTasks_t100SecurityUsers2">
+    <End Type="TaskModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="TaskModel.TTask" Role="TTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTask">
+        <PropertyRef Name="UserAssignedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTaskApprovals_TTasks">
+    <End Type="TaskModel.TTask" Role="TTask" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TaskModel.TTaskApproval" Role="TTaskApproval" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTaskApproval">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPlannedTasks_TPlannedTasks1">
+    <End Type="TaskModel.TTask" Role="TTask" Multiplicity="0..1" />
+    <End Type="TaskModel.TTask" Role="TTask1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTask1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittalDocuments_TTasks">
+    <End Type="TaskModel.TTask" Role="TTask" Multiplicity="0..1" />
+    <End Type="TaskModel.TTransmittalDocument" Role="TTransmittalDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTask">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTransmittalDocument">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

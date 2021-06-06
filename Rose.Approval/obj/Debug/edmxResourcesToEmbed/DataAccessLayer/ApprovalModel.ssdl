@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ApprovalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TApprovalFlows">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityID" Type="int" Nullable="false" />
+    <Property Name="EntityType" Type="tinyint" Nullable="false" />
+    <Property Name="FlowState" Type="int" Nullable="false" />
+    <Property Name="FileDirection" Type="nvarchar(max)" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="ExpertUserID" Type="int" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ApprovalModelStoreContainer">
+    <EntitySet Name="TApprovalFlows" EntityType="Self.TApprovalFlows" Schema="Prc" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

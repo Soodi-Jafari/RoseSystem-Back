@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PWKaraModelStoreContainer" CdmEntityContainer="PWKaraEntities">
+    <EntitySetMapping Name="VPersonnelInOuts">
+      <EntityTypeMapping TypeName="PWKaraModel.VPersonnelInOut">
+        <MappingFragment StoreEntitySet="VPersonnelInOut">
+          <ScalarProperty Name="RowId" ColumnName="RowId" />
+          <ScalarProperty Name="SEX" ColumnName="SEX" />
+          <ScalarProperty Name="FAMILY" ColumnName="FAMILY" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="Station" ColumnName="Station" />
+          <ScalarProperty Name="GateID" ColumnName="GateID" />
+          <ScalarProperty Name="Passenger" ColumnName="Passenger" />
+          <ScalarProperty Name="Direction" ColumnName="Direction" />
+          <ScalarProperty Name="SR_Type" ColumnName="SR_Type" />
+          <ScalarProperty Name="Clock_No" ColumnName="Clock_No" />
+          <ScalarProperty Name="MODIFY" ColumnName="MODIFY" />
+          <ScalarProperty Name="EMP_NO" ColumnName="EMP_NO" />
+          <ScalarProperty Name="TIME_" ColumnName="TIME_" />
+          <ScalarProperty Name="DATE_" ColumnName="DATE_" />
+          <ScalarProperty Name="UserDate" ColumnName="UserDate" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

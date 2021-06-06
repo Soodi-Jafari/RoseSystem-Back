@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DocumentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ROSEDBDocumentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t0001Projects" EntityType="DocumentModel.t0001Projects" />
+    <EntitySet Name="t100SecurityUsers" EntityType="DocumentModel.t100SecurityUsers" />
+    <EntitySet Name="TTransmittals" EntityType="DocumentModel.TTransmittal" />
+    <EntitySet Name="VEngineeringDocuments" EntityType="DocumentModel.VEngineeringDocument" />
+    <AssociationSet Name="FK_TTransmittals_t100SecurityUsers" Association="DocumentModel.FK_TTransmittals_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittal" EntitySet="TTransmittals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTransmittals_t100SecurityUsers1" Association="DocumentModel.FK_TTransmittals_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTransmittal" EntitySet="TTransmittals" />
+    </AssociationSet>
+    <EntitySet Name="TPurposeOfIssues" EntityType="DocumentModel.TPurposeOfIssue" />
+    <EntitySet Name="TEngineeringDocuments" EntityType="DocumentModel.TEngineeringDocument" />
+    <AssociationSet Name="FK_TEngineeringDocuments_t0001Projects" Association="DocumentModel.FK_TEngineeringDocuments_t0001Projects">
+      <End Role="t0001Projects" EntitySet="t0001Projects" />
+      <End Role="TEngineeringDocument" EntitySet="TEngineeringDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEngineeringDocuments_t100SecurityUsers" Association="DocumentModel.FK_TEngineeringDocuments_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TEngineeringDocument" EntitySet="TEngineeringDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEngineeringDocuments_t100SecurityUsers1" Association="DocumentModel.FK_TEngineeringDocuments_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TEngineeringDocument" EntitySet="TEngineeringDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEngineeringDocuments_TEngineeringDocuments" Association="DocumentModel.FK_TEngineeringDocuments_TEngineeringDocuments">
+      <End Role="TTransmittal" EntitySet="TTransmittals" />
+      <End Role="TEngineeringDocument" EntitySet="TEngineeringDocuments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEngineeringDocuments_TPurposeOfIssues" Association="DocumentModel.FK_TEngineeringDocuments_TPurposeOfIssues">
+      <End Role="TPurposeOfIssue" EntitySet="TPurposeOfIssues" />
+      <End Role="TEngineeringDocument" EntitySet="TEngineeringDocuments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="t0001Projects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectP3ID" Type="Int32" />
+    <Property Name="FormatID" Type="Guid" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="TransmittalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RuleID" Type="Int32" />
+    <Property Name="ConvertTRDateToShamsi" Type="Boolean" />
+    <Property Name="IsTender" Type="Boolean" Nullable="false" />
+    <Property Name="IsFeasibility" Type="Boolean" Nullable="false" />
+    <Property Name="EstimationTypeID" Type="Int32" />
+    <Property Name="SecondProjectP3ID" Type="Int32" />
+    <Property Name="SMSCode" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="BarsaProjectID" Type="Int32" />
+    <Property Name="IsProcurement" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TEngineeringDocuments" Relationship="DocumentModel.FK_TEngineeringDocuments_t0001Projects" FromRole="t0001Projects" ToRole="TEngineeringDocument" />
+  </EntityType>
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMan" Type="Boolean" />
+    <Property Name="SexID" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="CellPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="ExtensionNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="StartJob" Type="DateTime" Precision="3" />
+    <Property Name="CompanyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PicName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PicSize" Type="Int32" />
+    <Property Name="PicContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="HisUserName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="HisPassword" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="IsChangedUserPassword" Type="Boolean" />
+    <NavigationProperty Name="TTransmittals" Relationship="DocumentModel.FK_TTransmittals_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTransmittal" />
+    <NavigationProperty Name="TTransmittals1" Relationship="DocumentModel.FK_TTransmittals_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TTransmittal" />
+    <NavigationProperty Name="TEngineeringDocuments" Relationship="DocumentModel.FK_TEngineeringDocuments_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TEngineeringDocument" />
+    <NavigationProperty Name="TEngineeringDocuments1" Relationship="DocumentModel.FK_TEngineeringDocuments_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TEngineeringDocument" />
+  </EntityType>
+  <EntityType Name="TTransmittal">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TransmittalNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TransmittalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransmittalType" Type="Byte" Nullable="false" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="DocumentModel.FK_TTransmittals_t100SecurityUsers" FromRole="TTransmittal" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="DocumentModel.FK_TTransmittals_t100SecurityUsers1" FromRole="TTransmittal" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="TEngineeringDocuments" Relationship="DocumentModel.FK_TEngineeringDocuments_TEngineeringDocuments" FromRole="TTransmittal" ToRole="TEngineeringDocument" />
+  </EntityType>
+  <EntityType Name="VEngineeringDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ProjectId" />
+      <PropertyRef Name="DocTitle" />
+      <PropertyRef Name="DisciplineType" />
+      <PropertyRef Name="DisciplineShort" />
+      <PropertyRef Name="DisciplineId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ProjId" Type="Int32" />
+    <Property Name="ProjectId" Type="Guid" Nullable="false" />
+    <Property Name="DocShortName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DocTitle" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineShort" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineName" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TTransmittals_t100SecurityUsers">
+    <End Type="DocumentModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="DocumentModel.TTransmittal" Role="TTransmittal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittal">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTransmittals_t100SecurityUsers1">
+    <End Type="DocumentModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="DocumentModel.TTransmittal" Role="TTransmittal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTransmittal">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TPurposeOfIssue">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="TEngineeringDocuments" Relationship="DocumentModel.FK_TEngineeringDocuments_TPurposeOfIssues" FromRole="TPurposeOfIssue" ToRole="TEngineeringDocument" />
+  </EntityType>
+  <EntityType Name="TEngineeringDocument">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentTitle" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DisciplineID" Type="Int32" Nullable="false" />
+    <Property Name="DisciplineName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="SheetNo" Type="Int32" />
+    <Property Name="TransmittalID" Type="Int32" />
+    <Property Name="PurposeOfIssueID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Revision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CurrentState" Type="Int32" />
+    <Property Name="FileDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <Property Name="CheckDocNumber" Type="Boolean" />
+    <Property Name="CheckUnitName" Type="Boolean" />
+    <Property Name="CheckDocTitle" Type="Boolean" />
+    <Property Name="CheckDocRev" Type="Boolean" />
+    <Property Name="CheckPageNumber" Type="Boolean" />
+    <Property Name="CheckTableContent" Type="Boolean" />
+    <Property Name="ChecDocFormat" Type="Boolean" />
+    <Property Name="CheckRevMark" Type="Boolean" />
+    <Property Name="CheckProject" Type="Boolean" />
+    <Property Name="UploadPdf" Type="Boolean" />
+    <Property Name="Appendix" Type="Boolean" />
+    <Property Name="ChangeReferPrevious" Type="Boolean" />
+    <Property Name="ChangeLeadOptim" Type="Boolean" />
+    <NavigationProperty Name="t0001Projects" Relationship="DocumentModel.FK_TEngineeringDocuments_t0001Projects" FromRole="TEngineeringDocument" ToRole="t0001Projects" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="DocumentModel.FK_TEngineeringDocuments_t100SecurityUsers" FromRole="TEngineeringDocument" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="DocumentModel.FK_TEngineeringDocuments_t100SecurityUsers1" FromRole="TEngineeringDocument" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="TTransmittal" Relationship="DocumentModel.FK_TEngineeringDocuments_TEngineeringDocuments" FromRole="TEngineeringDocument" ToRole="TTransmittal" />
+    <NavigationProperty Name="TPurposeOfIssue" Relationship="DocumentModel.FK_TEngineeringDocuments_TPurposeOfIssues" FromRole="TEngineeringDocument" ToRole="TPurposeOfIssue" />
+  </EntityType>
+  <Association Name="FK_TEngineeringDocuments_t0001Projects">
+    <End Type="DocumentModel.t0001Projects" Role="t0001Projects" Multiplicity="1" />
+    <End Type="DocumentModel.TEngineeringDocument" Role="TEngineeringDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001Projects">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="TEngineeringDocument">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEngineeringDocuments_t100SecurityUsers">
+    <End Type="DocumentModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="DocumentModel.TEngineeringDocument" Role="TEngineeringDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TEngineeringDocument">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEngineeringDocuments_t100SecurityUsers1">
+    <End Type="DocumentModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="DocumentModel.TEngineeringDocument" Role="TEngineeringDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TEngineeringDocument">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEngineeringDocuments_TEngineeringDocuments">
+    <End Type="DocumentModel.TTransmittal" Role="TTransmittal" Multiplicity="0..1" />
+    <End Type="DocumentModel.TEngineeringDocument" Role="TEngineeringDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTransmittal">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TEngineeringDocument">
+        <PropertyRef Name="TransmittalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEngineeringDocuments_TPurposeOfIssues">
+    <End Type="DocumentModel.TPurposeOfIssue" Role="TPurposeOfIssue" Multiplicity="0..1" />
+    <End Type="DocumentModel.TEngineeringDocument" Role="TEngineeringDocument" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssue">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TEngineeringDocument">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

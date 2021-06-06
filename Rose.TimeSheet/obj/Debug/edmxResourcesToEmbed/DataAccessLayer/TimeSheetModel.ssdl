@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TimeSheetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsMan" Type="bit" />
+    <Property Name="SexID" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="CellPhone" Type="nvarchar" MaxLength="11" />
+    <Property Name="ExtensionNo" Type="nvarchar" MaxLength="3" />
+    <Property Name="StartJob" Type="datetime" />
+    <Property Name="CompanyEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonalEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pic" Type="image" />
+    <Property Name="PicName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PicSize" Type="int" />
+    <Property Name="PicContentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="HisUserName" Type="nvarchar" MaxLength="120" />
+    <Property Name="HisPassword" Type="nvarchar" MaxLength="120" />
+    <Property Name="IsChangedUserPassword" Type="bit" />
+    <Property Name="NoMandateTimesheet" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t100SecutityUserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent" Type="int" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" />
+    <Property Name="Disable" Type="bit" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="Code" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TFiscalYear">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TActivities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Code" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="ActivityType" Type="tinyint" Nullable="false" />
+    <Property Name="IsMain" Type="bit" Nullable="false" />
+    <Property Name="IsProjectize" Type="bit" Nullable="false" />
+    <Property Name="NoneProjectize" Type="bit" Nullable="false" />
+    <Property Name="IsForFeasibility" Type="bit" Nullable="false" />
+    <Property Name="IsForTender" Type="bit" Nullable="false" />
+    <Property Name="IsForProcurement" Type="bit" Nullable="false" />
+    <Property Name="IsForCunstruction" Type="bit" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="TDisciplineResources">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisciplineID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="AvailableResources" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TSectionActivities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActivityID" Type="int" Nullable="false" />
+    <Property Name="OrganisationRoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TTimeSheets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="EventType" Type="tinyint" Nullable="false" />
+    <Property Name="ActivityID" Type="int" />
+    <Property Name="TaskID" Type="int" />
+    <Property Name="FiscalYearID" Type="int" Nullable="false" />
+    <Property Name="CurrentStatus" Type="tinyint" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="OrganizationRoleID" Type="int" Nullable="false" />
+    <Property Name="IsAllDay" Type="bit" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DailyVacationType" Type="tinyint" />
+    <Property Name="TransportType" Type="tinyint" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TTimeSheetStates">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimeSheetID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.dbo.v007GetAllTimeSheets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v007GetAllTimeSheets">
+    <Key>
+      <PropertyRef Name="TimeSheetID" />
+      <PropertyRef Name="StartTask" />
+      <PropertyRef Name="EndTask" />
+      <PropertyRef Name="ActivityID" />
+      <PropertyRef Name="TypeID" />
+      <PropertyRef Name="DateIn" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DateUpDate" />
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="LastName" />
+    </Key>
+    <Property Name="TimeSheetID" Type="bigint" Nullable="false" />
+    <Property Name="StartTask" Type="datetime" Nullable="false" />
+    <Property Name="EndTask" Type="datetime" Nullable="false" />
+    <Property Name="ActivityID" Type="bigint" Nullable="false" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActivityCode" Type="nchar" MaxLength="5" />
+    <Property Name="Detail" Type="nvarchar" MaxLength="100" />
+    <Property Name="DetailID" Type="bigint" />
+    <Property Name="DocNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="TaskSubject" Type="nvarchar" MaxLength="250" />
+    <Property Name="TaskID" Type="bigint" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="Project" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="250" />
+    <Property Name="DepartmentID" Type="int" />
+    <Property Name="SectionID" Type="int" />
+    <Property Name="Section" Type="nvarchar" MaxLength="250" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="LocationID" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserDisplayName" Type="nvarchar" MaxLength="101" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="StatusID" Type="int" />
+    <Property Name="EstimationTypeID" Type="int" />
+    <Property Name="EstimationType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsTender" Type="bit" />
+    <Property Name="IsFeasibility" Type="bit" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="Company" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelCode" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsh.VActualPlannedTimeReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VActualPlannedTimeReport">
+    <Key>
+      <PropertyRef Name="ProjectName" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProjectP3ID" Type="int" />
+    <Property Name="PlanManHour" Type="numeric" Precision="17" Scale="6" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="Duration" Type="numeric" Precision="17" Scale="6" />
+    <Property Name="Discipline" Type="varchar" MaxLength="120" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DocNo" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsh.VTimesheets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VTimesheets">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="StartDate" />
+      <PropertyRef Name="EndDate" />
+      <PropertyRef Name="EventType" />
+      <PropertyRef Name="CurrentStatus" />
+      <PropertyRef Name="OrganizationRoleID" />
+      <PropertyRef Name="CreationUserID" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="UserTypeName" />
+      <PropertyRef Name="OwnerLastName" />
+      <PropertyRef Name="ModifiedLastName" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" Nullable="false" />
+    <Property Name="EndDate" Type="datetime" Nullable="false" />
+    <Property Name="EventType" Type="tinyint" Nullable="false" />
+    <Property Name="ActivityID" Type="int" />
+    <Property Name="TaskID" Type="int" />
+    <Property Name="CurrentStatus" Type="tinyint" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="OrganizationRoleID" Type="int" Nullable="false" />
+    <Property Name="IsAllDay" Type="bit" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="CreationUserID" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+    <Property Name="LastModifiedUserID" Type="int" />
+    <Property Name="DailyVacationType" Type="tinyint" />
+    <Property Name="TransportType" Type="tinyint" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="250" />
+    <Property Name="Revision" Type="nvarchar" MaxLength="50" />
+    <Property Name="DetailActivity" Type="nvarchar" MaxLength="200" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="PersonelCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="OwnerLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OwnerFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OwnerPersianLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="OwnerPersianFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ModifiedFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedPersianLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedPersianFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Department" Type="nvarchar" MaxLength="250" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_t100SecutityUserType_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="0..1" />
+    <End Role="t100SecutityUserType1" Type="Self.t100SecutityUserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecutityUserType1">
+        <PropertyRef Name="Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TActivities_TActivities">
+    <End Role="TActivities" Type="Self.TActivities" Multiplicity="0..1" />
+    <End Role="TActivities1" Type="Self.TActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TActivities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TActivities1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TDisciplineResources_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="1" />
+    <End Role="TDisciplineResources" Type="Self.TDisciplineResources" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TDisciplineResources">
+        <PropertyRef Name="DisciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TSectionActivities_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="1" />
+    <End Role="TSectionActivities" Type="Self.TSectionActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TSectionActivities">
+        <PropertyRef Name="OrganisationRoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TSectionActivities_TActivities">
+    <End Role="TActivities" Type="Self.TActivities" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TSectionActivities" Type="Self.TSectionActivities" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TActivities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TSectionActivities">
+        <PropertyRef Name="ActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TTimeSheets" Type="Self.TTimeSheets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTimeSheets">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_t100SecurityUsers1">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="0..1" />
+    <End Role="TTimeSheets" Type="Self.TTimeSheets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTimeSheets">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="1" />
+    <End Role="TTimeSheets" Type="Self.TTimeSheets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TTimeSheets">
+        <PropertyRef Name="OrganizationRoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_TActivities">
+    <End Role="TActivities" Type="Self.TActivities" Multiplicity="0..1" />
+    <End Role="TTimeSheets" Type="Self.TTimeSheets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TActivities">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTimeSheets">
+        <PropertyRef Name="ActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_TFiscalYear">
+    <End Role="TFiscalYear" Type="Self.TFiscalYear" Multiplicity="1" />
+    <End Role="TTimeSheets" Type="Self.TTimeSheets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TFiscalYear">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTimeSheets">
+        <PropertyRef Name="FiscalYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheetStates_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1" />
+    <End Role="TTimeSheetStates" Type="Self.TTimeSheetStates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTimeSheetStates">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheetStates_TTimeSheets">
+    <End Role="TTimeSheets" Type="Self.TTimeSheets" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TTimeSheetStates" Type="Self.TTimeSheetStates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTimeSheets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTimeSheetStates">
+        <PropertyRef Name="TimeSheetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TimeSheetModelStoreContainer">
+    <EntitySet Name="t100SecurityUsers" EntityType="Self.t100SecurityUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecutityUserType" EntityType="Self.t100SecutityUserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TFiscalYear" EntityType="Self.TFiscalYear" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="TActivities" EntityType="Self.TActivities" Schema="Tsh" store:Type="Tables" />
+    <EntitySet Name="TDisciplineResources" EntityType="Self.TDisciplineResources" Schema="Tsh" store:Type="Tables" />
+    <EntitySet Name="TSectionActivities" EntityType="Self.TSectionActivities" Schema="Tsh" store:Type="Tables" />
+    <EntitySet Name="TTimeSheets" EntityType="Self.TTimeSheets" Schema="Tsh" store:Type="Tables" />
+    <EntitySet Name="TTimeSheetStates" EntityType="Self.TTimeSheetStates" Schema="Tsh" store:Type="Tables" />
+    <EntitySet Name="v007GetAllTimeSheets" EntityType="Self.v007GetAllTimeSheets" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v007GetAllTimeSheets].[TimeSheetID] AS [TimeSheetID], 
+    [v007GetAllTimeSheets].[StartTask] AS [StartTask], 
+    [v007GetAllTimeSheets].[EndTask] AS [EndTask], 
+    [v007GetAllTimeSheets].[ActivityID] AS [ActivityID], 
+    [v007GetAllTimeSheets].[Activity] AS [Activity], 
+    [v007GetAllTimeSheets].[ActivityCode] AS [ActivityCode], 
+    [v007GetAllTimeSheets].[Detail] AS [Detail], 
+    [v007GetAllTimeSheets].[DetailID] AS [DetailID], 
+    [v007GetAllTimeSheets].[DocNo] AS [DocNo], 
+    [v007GetAllTimeSheets].[TaskSubject] AS [TaskSubject], 
+    [v007GetAllTimeSheets].[TaskID] AS [TaskID], 
+    [v007GetAllTimeSheets].[Type] AS [Type], 
+    [v007GetAllTimeSheets].[TypeID] AS [TypeID], 
+    [v007GetAllTimeSheets].[DateIn] AS [DateIn], 
+    [v007GetAllTimeSheets].[UserID] AS [UserID], 
+    [v007GetAllTimeSheets].[DateUpDate] AS [DateUpDate], 
+    [v007GetAllTimeSheets].[ProjectID] AS [ProjectID], 
+    [v007GetAllTimeSheets].[Project] AS [Project], 
+    [v007GetAllTimeSheets].[Department] AS [Department], 
+    [v007GetAllTimeSheets].[DepartmentID] AS [DepartmentID], 
+    [v007GetAllTimeSheets].[SectionID] AS [SectionID], 
+    [v007GetAllTimeSheets].[Section] AS [Section], 
+    [v007GetAllTimeSheets].[Description] AS [Description], 
+    [v007GetAllTimeSheets].[LocationID] AS [LocationID], 
+    [v007GetAllTimeSheets].[Location] AS [Location], 
+    [v007GetAllTimeSheets].[FirstName] AS [FirstName], 
+    [v007GetAllTimeSheets].[LastName] AS [LastName], 
+    [v007GetAllTimeSheets].[UserDisplayName] AS [UserDisplayName], 
+    [v007GetAllTimeSheets].[Status] AS [Status], 
+    [v007GetAllTimeSheets].[StatusID] AS [StatusID], 
+    [v007GetAllTimeSheets].[EstimationTypeID] AS [EstimationTypeID], 
+    [v007GetAllTimeSheets].[EstimationType] AS [EstimationType], 
+    [v007GetAllTimeSheets].[IsTender] AS [IsTender], 
+    [v007GetAllTimeSheets].[IsFeasibility] AS [IsFeasibility], 
+    [v007GetAllTimeSheets].[CompanyID] AS [CompanyID], 
+    [v007GetAllTimeSheets].[Company] AS [Company], 
+    [v007GetAllTimeSheets].[PersonelCode] AS [PersonelCode]
+    FROM [dbo].[v007GetAllTimeSheets] AS [v007GetAllTimeSheets]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VActualPlannedTimeReport" EntityType="Self.VActualPlannedTimeReport" store:Type="Views" store:Schema="Tsh">
+      <DefiningQuery>SELECT 
+    [VActualPlannedTimeReport].[ProjectName] AS [ProjectName], 
+    [VActualPlannedTimeReport].[ProjectID] AS [ProjectID], 
+    [VActualPlannedTimeReport].[ProjectP3ID] AS [ProjectP3ID], 
+    [VActualPlannedTimeReport].[PlanManHour] AS [PlanManHour], 
+    [VActualPlannedTimeReport].[EndDate] AS [EndDate], 
+    [VActualPlannedTimeReport].[StartDate] AS [StartDate], 
+    [VActualPlannedTimeReport].[Duration] AS [Duration], 
+    [VActualPlannedTimeReport].[Discipline] AS [Discipline], 
+    [VActualPlannedTimeReport].[ID] AS [ID], 
+    [VActualPlannedTimeReport].[DocNo] AS [DocNo]
+    FROM [Tsh].[VActualPlannedTimeReport] AS [VActualPlannedTimeReport]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VTimesheets" EntityType="Self.VTimesheets" store:Type="Views" store:Schema="Tsh">
+      <DefiningQuery>SELECT 
+    [VTimesheets].[ID] AS [ID], 
+    [VTimesheets].[Title] AS [Title], 
+    [VTimesheets].[StartDate] AS [StartDate], 
+    [VTimesheets].[EndDate] AS [EndDate], 
+    [VTimesheets].[EventType] AS [EventType], 
+    [VTimesheets].[ActivityID] AS [ActivityID], 
+    [VTimesheets].[TaskID] AS [TaskID], 
+    [VTimesheets].[CurrentStatus] AS [CurrentStatus], 
+    [VTimesheets].[ProjectID] AS [ProjectID], 
+    [VTimesheets].[OrganizationRoleID] AS [OrganizationRoleID], 
+    [VTimesheets].[IsAllDay] AS [IsAllDay], 
+    [VTimesheets].[Description] AS [Description], 
+    [VTimesheets].[CreationUserID] AS [CreationUserID], 
+    [VTimesheets].[CreationDate] AS [CreationDate], 
+    [VTimesheets].[LastModifiedDate] AS [LastModifiedDate], 
+    [VTimesheets].[LastModifiedUserID] AS [LastModifiedUserID], 
+    [VTimesheets].[DailyVacationType] AS [DailyVacationType], 
+    [VTimesheets].[TransportType] AS [TransportType], 
+    [VTimesheets].[ProjectName] AS [ProjectName], 
+    [VTimesheets].[Subject] AS [Subject], 
+    [VTimesheets].[Revision] AS [Revision], 
+    [VTimesheets].[DetailActivity] AS [DetailActivity], 
+    [VTimesheets].[UserTypeName] AS [UserTypeName], 
+    [VTimesheets].[PersonelCode] AS [PersonelCode], 
+    [VTimesheets].[OwnerLastName] AS [OwnerLastName], 
+    [VTimesheets].[OwnerFirstName] AS [OwnerFirstName], 
+    [VTimesheets].[OwnerPersianLastName] AS [OwnerPersianLastName], 
+    [VTimesheets].[OwnerPersianFirstName] AS [OwnerPersianFirstName], 
+    [VTimesheets].[ModifiedLastName] AS [ModifiedLastName], 
+    [VTimesheets].[ModifiedFirstName] AS [ModifiedFirstName], 
+    [VTimesheets].[ModifiedPersianLastName] AS [ModifiedPersianLastName], 
+    [VTimesheets].[ModifiedPersianFirstName] AS [ModifiedPersianFirstName], 
+    [VTimesheets].[Department] AS [Department], 
+    [VTimesheets].[Activity] AS [Activity]
+    FROM [Tsh].[VTimesheets] AS [VTimesheets]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_t100SecutityUserType_t100SecutityUserType" Association="Self.FK_t100SecutityUserType_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecutityUserType1" EntitySet="t100SecutityUserType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TActivities_TActivities" Association="Self.FK_TActivities_TActivities">
+      <End Role="TActivities" EntitySet="TActivities" />
+      <End Role="TActivities1" EntitySet="TActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TDisciplineResources_t100SecutityUserType" Association="Self.FK_TDisciplineResources_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TDisciplineResources" EntitySet="TDisciplineResources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TSectionActivities_t100SecutityUserType" Association="Self.FK_TSectionActivities_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TSectionActivities" EntitySet="TSectionActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TSectionActivities_TActivities" Association="Self.FK_TSectionActivities_TActivities">
+      <End Role="TActivities" EntitySet="TActivities" />
+      <End Role="TSectionActivities" EntitySet="TSectionActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_t100SecurityUsers" Association="Self.FK_TTimeSheets_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTimeSheets" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_t100SecurityUsers1" Association="Self.FK_TTimeSheets_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTimeSheets" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_t100SecutityUserType" Association="Self.FK_TTimeSheets_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TTimeSheets" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_TActivities" Association="Self.FK_TTimeSheets_TActivities">
+      <End Role="TActivities" EntitySet="TActivities" />
+      <End Role="TTimeSheets" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_TFiscalYear" Association="Self.FK_TTimeSheets_TFiscalYear">
+      <End Role="TFiscalYear" EntitySet="TFiscalYear" />
+      <End Role="TTimeSheets" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheetStates_t100SecurityUsers" Association="Self.FK_TTimeSheetStates_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTimeSheetStates" EntitySet="TTimeSheetStates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheetStates_TTimeSheets" Association="Self.FK_TTimeSheetStates_TTimeSheets">
+      <End Role="TTimeSheets" EntitySet="TTimeSheets" />
+      <End Role="TTimeSheetStates" EntitySet="TTimeSheetStates" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

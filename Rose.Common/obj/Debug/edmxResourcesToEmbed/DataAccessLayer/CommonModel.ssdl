@@ -1,0 +1,409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CommonModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t0001CustomerType">
+    <Key>
+      <PropertyRef Name="CustomerTypeID" />
+    </Key>
+    <Property Name="CustomerTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="tinyint" Nullable="false" />
+    <Property Name="CustomerType" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="t0001ProjectCustomers">
+    <Key>
+      <PropertyRef Name="ProjectCustomerID" />
+    </Key>
+    <Property Name="ProjectCustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="TransmittalName" Type="nvarchar" MaxLength="100" />
+    <Property Name="BasicTransmittal" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="t0001Projects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectP3ID" Type="int" />
+    <Property Name="FormatID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="TransmittalName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="RuleID" Type="int" />
+    <Property Name="ConvertTRDateToShamsi" Type="bit" />
+    <Property Name="IsTender" Type="bit" Nullable="false" />
+    <Property Name="IsFeasibility" Type="bit" Nullable="false" />
+    <Property Name="EstimationTypeID" Type="int" />
+    <Property Name="SecondProjectP3ID" Type="int" />
+    <Property Name="SMSCode" Type="nchar" MaxLength="3" />
+    <Property Name="BarsaProjectID" Type="int" />
+    <Property Name="IsProcurement" Type="bit" Nullable="false" />
+    <Property Name="RevisionPrefix" Type="nchar" MaxLength="10" />
+    <Property Name="DataCenterPath" Type="nvarchar(max)" />
+    <Property Name="ReportProjectTitle" Type="nvarchar" MaxLength="500" />
+    <Property Name="ReportContractNo" Type="nvarchar" MaxLength="300" />
+    <Property Name="SenederLogo" Type="nvarchar(max)" />
+    <Property Name="RecieverLogo" Type="nvarchar(max)" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="t0002Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Logo" Type="binary" MaxLength="50" />
+    <Property Name="CustomerTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="CityID" Type="bigint" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="t100SecurityPosition">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" />
+    <Property Name="IsProjectized" Type="bit" />
+    <Property Name="NoneProjectize" Type="bit" />
+    <Property Name="ParentID" Type="int" />
+  </EntityType>
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonelCode" Type="nvarchar" MaxLength="10" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianLastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersianFirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsMan" Type="bit" />
+    <Property Name="SexID" Type="int" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+    <Property Name="CellPhone" Type="nvarchar" MaxLength="11" />
+    <Property Name="ExtensionNo" Type="nvarchar" MaxLength="3" />
+    <Property Name="StartJob" Type="datetime" />
+    <Property Name="CompanyEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonalEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Image" Type="nvarchar" MaxLength="100" />
+    <Property Name="Pic" Type="image" />
+    <Property Name="PicName" Type="nvarchar" MaxLength="250" />
+    <Property Name="PicSize" Type="int" />
+    <Property Name="PicContentType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Enable" Type="bit" Nullable="false" />
+    <Property Name="HisUserName" Type="nvarchar" MaxLength="120" />
+    <Property Name="HisPassword" Type="nvarchar" MaxLength="120" />
+    <Property Name="IsChangedUserPassword" Type="bit" />
+    <Property Name="NoMandateTimesheet" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t100SecurityUsersOfProject">
+    <Key>
+      <PropertyRef Name="ProjectUserID" />
+    </Key>
+    <Property Name="ProjectUserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" />
+    <Property Name="UserTypeID" Type="int" />
+    <Property Name="ApprovedNumber" Type="int" />
+    <Property Name="IsConnected" Type="bit" />
+  </EntityType>
+  <EntityType Name="t100SecurityUserTypes">
+    <Key>
+      <PropertyRef Name="UserTypesID" />
+    </Key>
+    <Property Name="UserTypesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="PositionID" Type="int" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t100SecutityUserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent" Type="int" />
+    <Property Name="UserTypeName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TypeID" Type="int" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpDate" Type="datetime" />
+    <Property Name="Disable" Type="bit" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" />
+    <Property Name="Code" Type="nvarchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TSettings">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Gnr.VPrimaveraProjects' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VPrimaveraProjects">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_t0001ProjectCustomers_t0001Projects">
+    <End Role="t0001Projects" Type="Self.t0001Projects" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t0001ProjectCustomers" Type="Self.t0001ProjectCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001Projects">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="t0001ProjectCustomers">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t0001ProjectCustomers_t0002Customers">
+    <End Role="t0002Customers" Type="Self.t0002Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t0001ProjectCustomers" Type="Self.t0001ProjectCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0002Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="t0001ProjectCustomers">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t0001Projects_t0001Projects">
+    <End Role="t0001Projects" Type="Self.t0001Projects" Multiplicity="0..1" />
+    <End Role="t0001Projects1" Type="Self.t0001Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001Projects">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="t0001Projects1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t0002Customers_t0001CustomerType">
+    <End Role="t0001CustomerType" Type="Self.t0001CustomerType" Multiplicity="1" />
+    <End Role="t0002Customers" Type="Self.t0002Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001CustomerType">
+        <PropertyRef Name="CustomerTypeID" />
+      </Principal>
+      <Dependent Role="t0002Customers">
+        <PropertyRef Name="CustomerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityPosition_t100SecurityPosition">
+    <End Role="t100SecurityPosition" Type="Self.t100SecurityPosition" Multiplicity="0..1" />
+    <End Role="t100SecurityPosition1" Type="Self.t100SecurityPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityPosition">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="t100SecurityPosition1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUsersOfProject_t0001Projects">
+    <End Role="t0001Projects" Type="Self.t0001Projects" Multiplicity="1" />
+    <End Role="t100SecurityUsersOfProject" Type="Self.t100SecurityUsersOfProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001Projects">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="t100SecurityUsersOfProject">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUsersOfProject_t100SecurityPosition">
+    <End Role="t100SecurityPosition" Type="Self.t100SecurityPosition" Multiplicity="1" />
+    <End Role="t100SecurityUsersOfProject" Type="Self.t100SecurityUsersOfProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityPosition">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="t100SecurityUsersOfProject">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUsersOfProject_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t100SecurityUsersOfProject" Type="Self.t100SecurityUsersOfProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="t100SecurityUsersOfProject">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUsersOfProject_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="0..1" />
+    <End Role="t100SecurityUsersOfProject" Type="Self.t100SecurityUsersOfProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecurityUsersOfProject">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUserTypes_t100SecurityPosition">
+    <End Role="t100SecurityPosition" Type="Self.t100SecurityPosition" Multiplicity="1" />
+    <End Role="t100SecurityUserTypes" Type="Self.t100SecurityUserTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityPosition">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="t100SecurityUserTypes">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUserTypes_t100SecurityUsers">
+    <End Role="t100SecurityUsers" Type="Self.t100SecurityUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t100SecurityUserTypes" Type="Self.t100SecurityUserTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="t100SecurityUserTypes">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecurityUserTypes_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="1" />
+    <End Role="t100SecurityUserTypes" Type="Self.t100SecurityUserTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecurityUserTypes">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t100SecutityUserType_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="0..1" />
+    <End Role="t100SecutityUserType1" Type="Self.t100SecutityUserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecutityUserType1">
+        <PropertyRef Name="Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CommonModelStoreContainer">
+    <EntitySet Name="t0001CustomerType" EntityType="Self.t0001CustomerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t0001ProjectCustomers" EntityType="Self.t0001ProjectCustomers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t0001Projects" EntityType="Self.t0001Projects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t0002Customers" EntityType="Self.t0002Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecurityPosition" EntityType="Self.t100SecurityPosition" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecurityUsers" EntityType="Self.t100SecurityUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecurityUsersOfProject" EntityType="Self.t100SecurityUsersOfProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecurityUserTypes" EntityType="Self.t100SecurityUserTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t100SecutityUserType" EntityType="Self.t100SecutityUserType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TSettings" EntityType="Self.TSettings" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="VPrimaveraProjects" EntityType="Self.VPrimaveraProjects" store:Type="Views" store:Schema="Gnr">
+      <DefiningQuery>SELECT 
+    [VPrimaveraProjects].[Name] AS [Name], 
+    [VPrimaveraProjects].[ID] AS [ID]
+    FROM [Gnr].[VPrimaveraProjects] AS [VPrimaveraProjects]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_t0001ProjectCustomers_t0001Projects" Association="Self.FK_t0001ProjectCustomers_t0001Projects">
+      <End Role="t0001Projects" EntitySet="t0001Projects" />
+      <End Role="t0001ProjectCustomers" EntitySet="t0001ProjectCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t0001ProjectCustomers_t0002Customers" Association="Self.FK_t0001ProjectCustomers_t0002Customers">
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+      <End Role="t0001ProjectCustomers" EntitySet="t0001ProjectCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t0001Projects_t0001Projects" Association="Self.FK_t0001Projects_t0001Projects">
+      <End Role="t0001Projects" EntitySet="t0001Projects" />
+      <End Role="t0001Projects1" EntitySet="t0001Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t0002Customers_t0001CustomerType" Association="Self.FK_t0002Customers_t0001CustomerType">
+      <End Role="t0001CustomerType" EntitySet="t0001CustomerType" />
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityPosition_t100SecurityPosition" Association="Self.FK_t100SecurityPosition_t100SecurityPosition">
+      <End Role="t100SecurityPosition" EntitySet="t100SecurityPosition" />
+      <End Role="t100SecurityPosition1" EntitySet="t100SecurityPosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUsersOfProject_t0001Projects" Association="Self.FK_t100SecurityUsersOfProject_t0001Projects">
+      <End Role="t0001Projects" EntitySet="t0001Projects" />
+      <End Role="t100SecurityUsersOfProject" EntitySet="t100SecurityUsersOfProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUsersOfProject_t100SecurityPosition" Association="Self.FK_t100SecurityUsersOfProject_t100SecurityPosition">
+      <End Role="t100SecurityPosition" EntitySet="t100SecurityPosition" />
+      <End Role="t100SecurityUsersOfProject" EntitySet="t100SecurityUsersOfProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUsersOfProject_t100SecurityUsers" Association="Self.FK_t100SecurityUsersOfProject_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="t100SecurityUsersOfProject" EntitySet="t100SecurityUsersOfProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUsersOfProject_t100SecutityUserType" Association="Self.FK_t100SecurityUsersOfProject_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecurityUsersOfProject" EntitySet="t100SecurityUsersOfProject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUserTypes_t100SecurityPosition" Association="Self.FK_t100SecurityUserTypes_t100SecurityPosition">
+      <End Role="t100SecurityPosition" EntitySet="t100SecurityPosition" />
+      <End Role="t100SecurityUserTypes" EntitySet="t100SecurityUserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUserTypes_t100SecurityUsers" Association="Self.FK_t100SecurityUserTypes_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="t100SecurityUserTypes" EntitySet="t100SecurityUserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecurityUserTypes_t100SecutityUserType" Association="Self.FK_t100SecurityUserTypes_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecurityUserTypes" EntitySet="t100SecurityUserTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t100SecutityUserType_t100SecutityUserType" Association="Self.FK_t100SecutityUserType_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecutityUserType1" EntitySet="t100SecutityUserType" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

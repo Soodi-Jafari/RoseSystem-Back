@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TimeSheetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ROSEDBTimeSheetEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TSectionActivities" EntityType="TimeSheetModel.TSectionActivity" />
+    <EntitySet Name="TActivities" EntityType="TimeSheetModel.TActivity" />
+    <AssociationSet Name="FK_TActivities_TActivities" Association="TimeSheetModel.FK_TActivities_TActivities">
+      <End Role="TActivity" EntitySet="TActivities" />
+      <End Role="TActivity1" EntitySet="TActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TSectionActivities_TActivities" Association="TimeSheetModel.FK_TSectionActivities_TActivities">
+      <End Role="TActivity" EntitySet="TActivities" />
+      <End Role="TSectionActivity" EntitySet="TSectionActivities" />
+    </AssociationSet>
+    <EntitySet Name="TTimeSheets" EntityType="TimeSheetModel.TTimeSheet" />
+    <AssociationSet Name="FK_TTimeSheets_TActivities" Association="TimeSheetModel.FK_TTimeSheets_TActivities">
+      <End Role="TActivity" EntitySet="TActivities" />
+      <End Role="TTimeSheet" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <EntitySet Name="TTimeSheetStates" EntityType="TimeSheetModel.TTimeSheetState" />
+    <AssociationSet Name="FK_TTimeSheetStates_TTimeSheets" Association="TimeSheetModel.FK_TTimeSheetStates_TTimeSheets">
+      <End Role="TTimeSheet" EntitySet="TTimeSheets" />
+      <End Role="TTimeSheetState" EntitySet="TTimeSheetStates" />
+    </AssociationSet>
+    <EntitySet Name="TFiscalYears" EntityType="TimeSheetModel.TFiscalYear" />
+    <AssociationSet Name="FK_TTimeSheets_TFiscalYear" Association="TimeSheetModel.FK_TTimeSheets_TFiscalYear">
+      <End Role="TFiscalYear" EntitySet="TFiscalYears" />
+      <End Role="TTimeSheet" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <EntitySet Name="t100SecurityUsers" EntityType="TimeSheetModel.t100SecurityUsers" />
+    <AssociationSet Name="FK_TTimeSheets_t100SecurityUsers" Association="TimeSheetModel.FK_TTimeSheets_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTimeSheet" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_t100SecurityUsers1" Association="TimeSheetModel.FK_TTimeSheets_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTimeSheet" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheetStates_t100SecurityUsers" Association="TimeSheetModel.FK_TTimeSheetStates_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TTimeSheetState" EntitySet="TTimeSheetStates" />
+    </AssociationSet>
+    <EntitySet Name="VTimesheets" EntityType="TimeSheetModel.VTimesheet" />
+    <EntitySet Name="t100SecutityUserType" EntityType="TimeSheetModel.t100SecutityUserType" />
+    <AssociationSet Name="FK_t100SecutityUserType_t100SecutityUserType" Association="TimeSheetModel.FK_t100SecutityUserType_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecutityUserType1" EntitySet="t100SecutityUserType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TSectionActivities_t100SecutityUserType" Association="TimeSheetModel.FK_TSectionActivities_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TSectionActivity" EntitySet="TSectionActivities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TTimeSheets_t100SecutityUserType" Association="TimeSheetModel.FK_TTimeSheets_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TTimeSheet" EntitySet="TTimeSheets" />
+    </AssociationSet>
+    <EntitySet Name="VActualPlannedTimeReports" EntityType="TimeSheetModel.VActualPlannedTimeReport" />
+    <EntitySet Name="v007GetAllTimeSheets" EntityType="TimeSheetModel.v007GetAllTimeSheets" />
+    <EntitySet Name="TDisciplineResources" EntityType="TimeSheetModel.TDisciplineResource" />
+    <AssociationSet Name="FK_TDisciplineResources_t100SecutityUserType" Association="TimeSheetModel.FK_TDisciplineResources_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TDisciplineResource" EntitySet="TDisciplineResources" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TSectionActivity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActivityID" Type="Int32" Nullable="false" />
+    <Property Name="OrganisationRoleID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TActivity" Relationship="TimeSheetModel.FK_TSectionActivities_TActivities" FromRole="TSectionActivity" ToRole="TActivity" />
+    <NavigationProperty Name="t100SecutityUserType" Relationship="TimeSheetModel.FK_TSectionActivities_t100SecutityUserType" FromRole="TSectionActivity" ToRole="t100SecutityUserType" />
+  </EntityType>
+  <EntityType Name="TActivity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="ActivityType" Type="Byte" Nullable="false" />
+    <Property Name="IsMain" Type="Boolean" Nullable="false" />
+    <Property Name="IsProjectize" Type="Boolean" Nullable="false" />
+    <Property Name="NoneProjectize" Type="Boolean" Nullable="false" />
+    <Property Name="IsForFeasibility" Type="Boolean" Nullable="false" />
+    <Property Name="IsForTender" Type="Boolean" Nullable="false" />
+    <Property Name="IsForProcurement" Type="Boolean" Nullable="false" />
+    <Property Name="IsForCunstruction" Type="Boolean" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TActivities1" Relationship="TimeSheetModel.FK_TActivities_TActivities" FromRole="TActivity" ToRole="TActivity1" />
+    <NavigationProperty Name="TActivity1" Relationship="TimeSheetModel.FK_TActivities_TActivities" FromRole="TActivity1" ToRole="TActivity" />
+    <NavigationProperty Name="TSectionActivities" Relationship="TimeSheetModel.FK_TSectionActivities_TActivities" FromRole="TActivity" ToRole="TSectionActivity" />
+    <NavigationProperty Name="TTimeSheets" Relationship="TimeSheetModel.FK_TTimeSheets_TActivities" FromRole="TActivity" ToRole="TTimeSheet" />
+  </EntityType>
+  <Association Name="FK_TActivities_TActivities">
+    <End Type="TimeSheetModel.TActivity" Role="TActivity" Multiplicity="0..1" />
+    <End Type="TimeSheetModel.TActivity" Role="TActivity1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TActivity1">
+        <PropertyRef Name="ParentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TSectionActivities_TActivities">
+    <End Type="TimeSheetModel.TActivity" Role="TActivity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TimeSheetModel.TSectionActivity" Role="TSectionActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TSectionActivity">
+        <PropertyRef Name="ActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TTimeSheet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventType" Type="Byte" Nullable="false" />
+    <Property Name="ActivityID" Type="Int32" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="CurrentStatus" Type="Byte" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="OrganizationRoleID" Type="Int32" Nullable="false" />
+    <Property Name="IsAllDay" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DailyVacationType" Type="Byte" />
+    <Property Name="TransportType" Type="Byte" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TActivity" Relationship="TimeSheetModel.FK_TTimeSheets_TActivities" FromRole="TTimeSheet" ToRole="TActivity" />
+    <NavigationProperty Name="TTimeSheetStates" Relationship="TimeSheetModel.FK_TTimeSheetStates_TTimeSheets" FromRole="TTimeSheet" ToRole="TTimeSheetState" />
+    <Property Name="FiscalYearID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TFiscalYear" Relationship="TimeSheetModel.FK_TTimeSheets_TFiscalYear" FromRole="TTimeSheet" ToRole="TFiscalYear" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="TimeSheetModel.FK_TTimeSheets_t100SecurityUsers" FromRole="TTimeSheet" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="TimeSheetModel.FK_TTimeSheets_t100SecurityUsers1" FromRole="TTimeSheet" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecutityUserType" Relationship="TimeSheetModel.FK_TTimeSheets_t100SecutityUserType" FromRole="TTimeSheet" ToRole="t100SecutityUserType" />
+  </EntityType>
+  <Association Name="FK_TTimeSheets_TActivities">
+    <End Type="TimeSheetModel.TActivity" Role="TActivity" Multiplicity="0..1" />
+    <End Type="TimeSheetModel.TTimeSheet" Role="TTimeSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TActivity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTimeSheet">
+        <PropertyRef Name="ActivityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TTimeSheetState">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimeSheetID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TTimeSheet" Relationship="TimeSheetModel.FK_TTimeSheetStates_TTimeSheets" FromRole="TTimeSheetState" ToRole="TTimeSheet" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="TimeSheetModel.FK_TTimeSheetStates_t100SecurityUsers" FromRole="TTimeSheetState" ToRole="t100SecurityUsers" />
+  </EntityType>
+  <Association Name="FK_TTimeSheetStates_TTimeSheets">
+    <End Type="TimeSheetModel.TTimeSheet" Role="TTimeSheet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="TimeSheetModel.TTimeSheetState" Role="TTimeSheetState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TTimeSheet">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTimeSheetState">
+        <PropertyRef Name="TimeSheetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TFiscalYear">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TTimeSheets" Relationship="TimeSheetModel.FK_TTimeSheets_TFiscalYear" FromRole="TFiscalYear" ToRole="TTimeSheet" />
+  </EntityType>
+  <Association Name="FK_TTimeSheets_TFiscalYear">
+    <End Type="TimeSheetModel.TFiscalYear" Role="TFiscalYear" Multiplicity="1" />
+    <End Type="TimeSheetModel.TTimeSheet" Role="TTimeSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TFiscalYear">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TTimeSheet">
+        <PropertyRef Name="FiscalYearID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMan" Type="Boolean" />
+    <Property Name="SexID" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="CellPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="ExtensionNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="StartJob" Type="DateTime" Precision="3" />
+    <Property Name="CompanyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PicName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PicSize" Type="Int32" />
+    <Property Name="PicContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="HisUserName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="HisPassword" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="IsChangedUserPassword" Type="Boolean" />
+    <Property Name="NoMandateTimesheet" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TTimeSheets" Relationship="TimeSheetModel.FK_TTimeSheets_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTimeSheet" />
+    <NavigationProperty Name="TTimeSheets1" Relationship="TimeSheetModel.FK_TTimeSheets_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TTimeSheet" />
+    <NavigationProperty Name="TTimeSheetStates" Relationship="TimeSheetModel.FK_TTimeSheetStates_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TTimeSheetState" />
+  </EntityType>
+  <Association Name="FK_TTimeSheets_t100SecurityUsers">
+    <End Type="TimeSheetModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="TimeSheetModel.TTimeSheet" Role="TTimeSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTimeSheet">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_t100SecurityUsers1">
+    <End Type="TimeSheetModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="TimeSheetModel.TTimeSheet" Role="TTimeSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTimeSheet">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheetStates_t100SecurityUsers">
+    <End Type="TimeSheetModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="TimeSheetModel.TTimeSheetState" Role="TTimeSheetState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TTimeSheetState">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VTimesheet">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Title" />
+      <PropertyRef Name="StartDate" />
+      <PropertyRef Name="EndDate" />
+      <PropertyRef Name="EventType" />
+      <PropertyRef Name="CurrentStatus" />
+      <PropertyRef Name="OrganizationRoleID" />
+      <PropertyRef Name="CreationUserID" />
+      <PropertyRef Name="CreationDate" />
+      <PropertyRef Name="UserTypeName" />
+      <PropertyRef Name="OwnerLastName" />
+      <PropertyRef Name="ModifiedLastName" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventType" Type="Byte" Nullable="false" />
+    <Property Name="ActivityID" Type="Int32" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="CurrentStatus" Type="Byte" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="OrganizationRoleID" Type="Int32" Nullable="false" />
+    <Property Name="IsAllDay" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <Property Name="DailyVacationType" Type="Byte" />
+    <Property Name="TransportType" Type="Byte" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Revision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DetailActivity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="UserTypeName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerPersianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerPersianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedPersianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedPersianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Activity" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="t100SecutityUserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Parent" Type="Int32" />
+    <Property Name="UserTypeName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpDate" Type="DateTime" Precision="3" />
+    <Property Name="Disable" Type="Boolean" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t100SecutityUserType1" Relationship="TimeSheetModel.FK_t100SecutityUserType_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="t100SecutityUserType1" />
+    <NavigationProperty Name="t100SecutityUserType2" Relationship="TimeSheetModel.FK_t100SecutityUserType_t100SecutityUserType" FromRole="t100SecutityUserType1" ToRole="t100SecutityUserType" />
+    <NavigationProperty Name="TSectionActivities" Relationship="TimeSheetModel.FK_TSectionActivities_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="TSectionActivity" />
+    <NavigationProperty Name="TTimeSheets" Relationship="TimeSheetModel.FK_TTimeSheets_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="TTimeSheet" />
+    <NavigationProperty Name="TDisciplineResources" Relationship="TimeSheetModel.FK_TDisciplineResources_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="TDisciplineResource" />
+  </EntityType>
+  <Association Name="FK_t100SecutityUserType_t100SecutityUserType">
+    <End Type="TimeSheetModel.t100SecutityUserType" Role="t100SecutityUserType" Multiplicity="0..1" />
+    <End Type="TimeSheetModel.t100SecutityUserType" Role="t100SecutityUserType1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecutityUserType1">
+        <PropertyRef Name="Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TSectionActivities_t100SecutityUserType">
+    <End Type="TimeSheetModel.t100SecutityUserType" Role="t100SecutityUserType" Multiplicity="1" />
+    <End Type="TimeSheetModel.TSectionActivity" Role="TSectionActivity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TSectionActivity">
+        <PropertyRef Name="OrganisationRoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TTimeSheets_t100SecutityUserType">
+    <End Type="TimeSheetModel.t100SecutityUserType" Role="t100SecutityUserType" Multiplicity="1" />
+    <End Type="TimeSheetModel.TTimeSheet" Role="TTimeSheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TTimeSheet">
+        <PropertyRef Name="OrganizationRoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="VActualPlannedTimeReport">
+    <Key>
+      <PropertyRef Name="ProjectName" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="ProjectP3ID" Type="Int32" />
+    <Property Name="PlanManHour" Type="Decimal" Precision="17" Scale="6" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="Duration" Type="Decimal" Precision="17" Scale="6" />
+    <Property Name="Discipline" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DocNo" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="v007GetAllTimeSheets">
+    <Key>
+      <PropertyRef Name="TimeSheetID" />
+      <PropertyRef Name="StartTask" />
+      <PropertyRef Name="EndTask" />
+      <PropertyRef Name="ActivityID" />
+      <PropertyRef Name="TypeID" />
+      <PropertyRef Name="DateIn" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DateUpDate" />
+      <PropertyRef Name="LocationID" />
+      <PropertyRef Name="LastName" />
+    </Key>
+    <Property Name="TimeSheetID" Type="Int64" Nullable="false" />
+    <Property Name="StartTask" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndTask" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ActivityID" Type="Int64" Nullable="false" />
+    <Property Name="Activity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ActivityCode" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DetailID" Type="Int64" />
+    <Property Name="DocNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TaskSubject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TaskID" Type="Int64" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="DateUpDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="Project" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="SectionID" Type="Int32" />
+    <Property Name="Section" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserDisplayName" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StatusID" Type="Int32" />
+    <Property Name="EstimationTypeID" Type="Int32" />
+    <Property Name="EstimationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsTender" Type="Boolean" />
+    <Property Name="IsFeasibility" Type="Boolean" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="Company" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TDisciplineResource">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisciplineID" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="AvailableResources" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="t100SecutityUserType" Relationship="TimeSheetModel.FK_TDisciplineResources_t100SecutityUserType" FromRole="TDisciplineResource" ToRole="t100SecutityUserType" />
+  </EntityType>
+  <Association Name="FK_TDisciplineResources_t100SecutityUserType">
+    <End Type="TimeSheetModel.t100SecutityUserType" Role="t100SecutityUserType" Multiplicity="1" />
+    <End Type="TimeSheetModel.TDisciplineResource" Role="TDisciplineResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TDisciplineResource">
+        <PropertyRef Name="DisciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

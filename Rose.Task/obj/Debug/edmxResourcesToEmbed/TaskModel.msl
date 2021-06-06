@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskModelStoreContainer" CdmEntityContainer="ROSEDBTaskEntities">
+    <EntitySetMapping Name="t004TaskAssignment">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskAssignment">
+        <MappingFragment StoreEntitySet="t004TaskAssignment">
+          <ScalarProperty Name="TaskAssgendID" ColumnName="TaskAssgendID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="AssigendToUserID" ColumnName="AssigendToUserID" />
+          <ScalarProperty Name="AssigendToUserTypeID" ColumnName="AssigendToUserTypeID" />
+          <ScalarProperty Name="AssigendFromUserID" ColumnName="AssigendFromUserID" />
+          <ScalarProperty Name="AssigendFromUserTypeID" ColumnName="AssigendFromUserTypeID" />
+          <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004TaskAttachments">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskAttachments">
+        <MappingFragment StoreEntitySet="t004TaskAttachments">
+          <ScalarProperty Name="TaskAttachmentID" ColumnName="TaskAttachmentID" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="AttachmentName" ColumnName="AttachmentName" />
+          <ScalarProperty Name="AttachmentSize" ColumnName="AttachmentSize" />
+          <ScalarProperty Name="AttachmentContentType" ColumnName="AttachmentContentType" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004TaskDescipline">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskDescipline">
+        <MappingFragment StoreEntitySet="t004TaskDescipline">
+          <ScalarProperty Name="DesciplineTaskID" ColumnName="DesciplineTaskID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="DesciplineID" ColumnName="DesciplineID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004Taskes">
+      <EntityTypeMapping TypeName="TaskModel.t004Taskes">
+        <MappingFragment StoreEntitySet="t004Taskes">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="PeriorityID" ColumnName="PeriorityID" />
+          <ScalarProperty Name="ActualStart" ColumnName="ActualStart" />
+          <ScalarProperty Name="ActualFinish" ColumnName="ActualFinish" />
+          <ScalarProperty Name="RequestedByUserID" ColumnName="RequestedByUserID" />
+          <ScalarProperty Name="RequestedByUserTypeID" ColumnName="RequestedByUserTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="DateIN" ColumnName="DateIN" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="TransmittalID" ColumnName="TransmittalID" />
+          <ScalarProperty Name="DocID" ColumnName="DocID" />
+          <ScalarProperty Name="DesciplineID" ColumnName="DesciplineID" />
+          <ScalarProperty Name="EstimateManHour" ColumnName="EstimateManHour" />
+          <ScalarProperty Name="SecondryTaskTypeID" ColumnName="SecondryTaskTypeID" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004TaskPercentComplete">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskPercentComplete">
+        <MappingFragment StoreEntitySet="t004TaskPercentComplete">
+          <ScalarProperty Name="TaskPercentCompleteID" ColumnName="TaskPercentCompleteID" />
+          <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ManHour" ColumnName="ManHour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004TaskStatus">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskStatus">
+        <MappingFragment StoreEntitySet="t004TaskStatus">
+          <ScalarProperty Name="TaskStatusID" ColumnName="TaskStatusID" />
+          <ScalarProperty Name="TaskStatusTypeID" ColumnName="TaskStatusTypeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="TimeTaken" ColumnName="TimeTaken" />
+          <ScalarProperty Name="TimeTakenFormat" ColumnName="TimeTakenFormat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004TaskStatusTypes">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskStatusTypes">
+        <MappingFragment StoreEntitySet="t004TaskStatusTypes">
+          <ScalarProperty Name="TaskStatusTypeID" ColumnName="TaskStatusTypeID" />
+          <ScalarProperty Name="TaskStatus" ColumnName="TaskStatus" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="DateUpDate" ColumnName="DateUpDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t004TaskTypes">
+      <EntityTypeMapping TypeName="TaskModel.t004TaskTypes">
+        <MappingFragment StoreEntitySet="t004TaskTypes">
+          <ScalarProperty Name="TaskTypeID" ColumnName="TaskTypeID" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="DateUpDate" ColumnName="DateUpDate" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

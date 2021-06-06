@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BaseInfoModelStoreContainer" CdmEntityContainer="BaseInfoEntities">
+    <EntitySetMapping Name="TPurposeOfIssues">
+      <EntityTypeMapping TypeName="BaseInfoModel.TPurposeOfIssue">
+        <MappingFragment StoreEntitySet="TPurposeOfIssues">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t0001ProjectCustomers">
+      <EntityTypeMapping TypeName="BaseInfoModel.t0001ProjectCustomers">
+        <MappingFragment StoreEntitySet="t0001ProjectCustomers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BasicTransmittal" ColumnName="BasicTransmittal" />
+          <ScalarProperty Name="TransmittalName" ColumnName="TransmittalName" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProjectCustomerID" ColumnName="ProjectCustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t0002Customers">
+      <EntityTypeMapping TypeName="BaseInfoModel.t0002Customers">
+        <MappingFragment StoreEntitySet="t0002Customers">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t0001CustomerType">
+      <EntityTypeMapping TypeName="BaseInfoModel.t0001CustomerType">
+        <MappingFragment StoreEntitySet="t0001CustomerType">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPCTConditions">
+      <EntityTypeMapping TypeName="BaseInfoModel.TPCTCondition">
+        <MappingFragment StoreEntitySet="TPCTConditions">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ConditionOprand" ColumnName="ConditionOprand" />
+          <ScalarProperty Name="PCTLevelID" ColumnName="PCTLevelID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Feild" ColumnName="Feild" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VPMISProjects">
+      <EntityTypeMapping TypeName="BaseInfoModel.VPMISProject">
+        <MappingFragment StoreEntitySet="VPMISProjects">
+          <ScalarProperty Name="ProjectP3ID" ColumnName="ProjectP3ID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPCTLevels">
+      <EntityTypeMapping TypeName="BaseInfoModel.TPCTLevel">
+        <MappingFragment StoreEntitySet="TPCTLevels">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="PCT" ColumnName="PCT" />
+          <ScalarProperty Name="PurposeOfIssueID" ColumnName="PurposeOfIssueID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VDocumentTypes">
+      <EntityTypeMapping TypeName="BaseInfoModel.VDocumentType">
+        <MappingFragment StoreEntitySet="VDocumentTypes">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VProjectCustomers">
+      <EntityTypeMapping TypeName="BaseInfoModel.VProjectCustomer">
+        <MappingFragment StoreEntitySet="VProjectCustomers">
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

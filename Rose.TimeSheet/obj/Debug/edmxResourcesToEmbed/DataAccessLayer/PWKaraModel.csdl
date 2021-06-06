@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PWKaraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PWKaraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="VPersonnelInOuts" EntityType="PWKaraModel.VPersonnelInOut" />
+  </EntityContainer>
+  <EntityType Name="VPersonnelInOut">
+    <Key>
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="DATE_" />
+      <PropertyRef Name="TIME_" />
+      <PropertyRef Name="EMP_NO" />
+      <PropertyRef Name="MODIFY" />
+      <PropertyRef Name="Clock_No" />
+      <PropertyRef Name="SEX" />
+    </Key>
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="UserDate" Type="DateTime" Precision="3" />
+    <Property Name="DATE_" Type="Double" Nullable="false" />
+    <Property Name="TIME_" Type="Int16" Nullable="false" />
+    <Property Name="EMP_NO" Type="Double" Nullable="false" />
+    <Property Name="MODIFY" Type="Boolean" Nullable="false" />
+    <Property Name="Clock_No" Type="Int32" Nullable="false" />
+    <Property Name="SR_Type" Type="Byte" />
+    <Property Name="Direction" Type="Byte" />
+    <Property Name="Passenger" Type="Int32" />
+    <Property Name="GateID" Type="Int32" />
+    <Property Name="Station" Type="Int32" />
+    <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="FAMILY" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="SEX" Type="Boolean" Nullable="false" />
+    <Property Name="RowId" Type="Int64" />
+  </EntityType>
+</Schema>

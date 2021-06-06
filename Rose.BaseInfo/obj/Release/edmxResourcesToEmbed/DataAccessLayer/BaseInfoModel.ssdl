@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaseInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="t0001CustomerType">
+    <Key>
+      <PropertyRef Name="CustomerTypeID" />
+    </Key>
+    <Property Name="CustomerTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="tinyint" Nullable="false" />
+    <Property Name="CustomerType" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="t0001ProjectCustomers">
+    <Key>
+      <PropertyRef Name="ProjectCustomerID" />
+    </Key>
+    <Property Name="ProjectCustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="TransmittalName" Type="nvarchar" MaxLength="100" />
+    <Property Name="BasicTransmittal" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="t0002Customers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="Logo" Type="binary" MaxLength="50" />
+    <Property Name="CustomerTypeID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="DateUpdate" Type="datetime" />
+    <Property Name="CityID" Type="bigint" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="TPCTConditions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Feild" Type="tinyint" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PCTLevelID" Type="int" Nullable="false" />
+    <Property Name="ConditionOprand" Type="tinyint" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TPCTLevels">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="PurposeOfIssueID" Type="int" Nullable="false" />
+    <Property Name="PCT" Type="float" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TPurposeOfIssues">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Gnr.VDocumentTypes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VDocumentTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Title" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Gnr.VPMISProjects' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VPMISProjects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ProjectName" />
+    </Key>
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectP3ID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PMIS.Tsk.VProjectCustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VProjectCustomers">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="CustomerType" />
+    </Key>
+    <Property Name="CustomerID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CustomerType" Type="tinyint" Nullable="false" />
+    <Property Name="ContactName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_t0001ProjectCustomers_t0002Customers">
+    <End Role="t0002Customers" Type="Self.t0002Customers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t0001ProjectCustomers" Type="Self.t0001ProjectCustomers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0002Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="t0001ProjectCustomers">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t0002Customers_t0001CustomerType">
+    <End Role="t0001CustomerType" Type="Self.t0001CustomerType" Multiplicity="1" />
+    <End Role="t0002Customers" Type="Self.t0002Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0001CustomerType">
+        <PropertyRef Name="CustomerTypeID" />
+      </Principal>
+      <Dependent Role="t0002Customers">
+        <PropertyRef Name="CustomerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTConditions_TPCTLevels">
+    <End Role="TPCTLevels" Type="Self.TPCTLevels" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TPCTConditions" Type="Self.TPCTConditions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPCTLevels">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTConditions">
+        <PropertyRef Name="PCTLevelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTLevels_t0002Customers">
+    <End Role="t0002Customers" Type="Self.t0002Customers" Multiplicity="1" />
+    <End Role="TPCTLevels" Type="Self.TPCTLevels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t0002Customers">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="TPCTLevels">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TPCTLevels_TPurposeOfIssues">
+    <End Role="TPurposeOfIssues" Type="Self.TPurposeOfIssues" Multiplicity="1" />
+    <End Role="TPCTLevels" Type="Self.TPCTLevels" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TPurposeOfIssues">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TPCTLevels">
+        <PropertyRef Name="PurposeOfIssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BaseInfoModelStoreContainer">
+    <EntitySet Name="t0001CustomerType" EntityType="Self.t0001CustomerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t0001ProjectCustomers" EntityType="Self.t0001ProjectCustomers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="t0002Customers" EntityType="Self.t0002Customers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TPCTConditions" EntityType="Self.TPCTConditions" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="TPCTLevels" EntityType="Self.TPCTLevels" Schema="Gnr" store:Type="Tables" />
+    <EntitySet Name="TPurposeOfIssues" EntityType="Self.TPurposeOfIssues" Schema="Prc" store:Type="Tables" />
+    <EntitySet Name="VDocumentTypes" EntityType="Self.VDocumentTypes" store:Type="Views" store:Schema="Gnr">
+      <DefiningQuery>SELECT 
+    [VDocumentTypes].[ID] AS [ID], 
+    [VDocumentTypes].[Title] AS [Title]
+    FROM [Gnr].[VDocumentTypes] AS [VDocumentTypes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VPMISProjects" EntityType="Self.VPMISProjects" store:Type="Views" store:Schema="Gnr">
+      <DefiningQuery>SELECT 
+    [VPMISProjects].[ProjectID] AS [ProjectID], 
+    [VPMISProjects].[ID] AS [ID], 
+    [VPMISProjects].[ProjectName] AS [ProjectName], 
+    [VPMISProjects].[ProjectP3ID] AS [ProjectP3ID]
+    FROM [Gnr].[VPMISProjects] AS [VPMISProjects]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VProjectCustomers" EntityType="Self.VProjectCustomers" store:Type="Views" store:Schema="Tsk">
+      <DefiningQuery>SELECT 
+    [VProjectCustomers].[CustomerID] AS [CustomerID], 
+    [VProjectCustomers].[Name] AS [Name], 
+    [VProjectCustomers].[ProjectID] AS [ProjectID], 
+    [VProjectCustomers].[CustomerType] AS [CustomerType], 
+    [VProjectCustomers].[ContactName] AS [ContactName]
+    FROM [Tsk].[VProjectCustomers] AS [VProjectCustomers]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_t0001ProjectCustomers_t0002Customers" Association="Self.FK_t0001ProjectCustomers_t0002Customers">
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+      <End Role="t0001ProjectCustomers" EntitySet="t0001ProjectCustomers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t0002Customers_t0001CustomerType" Association="Self.FK_t0002Customers_t0001CustomerType">
+      <End Role="t0001CustomerType" EntitySet="t0001CustomerType" />
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTConditions_TPCTLevels" Association="Self.FK_TPCTConditions_TPCTLevels">
+      <End Role="TPCTLevels" EntitySet="TPCTLevels" />
+      <End Role="TPCTConditions" EntitySet="TPCTConditions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTLevels_t0002Customers" Association="Self.FK_TPCTLevels_t0002Customers">
+      <End Role="t0002Customers" EntitySet="t0002Customers" />
+      <End Role="TPCTLevels" EntitySet="TPCTLevels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TPCTLevels_TPurposeOfIssues" Association="Self.FK_TPCTLevels_TPurposeOfIssues">
+      <End Role="TPurposeOfIssues" EntitySet="TPurposeOfIssues" />
+      <End Role="TPCTLevels" EntitySet="TPCTLevels" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

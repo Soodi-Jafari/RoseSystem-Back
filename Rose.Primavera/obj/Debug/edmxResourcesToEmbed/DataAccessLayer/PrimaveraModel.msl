@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrimaveraModelStoreContainer" CdmEntityContainer="ROSEDBPrimaveraEntities">
+    <EntitySetMapping Name="DOCUMENTs">
+      <EntityTypeMapping TypeName="PrimaveraModel.DOCUMENT">
+        <MappingFragment StoreEntitySet="DOCUMENT">
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+          <ScalarProperty Name="doc_seq_num" ColumnName="doc_seq_num" />
+          <ScalarProperty Name="deliv_flag" ColumnName="deliv_flag" />
+          <ScalarProperty Name="doc_name" ColumnName="doc_name" />
+          <ScalarProperty Name="parent_doc_id" ColumnName="parent_doc_id" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="doc_status_id" ColumnName="doc_status_id" />
+          <ScalarProperty Name="doc_catg_id" ColumnName="doc_catg_id" />
+          <ScalarProperty Name="doc_date" ColumnName="doc_date" />
+          <ScalarProperty Name="version_name" ColumnName="version_name" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="tmpl_guid" ColumnName="tmpl_guid" />
+          <ScalarProperty Name="doc_short_name" ColumnName="doc_short_name" />
+          <ScalarProperty Name="author_name" ColumnName="author_name" />
+          <ScalarProperty Name="private_loc" ColumnName="private_loc" />
+          <ScalarProperty Name="public_loc" ColumnName="public_loc" />
+          <ScalarProperty Name="doc_content" ColumnName="doc_content" />
+          <ScalarProperty Name="rsrc_id" ColumnName="rsrc_id" />
+          <ScalarProperty Name="doc_mgmt_type" ColumnName="doc_mgmt_type" />
+          <ScalarProperty Name="external_doc_key" ColumnName="external_doc_key" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="delete_session_id" ColumnName="delete_session_id" />
+          <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="SubcontractorWeight" ColumnName="SubcontractorWeight" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="IsTasked" ColumnName="IsTasked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOCCATGs">
+      <EntityTypeMapping TypeName="PrimaveraModel.DOCCATG">
+        <MappingFragment StoreEntitySet="DOCCATG">
+          <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+          <ScalarProperty Name="delete_session_id" ColumnName="delete_session_id" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="doc_catg_name" ColumnName="doc_catg_name" />
+          <ScalarProperty Name="seq_num" ColumnName="seq_num" />
+          <ScalarProperty Name="doc_catg_id" ColumnName="doc_catg_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROJECTs">
+      <EntityTypeMapping TypeName="PrimaveraModel.PROJECT">
+        <MappingFragment StoreEntitySet="PROJECT">
+          <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+          <ScalarProperty Name="delete_session_id" ColumnName="delete_session_id" />
+          <ScalarProperty Name="create_user" ColumnName="create_user" />
+          <ScalarProperty Name="create_date" ColumnName="create_date" />
+          <ScalarProperty Name="update_user" ColumnName="update_user" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="ts_rsrc_vw_inact_actv_flag" ColumnName="ts_rsrc_vw_inact_actv_flag" />
+          <ScalarProperty Name="ts_rsrc_mark_act_finish_flag" ColumnName="ts_rsrc_mark_act_finish_flag" />
+          <ScalarProperty Name="ts_rsrc_vw_compl_asgn_flag" ColumnName="ts_rsrc_vw_compl_asgn_flag" />
+          <ScalarProperty Name="last_baseline_update_date" ColumnName="last_baseline_update_date" />
+          <ScalarProperty Name="use_project_baseline_flag" ColumnName="use_project_baseline_flag" />
+          <ScalarProperty Name="last_fin_dates_id" ColumnName="last_fin_dates_id" />
+          <ScalarProperty Name="sum_assign_level" ColumnName="sum_assign_level" />
+          <ScalarProperty Name="checkout_user_id" ColumnName="checkout_user_id" />
+          <ScalarProperty Name="checkout_date" ColumnName="checkout_date" />
+          <ScalarProperty Name="msp_update_actuals_flag" ColumnName="msp_update_actuals_flag" />
+          <ScalarProperty Name="msp_managed_flag" ColumnName="msp_managed_flag" />
+          <ScalarProperty Name="rsrc_id" ColumnName="rsrc_id" />
+          <ScalarProperty Name="allow_neg_act_flag" ColumnName="allow_neg_act_flag" />
+          <ScalarProperty Name="reset_planned_flag" ColumnName="reset_planned_flag" />
+          <ScalarProperty Name="rem_target_link_flag" ColumnName="rem_target_link_flag" />
+          <ScalarProperty Name="def_rollup_dates_flag" ColumnName="def_rollup_dates_flag" />
+          <ScalarProperty Name="task_code_prefix_flag" ColumnName="task_code_prefix_flag" />
+          <ScalarProperty Name="critical_path_type" ColumnName="critical_path_type" />
+          <ScalarProperty Name="add_act_remain_flag" ColumnName="add_act_remain_flag" />
+          <ScalarProperty Name="act_pct_link_flag" ColumnName="act_pct_link_flag" />
+          <ScalarProperty Name="def_task_type" ColumnName="def_task_type" />
+          <ScalarProperty Name="act_this_per_link_flag" ColumnName="act_this_per_link_flag" />
+          <ScalarProperty Name="def_rate_type" ColumnName="def_rate_type" />
+          <ScalarProperty Name="proj_url" ColumnName="proj_url" />
+          <ScalarProperty Name="web_local_root_path" ColumnName="web_local_root_path" />
+          <ScalarProperty Name="add_by_name" ColumnName="add_by_name" />
+          <ScalarProperty Name="def_qty_type" ColumnName="def_qty_type" />
+          <ScalarProperty Name="guid" ColumnName="guid" />
+          <ScalarProperty Name="task_code_prefix" ColumnName="task_code_prefix" />
+          <ScalarProperty Name="def_duration_type" ColumnName="def_duration_type" />
+          <ScalarProperty Name="fcst_start_date" ColumnName="fcst_start_date" />
+          <ScalarProperty Name="last_tasksum_date" ColumnName="last_tasksum_date" />
+          <ScalarProperty Name="sum_data_date" ColumnName="sum_data_date" />
+          <ScalarProperty Name="add_date" ColumnName="add_date" />
+          <ScalarProperty Name="scd_end_date" ColumnName="scd_end_date" />
+          <ScalarProperty Name="plan_end_date" ColumnName="plan_end_date" />
+          <ScalarProperty Name="plan_start_date" ColumnName="plan_start_date" />
+          <ScalarProperty Name="last_recalc_date" ColumnName="last_recalc_date" />
+          <ScalarProperty Name="def_cost_per_qty" ColumnName="def_cost_per_qty" />
+          <ScalarProperty Name="critical_drtn_hr_cnt" ColumnName="critical_drtn_hr_cnt" />
+          <ScalarProperty Name="last_checksum" ColumnName="last_checksum" />
+          <ScalarProperty Name="strgy_priority_num" ColumnName="strgy_priority_num" />
+          <ScalarProperty Name="risk_level" ColumnName="risk_level" />
+          <ScalarProperty Name="wbs_max_sum_level" ColumnName="wbs_max_sum_level" />
+          <ScalarProperty Name="priority_num" ColumnName="priority_num" />
+          <ScalarProperty Name="task_code_step" ColumnName="task_code_step" />
+          <ScalarProperty Name="task_code_base" ColumnName="task_code_base" />
+          <ScalarProperty Name="sum_base_proj_id" ColumnName="sum_base_proj_id" />
+          <ScalarProperty Name="clndr_id" ColumnName="clndr_id" />
+          <ScalarProperty Name="base_type_id" ColumnName="base_type_id" />
+          <ScalarProperty Name="source_proj_id" ColumnName="source_proj_id" />
+          <ScalarProperty Name="orig_proj_id" ColumnName="orig_proj_id" />
+          <ScalarProperty Name="acct_id" ColumnName="acct_id" />
+          <ScalarProperty Name="proj_short_name" ColumnName="proj_short_name" />
+          <ScalarProperty Name="def_complete_pct_type" ColumnName="def_complete_pct_type" />
+          <ScalarProperty Name="name_sep_char" ColumnName="name_sep_char" />
+          <ScalarProperty Name="batch_sum_flag" ColumnName="batch_sum_flag" />
+          <ScalarProperty Name="sum_only_flag" ColumnName="sum_only_flag" />
+          <ScalarProperty Name="cost_qty_recalc_flag" ColumnName="cost_qty_recalc_flag" />
+          <ScalarProperty Name="step_complete_flag" ColumnName="step_complete_flag" />
+          <ScalarProperty Name="project_flag" ColumnName="project_flag" />
+          <ScalarProperty Name="checkout_flag" ColumnName="checkout_flag" />
+          <ScalarProperty Name="rsrc_multi_assign_flag" ColumnName="rsrc_multi_assign_flag" />
+          <ScalarProperty Name="allow_complete_flag" ColumnName="allow_complete_flag" />
+          <ScalarProperty Name="rsrc_self_add_flag" ColumnName="rsrc_self_add_flag" />
+          <ScalarProperty Name="chng_eff_cmp_pct_flag" ColumnName="chng_eff_cmp_pct_flag" />
+          <ScalarProperty Name="fy_start_month_num" ColumnName="fy_start_month_num" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

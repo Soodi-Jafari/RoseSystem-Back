@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DocumentModelStoreContainer" CdmEntityContainer="ROSEDBDocumentEntities">
+    <EntitySetMapping Name="t0001Projects">
+      <EntityTypeMapping TypeName="DocumentModel.t0001Projects">
+        <MappingFragment StoreEntitySet="t0001Projects">
+          <ScalarProperty Name="IsProcurement" ColumnName="IsProcurement" />
+          <ScalarProperty Name="BarsaProjectID" ColumnName="BarsaProjectID" />
+          <ScalarProperty Name="SMSCode" ColumnName="SMSCode" />
+          <ScalarProperty Name="SecondProjectP3ID" ColumnName="SecondProjectP3ID" />
+          <ScalarProperty Name="EstimationTypeID" ColumnName="EstimationTypeID" />
+          <ScalarProperty Name="IsFeasibility" ColumnName="IsFeasibility" />
+          <ScalarProperty Name="IsTender" ColumnName="IsTender" />
+          <ScalarProperty Name="ConvertTRDateToShamsi" ColumnName="ConvertTRDateToShamsi" />
+          <ScalarProperty Name="RuleID" ColumnName="RuleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TransmittalName" ColumnName="TransmittalName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateUpdate" ColumnName="DateUpdate" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="FormatID" ColumnName="FormatID" />
+          <ScalarProperty Name="ProjectP3ID" ColumnName="ProjectP3ID" />
+          <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t100SecurityUsers">
+      <EntityTypeMapping TypeName="DocumentModel.t100SecurityUsers">
+        <MappingFragment StoreEntitySet="t100SecurityUsers">
+          <ScalarProperty Name="IsChangedUserPassword" ColumnName="IsChangedUserPassword" />
+          <ScalarProperty Name="HisPassword" ColumnName="HisPassword" />
+          <ScalarProperty Name="HisUserName" ColumnName="HisUserName" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="PicContentType" ColumnName="PicContentType" />
+          <ScalarProperty Name="PicSize" ColumnName="PicSize" />
+          <ScalarProperty Name="PicName" ColumnName="PicName" />
+          <ScalarProperty Name="Pic" ColumnName="Pic" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PersonalEmail" ColumnName="PersonalEmail" />
+          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+          <ScalarProperty Name="StartJob" ColumnName="StartJob" />
+          <ScalarProperty Name="ExtensionNo" ColumnName="ExtensionNo" />
+          <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="SexID" ColumnName="SexID" />
+          <ScalarProperty Name="IsMan" ColumnName="IsMan" />
+          <ScalarProperty Name="PersianFirstName" ColumnName="PersianFirstName" />
+          <ScalarProperty Name="PersianLastName" ColumnName="PersianLastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PersonelCode" ColumnName="PersonelCode" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TTransmittals">
+      <EntityTypeMapping TypeName="DocumentModel.TTransmittal">
+        <MappingFragment StoreEntitySet="TTransmittals">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="TransmittalType" ColumnName="TransmittalType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TransmittalDate" ColumnName="TransmittalDate" />
+          <ScalarProperty Name="TransmittalNo" ColumnName="TransmittalNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEngineeringDocuments">
+      <EntityTypeMapping TypeName="DocumentModel.VEngineeringDocument">
+        <MappingFragment StoreEntitySet="VEngineeringDocument">
+          <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineShort" ColumnName="DisciplineShort" />
+          <ScalarProperty Name="DisciplineType" ColumnName="DisciplineType" />
+          <ScalarProperty Name="DocTitle" ColumnName="DocTitle" />
+          <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPurposeOfIssues">
+      <EntityTypeMapping TypeName="DocumentModel.TPurposeOfIssue">
+        <MappingFragment StoreEntitySet="TPurposeOfIssues">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEngineeringDocuments">
+      <EntityTypeMapping TypeName="DocumentModel.TEngineeringDocument">
+        <MappingFragment StoreEntitySet="TEngineeringDocuments">
+          <ScalarProperty Name="ChangeLeadOptim" ColumnName="ChangeLeadOptim" />
+          <ScalarProperty Name="ChangeReferPrevious" ColumnName="ChangeReferPrevious" />
+          <ScalarProperty Name="Appendix" ColumnName="Appendix" />
+          <ScalarProperty Name="UploadPdf" ColumnName="UploadPdf" />
+          <ScalarProperty Name="CheckProject" ColumnName="CheckProject" />
+          <ScalarProperty Name="CheckRevMark" ColumnName="CheckRevMark" />
+          <ScalarProperty Name="ChecDocFormat" ColumnName="ChecDocFormat" />
+          <ScalarProperty Name="CheckTableContent" ColumnName="CheckTableContent" />
+          <ScalarProperty Name="CheckPageNumber" ColumnName="CheckPageNumber" />
+          <ScalarProperty Name="CheckDocRev" ColumnName="CheckDocRev" />
+          <ScalarProperty Name="CheckDocTitle" ColumnName="CheckDocTitle" />
+          <ScalarProperty Name="CheckUnitName" ColumnName="CheckUnitName" />
+          <ScalarProperty Name="CheckDocNumber" ColumnName="CheckDocNumber" />
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="CurrentState" ColumnName="CurrentState" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PurposeOfIssueID" ColumnName="PurposeOfIssueID" />
+          <ScalarProperty Name="TransmittalID" ColumnName="TransmittalID" />
+          <ScalarProperty Name="SheetNo" ColumnName="SheetNo" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="DocumentTitle" ColumnName="DocumentTitle" />
+          <ScalarProperty Name="DocumentNo" ColumnName="DocumentNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

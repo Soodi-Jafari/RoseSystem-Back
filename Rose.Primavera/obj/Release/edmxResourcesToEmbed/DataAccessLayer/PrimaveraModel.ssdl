@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrimaveraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DOCCATG">
+    <Key>
+      <PropertyRef Name="doc_catg_id" />
+    </Key>
+    <Property Name="doc_catg_id" Type="int" Nullable="false" />
+    <Property Name="seq_num" Type="int" Nullable="false" />
+    <Property Name="doc_catg_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="update_user" Type="varchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="create_user" Type="varchar" MaxLength="255" />
+    <Property Name="delete_session_id" Type="int" />
+    <Property Name="delete_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DOCUMENT">
+    <Key>
+      <PropertyRef Name="doc_id" />
+    </Key>
+    <Property Name="doc_id" Type="int" Nullable="false" />
+    <Property Name="doc_seq_num" Type="int" Nullable="false" />
+    <Property Name="deliv_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="doc_name" Type="varchar" MaxLength="120" Nullable="false" />
+    <Property Name="parent_doc_id" Type="int" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="doc_status_id" Type="int" />
+    <Property Name="doc_catg_id" Type="int" />
+    <Property Name="doc_date" Type="datetime" />
+    <Property Name="version_name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="guid" Type="varchar" MaxLength="22" />
+    <Property Name="tmpl_guid" Type="varchar" MaxLength="22" />
+    <Property Name="doc_short_name" Type="varchar" MaxLength="32" />
+    <Property Name="author_name" Type="varchar" MaxLength="100" />
+    <Property Name="private_loc" Type="varchar" MaxLength="255" />
+    <Property Name="public_loc" Type="varchar" MaxLength="255" />
+    <Property Name="doc_content" Type="text" />
+    <Property Name="rsrc_id" Type="int" />
+    <Property Name="doc_mgmt_type" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="external_doc_key" Type="varchar" MaxLength="4000" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="update_user" Type="varchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="create_user" Type="varchar" MaxLength="255" />
+    <Property Name="delete_session_id" Type="int" />
+    <Property Name="delete_date" Type="datetime" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="SubcontractorWeight" Type="float" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsTasked" Type="bit" />
+  </EntityType>
+  <EntityType Name="PROJECT">
+    <Key>
+      <PropertyRef Name="proj_id" />
+    </Key>
+    <Property Name="proj_id" Type="int" Nullable="false" />
+    <Property Name="fy_start_month_num" Type="int" Nullable="false" />
+    <Property Name="chng_eff_cmp_pct_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="rsrc_self_add_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="allow_complete_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="rsrc_multi_assign_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="checkout_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="project_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="step_complete_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="cost_qty_recalc_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="sum_only_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="batch_sum_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="name_sep_char" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="def_complete_pct_type" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="proj_short_name" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="acct_id" Type="int" />
+    <Property Name="orig_proj_id" Type="int" />
+    <Property Name="source_proj_id" Type="int" />
+    <Property Name="base_type_id" Type="int" />
+    <Property Name="clndr_id" Type="int" />
+    <Property Name="sum_base_proj_id" Type="int" />
+    <Property Name="task_code_base" Type="int" />
+    <Property Name="task_code_step" Type="int" />
+    <Property Name="priority_num" Type="int" />
+    <Property Name="wbs_max_sum_level" Type="int" />
+    <Property Name="risk_level" Type="int" />
+    <Property Name="strgy_priority_num" Type="int" />
+    <Property Name="last_checksum" Type="int" />
+    <Property Name="critical_drtn_hr_cnt" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="def_cost_per_qty" Type="numeric" Precision="21" Scale="8" />
+    <Property Name="last_recalc_date" Type="datetime" />
+    <Property Name="plan_start_date" Type="datetime" />
+    <Property Name="plan_end_date" Type="datetime" />
+    <Property Name="scd_end_date" Type="datetime" />
+    <Property Name="add_date" Type="datetime" Nullable="false" />
+    <Property Name="sum_data_date" Type="datetime" />
+    <Property Name="last_tasksum_date" Type="datetime" />
+    <Property Name="fcst_start_date" Type="datetime" />
+    <Property Name="def_duration_type" Type="varchar" MaxLength="12" />
+    <Property Name="task_code_prefix" Type="varchar" MaxLength="20" />
+    <Property Name="guid" Type="varchar" MaxLength="22" />
+    <Property Name="def_qty_type" Type="varchar" MaxLength="24" />
+    <Property Name="add_by_name" Type="varchar" MaxLength="32" />
+    <Property Name="web_local_root_path" Type="varchar" MaxLength="120" />
+    <Property Name="proj_url" Type="varchar" MaxLength="200" />
+    <Property Name="def_rate_type" Type="varchar" MaxLength="14" />
+    <Property Name="act_this_per_link_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="def_task_type" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="act_pct_link_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="add_act_remain_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="critical_path_type" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="task_code_prefix_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="def_rollup_dates_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="rem_target_link_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="reset_planned_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="allow_neg_act_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="rsrc_id" Type="int" />
+    <Property Name="msp_managed_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="msp_update_actuals_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="checkout_date" Type="datetime" />
+    <Property Name="checkout_user_id" Type="int" />
+    <Property Name="sum_assign_level" Type="varchar" MaxLength="12" />
+    <Property Name="last_fin_dates_id" Type="int" />
+    <Property Name="use_project_baseline_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="last_baseline_update_date" Type="datetime" />
+    <Property Name="ts_rsrc_vw_compl_asgn_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="ts_rsrc_mark_act_finish_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="ts_rsrc_vw_inact_actv_flag" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="update_user" Type="varchar" MaxLength="255" />
+    <Property Name="create_date" Type="datetime" />
+    <Property Name="create_user" Type="varchar" MaxLength="255" />
+    <Property Name="delete_session_id" Type="int" />
+    <Property Name="delete_date" Type="datetime" />
+  </EntityType>
+  <Association Name="fk_document_doccatg">
+    <End Role="DOCCATG" Type="Self.DOCCATG" Multiplicity="0..1" />
+    <End Role="DOCUMENT" Type="Self.DOCUMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCCATG">
+        <PropertyRef Name="doc_catg_id" />
+      </Principal>
+      <Dependent Role="DOCUMENT">
+        <PropertyRef Name="doc_catg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_document_project">
+    <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1" />
+    <End Role="DOCUMENT" Type="Self.DOCUMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJECT">
+        <PropertyRef Name="proj_id" />
+      </Principal>
+      <Dependent Role="DOCUMENT">
+        <PropertyRef Name="proj_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PrimaveraModelStoreContainer">
+    <EntitySet Name="DOCCATG" EntityType="Self.DOCCATG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOCUMENT" EntityType="Self.DOCUMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_document_doccatg" Association="Self.fk_document_doccatg">
+      <End Role="DOCCATG" EntitySet="DOCCATG" />
+      <End Role="DOCUMENT" EntitySet="DOCUMENT" />
+    </AssociationSet>
+    <AssociationSet Name="fk_document_project" Association="Self.fk_document_project">
+      <End Role="PROJECT" EntitySet="PROJECT" />
+      <End Role="DOCUMENT" EntitySet="DOCUMENT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

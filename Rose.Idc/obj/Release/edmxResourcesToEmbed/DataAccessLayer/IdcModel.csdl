@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IdcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="t100SecutityUserType">
+    <Key>
+      <PropertyRef Name="UserTypeID" />
+    </Key>
+    <Property Name="UserTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Parent" Type="Int32" />
+    <Property Name="UserTypeName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpDate" Type="DateTime" Precision="3" />
+    <Property Name="Disable" Type="Boolean" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="Code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t100SecutityUserType1" Relationship="Self.FK_t100SecutityUserType_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="t100SecutityUserType1" />
+    <NavigationProperty Name="t100SecutityUserType2" Relationship="Self.FK_t100SecutityUserType_t100SecutityUserType" FromRole="t100SecutityUserType1" ToRole="t100SecutityUserType" />
+    <NavigationProperty Name="TIDCs" Relationship="IdcModel.FK_TIDCs_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="TIDC" />
+    <NavigationProperty Name="TIDCDistributions" Relationship="IdcModel.FK_TIDCDistributions_t100SecutityUserType" FromRole="t100SecutityUserType" ToRole="TIDCDistribution" />
+  </EntityType>
+  <Association Name="FK_t100SecutityUserType_t100SecutityUserType">
+    <End Role="t100SecutityUserType" Type="Self.t100SecutityUserType" Multiplicity="0..1" />
+    <End Role="t100SecutityUserType1" Type="Self.t100SecutityUserType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="t100SecutityUserType1">
+        <PropertyRef Name="Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ROSEDBIdcEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t100SecutityUserType" EntityType="Self.t100SecutityUserType" />
+    <AssociationSet Name="FK_t100SecutityUserType_t100SecutityUserType" Association="Self.FK_t100SecutityUserType_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="t100SecutityUserType1" EntitySet="t100SecutityUserType" />
+    </AssociationSet>
+    <EntitySet Name="TIDCs" EntityType="IdcModel.TIDC" />
+    <AssociationSet Name="FK_TIDCs_t100SecutityUserType" Association="IdcModel.FK_TIDCs_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TIDC" EntitySet="TIDCs" />
+    </AssociationSet>
+    <EntitySet Name="TIDCDistributions" EntityType="IdcModel.TIDCDistribution" />
+    <AssociationSet Name="FK_TIDCDistributions_t100SecutityUserType" Association="IdcModel.FK_TIDCDistributions_t100SecutityUserType">
+      <End Role="t100SecutityUserType" EntitySet="t100SecutityUserType" />
+      <End Role="TIDCDistribution" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCDistributions_TIDCs" Association="IdcModel.FK_TIDCDistributions_TIDCs">
+      <End Role="TIDC" EntitySet="TIDCs" />
+      <End Role="TIDCDistribution" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <EntitySet Name="TAutoIDCs" EntityType="IdcModel.TAutoIDC" />
+    <EntitySet Name="VDocuments" EntityType="IdcModel.VDocument" />
+    <EntitySet Name="t100SecurityUsers" EntityType="IdcModel.t100SecurityUsers" />
+    <AssociationSet Name="FK_TIDCDistributions_t100SecurityUsers" Association="IdcModel.FK_TIDCDistributions_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TIDCDistribution" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCDistributions_t100SecurityUsers1" Association="IdcModel.FK_TIDCDistributions_t100SecurityUsers1">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TIDCDistribution" EntitySet="TIDCDistributions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIDCs_t100SecurityUsers" Association="IdcModel.FK_TIDCs_t100SecurityUsers">
+      <End Role="t100SecurityUsers" EntitySet="t100SecurityUsers" />
+      <End Role="TIDC" EntitySet="TIDCs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TIDC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityID" Type="Int32" Nullable="false" />
+    <Property Name="EntityType" Type="Byte" Nullable="false" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DesciplineID" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="FileDirection" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t100SecutityUserType" Relationship="IdcModel.FK_TIDCs_t100SecutityUserType" FromRole="TIDC" ToRole="t100SecutityUserType" />
+    <NavigationProperty Name="TIDCDistributions" Relationship="IdcModel.FK_TIDCDistributions_TIDCs" FromRole="TIDC" ToRole="TIDCDistribution" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="IdcModel.FK_TIDCs_t100SecurityUsers" FromRole="TIDC" ToRole="t100SecurityUsers" />
+  </EntityType>
+  <Association Name="FK_TIDCs_t100SecutityUserType">
+    <End Type="IdcModel.t100SecutityUserType" Role="t100SecutityUserType" Multiplicity="1" />
+    <End Type="IdcModel.TIDC" Role="TIDC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TIDC">
+        <PropertyRef Name="DesciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TIDCDistribution">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDCID" Type="Int32" Nullable="false" />
+    <Property Name="DesciplineID" Type="Int32" Nullable="false" />
+    <Property Name="ResponseStatus" Type="Byte" Nullable="false" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReplyComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="t100SecutityUserType" Relationship="IdcModel.FK_TIDCDistributions_t100SecutityUserType" FromRole="TIDCDistribution" ToRole="t100SecutityUserType" />
+    <NavigationProperty Name="TIDC" Relationship="IdcModel.FK_TIDCDistributions_TIDCs" FromRole="TIDCDistribution" ToRole="TIDC" />
+    <NavigationProperty Name="t100SecurityUsers" Relationship="IdcModel.FK_TIDCDistributions_t100SecurityUsers" FromRole="TIDCDistribution" ToRole="t100SecurityUsers" />
+    <NavigationProperty Name="t100SecurityUsers1" Relationship="IdcModel.FK_TIDCDistributions_t100SecurityUsers1" FromRole="TIDCDistribution" ToRole="t100SecurityUsers" />
+  </EntityType>
+  <Association Name="FK_TIDCDistributions_t100SecutityUserType">
+    <End Type="IdcModel.t100SecutityUserType" Role="t100SecutityUserType" Multiplicity="1" />
+    <End Type="IdcModel.TIDCDistribution" Role="TIDCDistribution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecutityUserType">
+        <PropertyRef Name="UserTypeID" />
+      </Principal>
+      <Dependent Role="TIDCDistribution">
+        <PropertyRef Name="DesciplineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCDistributions_TIDCs">
+    <End Type="IdcModel.TIDC" Role="TIDC" Multiplicity="1" />
+    <End Type="IdcModel.TIDCDistribution" Role="TIDCDistribution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIDC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TIDCDistribution">
+        <PropertyRef Name="IDCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TAutoIDC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentDiscipline" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentDisciplineID" Type="Int32" />
+    <Property Name="DocumentType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DocumentTypeID" Type="Int32" />
+    <Property Name="Civil" Type="Byte" />
+    <Property Name="Electrical" Type="Byte" />
+    <Property Name="Instrument" Type="Byte" />
+    <Property Name="HVAC" Type="Byte" />
+    <Property Name="MechanicalRotary" Type="Byte" />
+    <Property Name="MechanicalFix" Type="Byte" />
+    <Property Name="Piping" Type="Byte" />
+    <Property Name="Process" Type="Byte" />
+    <Property Name="Safety" Type="Byte" />
+  </EntityType>
+  <EntityType Name="VDocument">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ProjectID" />
+      <PropertyRef Name="DocTitle" />
+      <PropertyRef Name="DisciplineType" />
+      <PropertyRef Name="DisciplineShort" />
+      <PropertyRef Name="DisciplineId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ProjId" Type="Int32" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DocShortName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DocTitle" Type="String" Nullable="false" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineShort" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineName" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="DisciplineId" Type="Int32" Nullable="false" />
+    <Property Name="doc_catg_id" Type="Int32" />
+    <Property Name="doc_catg_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="t100SecurityUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonelCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersianFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsMan" Type="Boolean" />
+    <Property Name="SexID" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="CellPhone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="ExtensionNo" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="StartJob" Type="DateTime" Precision="3" />
+    <Property Name="CompanyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PicName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PicSize" Type="Int32" />
+    <Property Name="PicContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Enable" Type="Boolean" Nullable="false" />
+    <Property Name="HisUserName" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="HisPassword" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+    <Property Name="IsChangedUserPassword" Type="Boolean" />
+    <Property Name="NoMandateTimesheet" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TIDCDistributions" Relationship="IdcModel.FK_TIDCDistributions_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TIDCDistribution" />
+    <NavigationProperty Name="TIDCDistributions1" Relationship="IdcModel.FK_TIDCDistributions_t100SecurityUsers1" FromRole="t100SecurityUsers" ToRole="TIDCDistribution" />
+    <NavigationProperty Name="TIDCs" Relationship="IdcModel.FK_TIDCs_t100SecurityUsers" FromRole="t100SecurityUsers" ToRole="TIDC" />
+  </EntityType>
+  <Association Name="FK_TIDCDistributions_t100SecurityUsers">
+    <End Type="IdcModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="IdcModel.TIDCDistribution" Role="TIDCDistribution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TIDCDistribution">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCDistributions_t100SecurityUsers1">
+    <End Type="IdcModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="0..1" />
+    <End Type="IdcModel.TIDCDistribution" Role="TIDCDistribution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TIDCDistribution">
+        <PropertyRef Name="LastModifiedUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIDCs_t100SecurityUsers">
+    <End Type="IdcModel.t100SecurityUsers" Role="t100SecurityUsers" Multiplicity="1" />
+    <End Type="IdcModel.TIDC" Role="TIDC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t100SecurityUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TIDC">
+        <PropertyRef Name="CreationUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

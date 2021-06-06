@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PWKaraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PwKara.dbo.VPersonnelInOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VPersonnelInOut">
+    <Key>
+      <PropertyRef Name="STATUS" />
+      <PropertyRef Name="DATE_" />
+      <PropertyRef Name="TIME_" />
+      <PropertyRef Name="EMP_NO" />
+      <PropertyRef Name="MODIFY" />
+      <PropertyRef Name="Clock_No" />
+      <PropertyRef Name="SEX" />
+    </Key>
+    <Property Name="STATUS" Type="smallint" Nullable="false" />
+    <Property Name="UserDate" Type="datetime" />
+    <Property Name="DATE_" Type="float" Nullable="false" />
+    <Property Name="TIME_" Type="smallint" Nullable="false" />
+    <Property Name="EMP_NO" Type="float" Nullable="false" />
+    <Property Name="MODIFY" Type="bit" Nullable="false" />
+    <Property Name="Clock_No" Type="int" Nullable="false" />
+    <Property Name="SR_Type" Type="tinyint" />
+    <Property Name="Direction" Type="tinyint" />
+    <Property Name="Passenger" Type="int" />
+    <Property Name="GateID" Type="int" />
+    <Property Name="Station" Type="int" />
+    <Property Name="NAME" Type="nvarchar" MaxLength="25" />
+    <Property Name="FAMILY" Type="nvarchar" MaxLength="25" />
+    <Property Name="SEX" Type="bit" Nullable="false" />
+    <Property Name="RowId" Type="bigint" />
+  </EntityType>
+  <EntityContainer Name="PWKaraModelStoreContainer">
+    <EntitySet Name="VPersonnelInOut" EntityType="Self.VPersonnelInOut" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [VPersonnelInOut].[STATUS] AS [STATUS], 
+    [VPersonnelInOut].[UserDate] AS [UserDate], 
+    [VPersonnelInOut].[DATE_] AS [DATE_], 
+    [VPersonnelInOut].[TIME_] AS [TIME_], 
+    [VPersonnelInOut].[EMP_NO] AS [EMP_NO], 
+    [VPersonnelInOut].[MODIFY] AS [MODIFY], 
+    [VPersonnelInOut].[Clock_No] AS [Clock_No], 
+    [VPersonnelInOut].[SR_Type] AS [SR_Type], 
+    [VPersonnelInOut].[Direction] AS [Direction], 
+    [VPersonnelInOut].[Passenger] AS [Passenger], 
+    [VPersonnelInOut].[GateID] AS [GateID], 
+    [VPersonnelInOut].[Station] AS [Station], 
+    [VPersonnelInOut].[NAME] AS [NAME], 
+    [VPersonnelInOut].[FAMILY] AS [FAMILY], 
+    [VPersonnelInOut].[SEX] AS [SEX], 
+    [VPersonnelInOut].[RowId] AS [RowId]
+    FROM [dbo].[VPersonnelInOut] AS [VPersonnelInOut]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

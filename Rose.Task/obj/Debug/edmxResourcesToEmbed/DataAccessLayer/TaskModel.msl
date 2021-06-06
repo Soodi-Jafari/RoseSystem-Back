@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TaskModelStoreContainer" CdmEntityContainer="ROSEDBTaskEntities">
+    <EntitySetMapping Name="TTaskApprovals">
+      <EntityTypeMapping TypeName="TaskModel.TTaskApproval">
+        <MappingFragment StoreEntitySet="TTaskApprovals">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="ExpertUserID" ColumnName="ExpertUserID" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="FlowState" ColumnName="FlowState" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPurposeOfIssues">
+      <EntityTypeMapping TypeName="TaskModel.TPurposeOfIssue">
+        <MappingFragment StoreEntitySet="TPurposeOfIssues">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPCTConditions">
+      <EntityTypeMapping TypeName="TaskModel.TPCTCondition">
+        <MappingFragment StoreEntitySet="TPCTConditions">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ConditionOprand" ColumnName="ConditionOprand" />
+          <ScalarProperty Name="PCTLevelID" ColumnName="PCTLevelID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Feild" ColumnName="Feild" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPCTLevels">
+      <EntityTypeMapping TypeName="TaskModel.TPCTLevel">
+        <MappingFragment StoreEntitySet="TPCTLevels">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="PCT" ColumnName="PCT" />
+          <ScalarProperty Name="PurposeOfIssueID" ColumnName="PurposeOfIssueID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TTransmittalDocuments">
+      <EntityTypeMapping TypeName="TaskModel.TTransmittalDocument">
+        <MappingFragment StoreEntitySet="TTransmittalDocuments">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PageType" ColumnName="PageType" />
+          <ScalarProperty Name="SheetNo" ColumnName="SheetNo" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="PurposeOfIssueID" ColumnName="PurposeOfIssueID" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="DocumentTitle" ColumnName="DocumentTitle" />
+          <ScalarProperty Name="DocumnetNo" ColumnName="DocumnetNo" />
+          <ScalarProperty Name="TransmittalID" ColumnName="TransmittalID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VWBSProjects">
+      <EntityTypeMapping TypeName="TaskModel.VWBSProject">
+        <MappingFragment StoreEntitySet="VWBSProjects">
+          <ScalarProperty Name="delete_session_id" ColumnName="delete_session_id" />
+          <ScalarProperty Name="wbs_name" ColumnName="wbs_name" />
+          <ScalarProperty Name="wbs_id" ColumnName="wbs_id" />
+          <ScalarProperty Name="parent_wbs_id" ColumnName="parent_wbs_id" />
+          <ScalarProperty Name="wbs_short_name" ColumnName="wbs_short_name" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VPCTTransmitalDocuments">
+      <EntityTypeMapping TypeName="TaskModel.VPCTTransmitalDocument">
+        <MappingFragment StoreEntitySet="VPCTTransmitalDocuments">
+          <ScalarProperty Name="doc_catg_name" ColumnName="doc_catg_name" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="PurposeOfIssueTitle" ColumnName="PurposeOfIssueTitle" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="TransmittalType" ColumnName="TransmittalType" />
+          <ScalarProperty Name="TransmittalDate" ColumnName="TransmittalDate" />
+          <ScalarProperty Name="TransmittalNo" ColumnName="TransmittalNo" />
+          <ScalarProperty Name="PurposeOfIssueID" ColumnName="PurposeOfIssueID" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="DocumentTitle" ColumnName="DocumentTitle" />
+          <ScalarProperty Name="DocumnetNo" ColumnName="DocumnetNo" />
+          <ScalarProperty Name="TransmittalID" ColumnName="TransmittalID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VProjectCustomers">
+      <EntityTypeMapping TypeName="TaskModel.VProjectCustomer">
+        <MappingFragment StoreEntitySet="VProjectCustomers">
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="CustomerType" ColumnName="CustomerType" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VWbsDocuments">
+      <EntityTypeMapping TypeName="TaskModel.VWbsDocument">
+        <MappingFragment StoreEntitySet="VWbsDocuments">
+          <ScalarProperty Name="SubcontractorWeight" ColumnName="SubcontractorWeight" />
+          <ScalarProperty Name="actv_code_name" ColumnName="actv_code_name" />
+          <ScalarProperty Name="task_id" ColumnName="task_id" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="doc_catg_name" ColumnName="doc_catg_name" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="wbs_id" ColumnName="wbs_id" />
+          <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="doc_short_name" ColumnName="doc_short_name" />
+          <ScalarProperty Name="doc_name" ColumnName="doc_name" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TTransmittals">
+      <EntityTypeMapping TypeName="TaskModel.TTransmittal">
+        <MappingFragment StoreEntitySet="TTransmittals">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+          <ScalarProperty Name="CopiedTransmittalID" ColumnName="CopiedTransmittalID" />
+          <ScalarProperty Name="TransmittalType" ColumnName="TransmittalType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="TransmittalDate" ColumnName="TransmittalDate" />
+          <ScalarProperty Name="TransmittalNo" ColumnName="TransmittalNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t100SecurityUsers">
+      <EntityTypeMapping TypeName="TaskModel.t100SecurityUsers">
+        <MappingFragment StoreEntitySet="t100SecurityUsers">
+          <ScalarProperty Name="NoMandateTimesheet" ColumnName="NoMandateTimesheet" />
+          <ScalarProperty Name="IsChangedUserPassword" ColumnName="IsChangedUserPassword" />
+          <ScalarProperty Name="HisPassword" ColumnName="HisPassword" />
+          <ScalarProperty Name="HisUserName" ColumnName="HisUserName" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="PicContentType" ColumnName="PicContentType" />
+          <ScalarProperty Name="PicSize" ColumnName="PicSize" />
+          <ScalarProperty Name="PicName" ColumnName="PicName" />
+          <ScalarProperty Name="Pic" ColumnName="Pic" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PersonalEmail" ColumnName="PersonalEmail" />
+          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+          <ScalarProperty Name="StartJob" ColumnName="StartJob" />
+          <ScalarProperty Name="ExtensionNo" ColumnName="ExtensionNo" />
+          <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="SexID" ColumnName="SexID" />
+          <ScalarProperty Name="IsMan" ColumnName="IsMan" />
+          <ScalarProperty Name="PersianFirstName" ColumnName="PersianFirstName" />
+          <ScalarProperty Name="PersianLastName" ColumnName="PersianLastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PersonelCode" ColumnName="PersonelCode" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VTaskDocuments">
+      <EntityTypeMapping TypeName="TaskModel.VTaskDocument">
+        <MappingFragment StoreEntitySet="VTaskDocument">
+          <ScalarProperty Name="PlanManHour" ColumnName="PlanManHour" />
+          <ScalarProperty Name="task_id" ColumnName="task_id" />
+          <ScalarProperty Name="Finish" ColumnName="Finish" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="wbs_id" ColumnName="wbs_id" />
+          <ScalarProperty Name="doc_catg_name" ColumnName="doc_catg_name" />
+          <ScalarProperty Name="doc_catg_id" ColumnName="doc_catg_id" />
+          <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineShort" ColumnName="DisciplineShort" />
+          <ScalarProperty Name="DisciplineType" ColumnName="DisciplineType" />
+          <ScalarProperty Name="DocTitle" ColumnName="DocTitle" />
+          <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TTasks">
+      <EntityTypeMapping TypeName="TaskModel.TTask">
+        <MappingFragment StoreEntitySet="TTasks">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="UserAssignedID" ColumnName="UserAssignedID" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="EstimateManHour" ColumnName="EstimateManHour" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProgressPercent" ColumnName="ProgressPercent" />
+          <ScalarProperty Name="ActualFinish" ColumnName="ActualFinish" />
+          <ScalarProperty Name="ActualStart" ColumnName="ActualStart" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="TaskStatus" ColumnName="TaskStatus" />
+          <ScalarProperty Name="DocumentTitle" ColumnName="DocumentTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PrimaveraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DOCUMENT">
+    <Key>
+      <PropertyRef Name="doc_id" />
+    </Key>
+    <Property Name="doc_id" Type="Int32" Nullable="false" />
+    <Property Name="doc_seq_num" Type="Int32" Nullable="false" />
+    <Property Name="deliv_flag" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="doc_name" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parent_doc_id" Type="Int32" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="doc_status_id" Type="Int32" />
+    <Property Name="doc_catg_id" Type="Int32" />
+    <Property Name="doc_date" Type="DateTime" Precision="3" />
+    <Property Name="version_name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="guid" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+    <Property Name="tmpl_guid" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+    <Property Name="doc_short_name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="author_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="private_loc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="public_loc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="doc_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="rsrc_id" Type="Int32" />
+    <Property Name="doc_mgmt_type" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="external_doc_key" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="update_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="create_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="delete_session_id" Type="Int32" />
+    <Property Name="delete_date" Type="DateTime" Precision="3" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="SubcontractorWeight" Type="Double" />
+    <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsTasked" Type="Boolean" />
+    <NavigationProperty Name="DOCCATG" Relationship="PrimaveraModel.fk_document_doccatg" FromRole="DOCUMENT" ToRole="DOCCATG" />
+    <NavigationProperty Name="PROJECT" Relationship="PrimaveraModel.fk_document_project" FromRole="DOCUMENT" ToRole="PROJECT" />
+  </EntityType>
+  <EntityContainer Name="ROSEDBPrimaveraEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DOCUMENTs" EntityType="Self.DOCUMENT" />
+    <EntitySet Name="DOCCATGs" EntityType="PrimaveraModel.DOCCATG" />
+    <AssociationSet Name="fk_document_doccatg" Association="PrimaveraModel.fk_document_doccatg">
+      <End Role="DOCCATG" EntitySet="DOCCATGs" />
+      <End Role="DOCUMENT" EntitySet="DOCUMENTs" />
+    </AssociationSet>
+    <EntitySet Name="PROJECTs" EntityType="PrimaveraModel.PROJECT" />
+    <AssociationSet Name="fk_document_project" Association="PrimaveraModel.fk_document_project">
+      <End Role="PROJECT" EntitySet="PROJECTs" />
+      <End Role="DOCUMENT" EntitySet="DOCUMENTs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DOCCATG">
+    <Key>
+      <PropertyRef Name="doc_catg_id" />
+    </Key>
+    <Property Name="doc_catg_id" Type="Int32" Nullable="false" />
+    <Property Name="seq_num" Type="Int32" Nullable="false" />
+    <Property Name="doc_catg_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="update_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="create_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="delete_session_id" Type="Int32" />
+    <Property Name="delete_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DOCUMENTs" Relationship="PrimaveraModel.fk_document_doccatg" FromRole="DOCCATG" ToRole="DOCUMENT" />
+  </EntityType>
+  <Association Name="fk_document_doccatg">
+    <End Type="PrimaveraModel.DOCCATG" Role="DOCCATG" Multiplicity="0..1" />
+    <End Type="PrimaveraModel.DOCUMENT" Role="DOCUMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOCCATG">
+        <PropertyRef Name="doc_catg_id" />
+      </Principal>
+      <Dependent Role="DOCUMENT">
+        <PropertyRef Name="doc_catg_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PROJECT">
+    <Key>
+      <PropertyRef Name="proj_id" />
+    </Key>
+    <Property Name="proj_id" Type="Int32" Nullable="false" />
+    <Property Name="fy_start_month_num" Type="Int32" Nullable="false" />
+    <Property Name="chng_eff_cmp_pct_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="rsrc_self_add_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="allow_complete_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="rsrc_multi_assign_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="checkout_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="project_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="step_complete_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="cost_qty_recalc_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="sum_only_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="batch_sum_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="name_sep_char" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="def_complete_pct_type" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="proj_short_name" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="acct_id" Type="Int32" />
+    <Property Name="orig_proj_id" Type="Int32" />
+    <Property Name="source_proj_id" Type="Int32" />
+    <Property Name="base_type_id" Type="Int32" />
+    <Property Name="clndr_id" Type="Int32" />
+    <Property Name="sum_base_proj_id" Type="Int32" />
+    <Property Name="task_code_base" Type="Int32" />
+    <Property Name="task_code_step" Type="Int32" />
+    <Property Name="priority_num" Type="Int32" />
+    <Property Name="wbs_max_sum_level" Type="Int32" />
+    <Property Name="risk_level" Type="Int32" />
+    <Property Name="strgy_priority_num" Type="Int32" />
+    <Property Name="last_checksum" Type="Int32" />
+    <Property Name="critical_drtn_hr_cnt" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="def_cost_per_qty" Type="Decimal" Precision="21" Scale="8" />
+    <Property Name="last_recalc_date" Type="DateTime" Precision="3" />
+    <Property Name="plan_start_date" Type="DateTime" Precision="3" />
+    <Property Name="plan_end_date" Type="DateTime" Precision="3" />
+    <Property Name="scd_end_date" Type="DateTime" Precision="3" />
+    <Property Name="add_date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sum_data_date" Type="DateTime" Precision="3" />
+    <Property Name="last_tasksum_date" Type="DateTime" Precision="3" />
+    <Property Name="fcst_start_date" Type="DateTime" Precision="3" />
+    <Property Name="def_duration_type" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="task_code_prefix" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="guid" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+    <Property Name="def_qty_type" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
+    <Property Name="add_by_name" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="web_local_root_path" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="proj_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="def_rate_type" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="act_this_per_link_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="def_task_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="act_pct_link_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="add_act_remain_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="critical_path_type" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="task_code_prefix_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="def_rollup_dates_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="rem_target_link_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="reset_planned_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="allow_neg_act_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="rsrc_id" Type="Int32" />
+    <Property Name="msp_managed_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="msp_update_actuals_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="checkout_date" Type="DateTime" Precision="3" />
+    <Property Name="checkout_user_id" Type="Int32" />
+    <Property Name="sum_assign_level" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="last_fin_dates_id" Type="Int32" />
+    <Property Name="use_project_baseline_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="last_baseline_update_date" Type="DateTime" Precision="3" />
+    <Property Name="ts_rsrc_vw_compl_asgn_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ts_rsrc_mark_act_finish_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ts_rsrc_vw_inact_actv_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="update_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="create_date" Type="DateTime" Precision="3" />
+    <Property Name="create_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="delete_session_id" Type="Int32" />
+    <Property Name="delete_date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DOCUMENTs" Relationship="PrimaveraModel.fk_document_project" FromRole="PROJECT" ToRole="DOCUMENT" />
+  </EntityType>
+  <Association Name="fk_document_project">
+    <End Type="PrimaveraModel.PROJECT" Role="PROJECT" Multiplicity="0..1" />
+    <End Type="PrimaveraModel.DOCUMENT" Role="DOCUMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROJECT">
+        <PropertyRef Name="proj_id" />
+      </Principal>
+      <Dependent Role="DOCUMENT">
+        <PropertyRef Name="proj_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

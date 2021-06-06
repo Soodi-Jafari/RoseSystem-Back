@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="t004TaskAssignment">
+    <Key>
+      <PropertyRef Name="TaskAssgendID" />
+    </Key>
+    <Property Name="TaskAssgendID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int64" Nullable="false" />
+    <Property Name="AssigendToUserID" Type="Int32" />
+    <Property Name="AssigendToUserTypeID" Type="Int32" />
+    <Property Name="AssigendFromUserID" Type="Int32" />
+    <Property Name="AssigendFromUserTypeID" Type="Int32" />
+    <Property Name="TargetID" Type="Int32" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t004Taskes" Relationship="Self.FK_t004TaskAssignment_t004Taskes" FromRole="t004TaskAssignment" ToRole="t004Taskes" />
+    <NavigationProperty Name="t004TaskStatusTypes" Relationship="Self.FK_t004TaskAssignment_t004TaskStatusTypes" FromRole="t004TaskAssignment" ToRole="t004TaskStatusTypes" />
+  </EntityType>
+  <EntityType Name="t004TaskAttachments">
+    <Key>
+      <PropertyRef Name="TaskAttachmentID" />
+    </Key>
+    <Property Name="TaskAttachmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AttachmentName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AttachmentSize" Type="Int32" Nullable="false" />
+    <Property Name="AttachmentContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TaskID" Type="Int64" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="t004TaskDescipline">
+    <Key>
+      <PropertyRef Name="DesciplineTaskID" />
+    </Key>
+    <Property Name="DesciplineTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int64" Nullable="false" />
+    <Property Name="DesciplineID" Type="Int32" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="t004Taskes" Relationship="Self.FK_t004TaskDescipline_t004TaskDescipline" FromRole="t004TaskDescipline" ToRole="t004Taskes" />
+  </EntityType>
+  <EntityType Name="t004Taskes">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="ProjectID" Type="Guid" />
+    <Property Name="PeriorityID" Type="Int32" />
+    <Property Name="ActualStart" Type="DateTime" Precision="3" />
+    <Property Name="ActualFinish" Type="DateTime" Precision="3" />
+    <Property Name="RequestedByUserID" Type="Int32" />
+    <Property Name="RequestedByUserTypeID" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateIN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpdate" Type="DateTime" Precision="3" />
+    <Property Name="TransmittalID" Type="Guid" />
+    <Property Name="DocID" Type="Guid" />
+    <Property Name="DesciplineID" Type="Int32" />
+    <Property Name="EstimateManHour" Type="Int32" />
+    <Property Name="SecondryTaskTypeID" Type="Int32" />
+    <Property Name="Parent" Type="Int64" />
+    <Property Name="Discipline" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Revision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t004TaskAssignment" Relationship="Self.FK_t004TaskAssignment_t004Taskes" FromRole="t004Taskes" ToRole="t004TaskAssignment" />
+    <NavigationProperty Name="t004TaskDescipline" Relationship="Self.FK_t004TaskDescipline_t004TaskDescipline" FromRole="t004Taskes" ToRole="t004TaskDescipline" />
+    <NavigationProperty Name="t004TaskPercentComplete" Relationship="Self.FK_t004TaskPercentComplete_t004Taskes" FromRole="t004Taskes" ToRole="t004TaskPercentComplete" />
+    <NavigationProperty Name="t004TaskStatus" Relationship="Self.FK_t004TaskStatus_t004Taskes" FromRole="t004Taskes" ToRole="t004TaskStatus" />
+  </EntityType>
+  <EntityType Name="t004TaskPercentComplete">
+    <Key>
+      <PropertyRef Name="TaskPercentCompleteID" />
+    </Key>
+    <Property Name="TaskPercentCompleteID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PercentComplete" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TaskID" Type="Int64" Nullable="false" />
+    <Property Name="ManHour" Type="Int32" />
+    <NavigationProperty Name="t004Taskes" Relationship="Self.FK_t004TaskPercentComplete_t004Taskes" FromRole="t004TaskPercentComplete" ToRole="t004Taskes" />
+  </EntityType>
+  <EntityType Name="t004TaskStatus">
+    <Key>
+      <PropertyRef Name="TaskStatusID" />
+    </Key>
+    <Property Name="TaskStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskStatusTypeID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <Property Name="TaskID" Type="Int64" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="TimeTaken" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="TimeTakenFormat" Type="String" MaxLength="104" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="t004Taskes" Relationship="Self.FK_t004TaskStatus_t004Taskes" FromRole="t004TaskStatus" ToRole="t004Taskes" />
+    <NavigationProperty Name="t004TaskStatusTypes" Relationship="Self.FK_t004TaskStatus_t004TaskStatusTypes" FromRole="t004TaskStatus" ToRole="t004TaskStatusTypes" />
+  </EntityType>
+  <EntityType Name="t004TaskStatusTypes">
+    <Key>
+      <PropertyRef Name="TaskStatusTypeID" />
+    </Key>
+    <Property Name="TaskStatusTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="t004TaskAssignment" Relationship="Self.FK_t004TaskAssignment_t004TaskStatusTypes" FromRole="t004TaskStatusTypes" ToRole="t004TaskAssignment" />
+    <NavigationProperty Name="t004TaskStatus" Relationship="Self.FK_t004TaskStatus_t004TaskStatusTypes" FromRole="t004TaskStatusTypes" ToRole="t004TaskStatus" />
+  </EntityType>
+  <EntityType Name="t004TaskTypes">
+    <Key>
+      <PropertyRef Name="TaskTypeID" />
+    </Key>
+    <Property Name="TaskTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateUpDate" Type="DateTime" Precision="3" />
+    <Property Name="Parent" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_t004TaskAssignment_t004Taskes">
+    <End Role="t004Taskes" Type="Self.t004Taskes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t004TaskAssignment" Type="Self.t004TaskAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t004Taskes">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="t004TaskAssignment">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t004TaskAssignment_t004TaskStatusTypes">
+    <End Role="t004TaskStatusTypes" Type="Self.t004TaskStatusTypes" Multiplicity="0..1" />
+    <End Role="t004TaskAssignment" Type="Self.t004TaskAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t004TaskStatusTypes">
+        <PropertyRef Name="TaskStatusTypeID" />
+      </Principal>
+      <Dependent Role="t004TaskAssignment">
+        <PropertyRef Name="TargetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t004TaskDescipline_t004TaskDescipline">
+    <End Role="t004Taskes" Type="Self.t004Taskes" Multiplicity="1" />
+    <End Role="t004TaskDescipline" Type="Self.t004TaskDescipline" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t004Taskes">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="t004TaskDescipline">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t004TaskPercentComplete_t004Taskes">
+    <End Role="t004Taskes" Type="Self.t004Taskes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t004TaskPercentComplete" Type="Self.t004TaskPercentComplete" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t004Taskes">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="t004TaskPercentComplete">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t004TaskStatus_t004Taskes">
+    <End Role="t004Taskes" Type="Self.t004Taskes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="t004TaskStatus" Type="Self.t004TaskStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t004Taskes">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="t004TaskStatus">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t004TaskStatus_t004TaskStatusTypes">
+    <End Role="t004TaskStatusTypes" Type="Self.t004TaskStatusTypes" Multiplicity="1" />
+    <End Role="t004TaskStatus" Type="Self.t004TaskStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t004TaskStatusTypes">
+        <PropertyRef Name="TaskStatusTypeID" />
+      </Principal>
+      <Dependent Role="t004TaskStatus">
+        <PropertyRef Name="TaskStatusTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ROSEDBTaskEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t004TaskAssignment" EntityType="Self.t004TaskAssignment" />
+    <EntitySet Name="t004TaskAttachments" EntityType="Self.t004TaskAttachments" />
+    <EntitySet Name="t004TaskDescipline" EntityType="Self.t004TaskDescipline" />
+    <EntitySet Name="t004Taskes" EntityType="Self.t004Taskes" />
+    <EntitySet Name="t004TaskPercentComplete" EntityType="Self.t004TaskPercentComplete" />
+    <EntitySet Name="t004TaskStatus" EntityType="Self.t004TaskStatus" />
+    <EntitySet Name="t004TaskStatusTypes" EntityType="Self.t004TaskStatusTypes" />
+    <EntitySet Name="t004TaskTypes" EntityType="Self.t004TaskTypes" />
+    <AssociationSet Name="FK_t004TaskAssignment_t004Taskes" Association="Self.FK_t004TaskAssignment_t004Taskes">
+      <End Role="t004Taskes" EntitySet="t004Taskes" />
+      <End Role="t004TaskAssignment" EntitySet="t004TaskAssignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t004TaskAssignment_t004TaskStatusTypes" Association="Self.FK_t004TaskAssignment_t004TaskStatusTypes">
+      <End Role="t004TaskStatusTypes" EntitySet="t004TaskStatusTypes" />
+      <End Role="t004TaskAssignment" EntitySet="t004TaskAssignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t004TaskDescipline_t004TaskDescipline" Association="Self.FK_t004TaskDescipline_t004TaskDescipline">
+      <End Role="t004Taskes" EntitySet="t004Taskes" />
+      <End Role="t004TaskDescipline" EntitySet="t004TaskDescipline" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t004TaskPercentComplete_t004Taskes" Association="Self.FK_t004TaskPercentComplete_t004Taskes">
+      <End Role="t004Taskes" EntitySet="t004Taskes" />
+      <End Role="t004TaskPercentComplete" EntitySet="t004TaskPercentComplete" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t004TaskStatus_t004Taskes" Association="Self.FK_t004TaskStatus_t004Taskes">
+      <End Role="t004Taskes" EntitySet="t004Taskes" />
+      <End Role="t004TaskStatus" EntitySet="t004TaskStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t004TaskStatus_t004TaskStatusTypes" Association="Self.FK_t004TaskStatus_t004TaskStatusTypes">
+      <End Role="t004TaskStatusTypes" EntitySet="t004TaskStatusTypes" />
+      <End Role="t004TaskStatus" EntitySet="t004TaskStatus" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

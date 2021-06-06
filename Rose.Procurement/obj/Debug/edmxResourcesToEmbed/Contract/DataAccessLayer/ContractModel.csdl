@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ContractModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="t000Units">
+    <Key>
+      <PropertyRef Name="UnitID" />
+    </Key>
+    <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Abriviation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sort" Type="Int32" />
+    <NavigationProperty Name="TContractItems" Relationship="Self.FK_TContractItem_TContracts" FromRole="t000Units" ToRole="TContractItems" />
+    <NavigationProperty Name="TContractItems1" Relationship="Self.FK_TContractItems_t000Units" FromRole="t000Units" ToRole="TContractItems" />
+    <NavigationProperty Name="TContracts" Relationship="Self.FK_TContracts_t000Units" FromRole="t000Units" ToRole="TContracts" />
+    <NavigationProperty Name="TMRPItems" Relationship="ContractModel.FK_TMRPItems_t000Units" FromRole="t000Units" ToRole="TMRPItem" />
+  </EntityType>
+  <EntityType Name="TContractItemGuaranty">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractItemID" Type="Int32" Nullable="false" />
+    <Property Name="GaurantyNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAPG" Type="Boolean" />
+    <Property Name="IsPG" Type="Boolean" />
+    <Property Name="GuarantyType" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TContractItem" Relationship="Self.FK_TContractItemGuaranties_TContractItems" FromRole="TContractItemGuaranties" ToRole="TContractItems" />
+  </EntityType>
+  <EntityType Name="TContractItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractID" Type="Int32" Nullable="false" />
+    <Property Name="MRPItemID" Type="Int32" Nullable="false" />
+    <Property Name="TagNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Precision="15" Scale="2" Nullable="false" />
+    <Property Name="CurrencyPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyID" Type="Int32" />
+    <Property Name="LocalPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ExchangeRate" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryTerm" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="InstallationDate" Type="DateTime" Precision="3" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="t000Units" Relationship="Self.FK_TContractItem_TContracts" FromRole="TContractItems" ToRole="t000Units" />
+    <NavigationProperty Name="t000Units1" Relationship="Self.FK_TContractItems_t000Units" FromRole="TContractItems" ToRole="t000Units" />
+    <NavigationProperty Name="TContractItemGuaranties" Relationship="Self.FK_TContractItemGuaranties_TContractItems" FromRole="TContractItems" ToRole="TContractItemGuaranties" />
+    <NavigationProperty Name="TMRPItem" Relationship="ContractModel.FK_TContractItems_TMRPItems" FromRole="TContractItem" ToRole="TMRPItem" />
+  </EntityType>
+  <EntityType Name="TContract">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MRPVendorID" Type="Int32" Nullable="false" />
+    <Property Name="PONO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PODate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EffectivenessDate" Type="DateTime" Precision="0" />
+    <Property Name="CancelationDate" Type="DateTime" Precision="0" />
+    <Property Name="Location" Type="Boolean" Nullable="false" />
+    <Property Name="Duration" Type="Double" />
+    <Property Name="DurationUnit" Type="Int32" />
+    <Property Name="BasePrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CurrencyUnitID" Type="Int32" />
+    <Property Name="ExchangeRate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemsBasePrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ItemCurrencyPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TermsOfEffectivness" Type="Int32" />
+    <Property Name="TermsOfDelivery" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="0" />
+    <Property Name="InstallationDate" Type="DateTime" Precision="0" />
+    <Property Name="KOMDate" Type="DateTime" Precision="0" />
+    <Property Name="LCNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="LCDate" Type="DateTime" Precision="0" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="t000Units" Relationship="Self.FK_TContracts_t000Units" FromRole="TContracts" ToRole="t000Units" />
+    <NavigationProperty Name="TContractTermOfPayments" Relationship="Self.FK_TContractTermOfPayments_TContracts" FromRole="TContracts" ToRole="TContractTermOfPayments" />
+    <NavigationProperty Name="TVPISses" Relationship="Self.FK_TVPISs_TContracts" FromRole="TContracts" ToRole="TVPISs" />
+    <NavigationProperty Name="TMRPVendor" Relationship="ContractModel.FK_TContracts_TMRPVendors" FromRole="TContract" ToRole="TMRPVendor" />
+  </EntityType>
+  <EntityType Name="TContractTermOfPayment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentType" Type="Int32" Nullable="false" />
+    <Property Name="PrePercent" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TContract" Relationship="Self.FK_TContractTermOfPayments_TContracts" FromRole="TContractTermOfPayments" ToRole="TContracts" />
+  </EntityType>
+  <EntityType Name="TVPISs">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContractID" Type="Int32" Nullable="false" />
+    <Property Name="DocumentNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PlanDate" Type="DateTime" Precision="3" />
+    <Property Name="Classification" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TContract" Relationship="Self.FK_TVPISs_TContracts" FromRole="TVPISs" ToRole="TContracts" />
+  </EntityType>
+  <Association Name="FK_TContractItem_TContracts">
+    <End Role="t000Units" Type="Self.t000Units" Multiplicity="0..1" />
+    <End Role="TContractItems" Type="Self.TContractItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TContractItems">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItems_t000Units">
+    <End Role="t000Units" Type="Self.t000Units" Multiplicity="0..1" />
+    <End Role="TContractItems" Type="Self.TContractItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TContractItems">
+        <PropertyRef Name="CurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContracts_t000Units">
+    <End Role="t000Units" Type="Self.t000Units" Multiplicity="0..1" />
+    <End Role="TContracts" Type="Self.TContract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TContracts">
+        <PropertyRef Name="CurrencyUnitID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItemGuaranties_TContractItems">
+    <End Role="TContractItems" Type="Self.TContractItem" Multiplicity="1" />
+    <End Role="TContractItemGuaranties" Type="Self.TContractItemGuaranty" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContractItems">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractItemGuaranties">
+        <PropertyRef Name="ContractItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractTermOfPayments_TContracts">
+    <End Role="TContracts" Type="Self.TContract" Multiplicity="1" />
+    <End Role="TContractTermOfPayments" Type="Self.TContractTermOfPayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContracts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractTermOfPayments">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TVPISs_TContracts">
+    <End Role="TContracts" Type="Self.TContract" Multiplicity="1" />
+    <End Role="TVPISs" Type="Self.TVPISs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TContracts">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TVPISs">
+        <PropertyRef Name="ContractID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ROSEDBContractEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="t000Units" EntityType="Self.t000Units" />
+    <EntitySet Name="TContractItemGuaranties" EntityType="Self.TContractItemGuaranty" />
+    <EntitySet Name="TContractItems" EntityType="Self.TContractItem" />
+    <EntitySet Name="TContracts" EntityType="Self.TContract" />
+    <EntitySet Name="TContractTermOfPayments" EntityType="Self.TContractTermOfPayment" />
+    <EntitySet Name="TVPISses" EntityType="Self.TVPISs" />
+    <AssociationSet Name="FK_TContractItem_TContracts" Association="Self.FK_TContractItem_TContracts">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TContractItems" EntitySet="TContractItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItems_t000Units" Association="Self.FK_TContractItems_t000Units">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TContractItems" EntitySet="TContractItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContracts_t000Units" Association="Self.FK_TContracts_t000Units">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TContracts" EntitySet="TContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItemGuaranties_TContractItems" Association="Self.FK_TContractItemGuaranties_TContractItems">
+      <End Role="TContractItems" EntitySet="TContractItems" />
+      <End Role="TContractItemGuaranties" EntitySet="TContractItemGuaranties" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractTermOfPayments_TContracts" Association="Self.FK_TContractTermOfPayments_TContracts">
+      <End Role="TContracts" EntitySet="TContracts" />
+      <End Role="TContractTermOfPayments" EntitySet="TContractTermOfPayments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TVPISs_TContracts" Association="Self.FK_TVPISs_TContracts">
+      <End Role="TContracts" EntitySet="TContracts" />
+      <End Role="TVPISs" EntitySet="TVPISses" />
+    </AssociationSet>
+    <EntitySet Name="TMRPs" EntityType="ContractModel.TMRP" />
+    <EntitySet Name="TMRPItems" EntityType="ContractModel.TMRPItem" />
+    <EntitySet Name="TMRPVendors" EntityType="ContractModel.TMRPVendor" />
+    <EntitySet Name="TProcurementItems" EntityType="ContractModel.TProcurementItem" />
+    <EntitySet Name="TVendors" EntityType="ContractModel.TVendor" />
+    <AssociationSet Name="FK_TMRPItems_t000Units" Association="ContractModel.FK_TMRPItems_t000Units">
+      <End Role="t000Units" EntitySet="t000Units" />
+      <End Role="TMRPItem" EntitySet="TMRPItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContractItems_TMRPItems" Association="ContractModel.FK_TContractItems_TMRPItems">
+      <End Role="TMRPItem" EntitySet="TMRPItems" />
+      <End Role="TContractItem" EntitySet="TContractItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TContracts_TMRPVendors" Association="ContractModel.FK_TContracts_TMRPVendors">
+      <End Role="TMRPVendor" EntitySet="TMRPVendors" />
+      <End Role="TContract" EntitySet="TContracts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPItems_MRP" Association="ContractModel.FK_MRPItems_MRP">
+      <End Role="TMRP" EntitySet="TMRPs" />
+      <End Role="TMRPItem" EntitySet="TMRPItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPVendors_MRP" Association="ContractModel.FK_MRPVendors_MRP">
+      <End Role="TMRP" EntitySet="TMRPs" />
+      <End Role="TMRPVendor" EntitySet="TMRPVendors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPItems_ProcurementItems" Association="ContractModel.FK_MRPItems_ProcurementItems">
+      <End Role="TProcurementItem" EntitySet="TProcurementItems" />
+      <End Role="TMRPItem" EntitySet="TMRPItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MRPVendors_Vendors" Association="ContractModel.FK_MRPVendors_Vendors">
+      <End Role="TVendor" EntitySet="TVendors" />
+      <End Role="TMRPVendor" EntitySet="TMRPVendors" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TMRP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectID" Type="Guid" Nullable="false" />
+    <Property Name="DeciplineID" Type="Int32" Nullable="false" />
+    <Property Name="DesciplineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MRDocumentID" Type="Int32" Nullable="false" />
+    <Property Name="MRPNo" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WBSMRNo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PlanInquiryStart" Type="DateTime" Precision="3" />
+    <Property Name="PlanInquiryEnd" Type="DateTime" Precision="3" />
+    <Property Name="PlanTBEDate" Type="DateTime" Precision="3" />
+    <Property Name="PlanCBEDate" Type="DateTime" Precision="3" />
+    <Property Name="StatusType" Type="Int32" Nullable="false" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TMRPItems" Relationship="ContractModel.FK_MRPItems_MRP" FromRole="TMRP" ToRole="TMRPItem" />
+    <NavigationProperty Name="TMRPVendors" Relationship="ContractModel.FK_MRPVendors_MRP" FromRole="TMRP" ToRole="TMRPVendor" />
+  </EntityType>
+  <EntityType Name="TMRPItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemID" Type="Int32" Nullable="false" />
+    <Property Name="MRPID" Type="Int32" Nullable="false" />
+    <Property Name="TagNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ESTUnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ESTCurrencyID" Type="Int32" />
+    <Property Name="ESTWeight" Type="Double" />
+    <Property Name="NeedCertificate" Type="Boolean" Nullable="false" />
+    <Property Name="Contigency" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastAttachID" Type="Int32" />
+    <Property Name="LastAttachedURL" Type="String" MaxLength="276" FixedLength="false" Unicode="true" />
+    <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="t000Units" Relationship="ContractModel.FK_TMRPItems_t000Units" FromRole="TMRPItem" ToRole="t000Units" />
+    <NavigationProperty Name="TContractItems" Relationship="ContractModel.FK_TContractItems_TMRPItems" FromRole="TMRPItem" ToRole="TContractItem" />
+    <NavigationProperty Name="TMRP" Relationship="ContractModel.FK_MRPItems_MRP" FromRole="TMRPItem" ToRole="TMRP" />
+    <NavigationProperty Name="TProcurementItem" Relationship="ContractModel.FK_MRPItems_ProcurementItems" FromRole="TMRPItem" ToRole="TProcurementItem" />
+  </EntityType>
+  <EntityType Name="TMRPVendor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VendorID" Type="Int32" Nullable="false" />
+    <Property Name="MRPID" Type="Int32" Nullable="false" />
+    <Property Name="MRPVersion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TContracts" Relationship="ContractModel.FK_TContracts_TMRPVendors" FromRole="TMRPVendor" ToRole="TContract" />
+    <NavigationProperty Name="TMRP" Relationship="ContractModel.FK_MRPVendors_MRP" FromRole="TMRPVendor" ToRole="TMRP" />
+    <NavigationProperty Name="TVendor" Relationship="ContractModel.FK_MRPVendors_Vendors" FromRole="TMRPVendor" ToRole="TVendor" />
+  </EntityType>
+  <EntityType Name="TProcurementItem">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DeciplineID" Type="Int32" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DesciplineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UnitOfMeasureID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TMRPItems" Relationship="ContractModel.FK_MRPItems_ProcurementItems" FromRole="TProcurementItem" ToRole="TMRPItem" />
+  </EntityType>
+  <EntityType Name="TVendor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="VendorManager" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WebSite" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Scopes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Guid" />
+    <Property Name="CreationUserID" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastModifiedUserID" Type="Int32" />
+    <NavigationProperty Name="TMRPVendors" Relationship="ContractModel.FK_MRPVendors_Vendors" FromRole="TVendor" ToRole="TMRPVendor" />
+  </EntityType>
+  <Association Name="FK_TMRPItems_t000Units">
+    <End Type="ContractModel.t000Units" Role="t000Units" Multiplicity="0..1" />
+    <End Type="ContractModel.TMRPItem" Role="TMRPItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="t000Units">
+        <PropertyRef Name="UnitID" />
+      </Principal>
+      <Dependent Role="TMRPItem">
+        <PropertyRef Name="ESTCurrencyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContractItems_TMRPItems">
+    <End Type="ContractModel.TMRPItem" Role="TMRPItem" Multiplicity="1" />
+    <End Type="ContractModel.TContractItem" Role="TContractItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRPItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContractItem">
+        <PropertyRef Name="MRPItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TContracts_TMRPVendors">
+    <End Type="ContractModel.TMRPVendor" Role="TMRPVendor" Multiplicity="1" />
+    <End Type="ContractModel.TContract" Role="TContract" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRPVendor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TContract">
+        <PropertyRef Name="MRPVendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPItems_MRP">
+    <End Type="ContractModel.TMRP" Role="TMRP" Multiplicity="1" />
+    <End Type="ContractModel.TMRPItem" Role="TMRPItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPItem">
+        <PropertyRef Name="MRPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPVendors_MRP">
+    <End Type="ContractModel.TMRP" Role="TMRP" Multiplicity="1" />
+    <End Type="ContractModel.TMRPVendor" Role="TMRPVendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TMRP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPVendor">
+        <PropertyRef Name="MRPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPItems_ProcurementItems">
+    <End Type="ContractModel.TProcurementItem" Role="TProcurementItem" Multiplicity="1" />
+    <End Type="ContractModel.TMRPItem" Role="TMRPItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TProcurementItem">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPItem">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MRPVendors_Vendors">
+    <End Type="ContractModel.TVendor" Role="TVendor" Multiplicity="1" />
+    <End Type="ContractModel.TMRPVendor" Role="TMRPVendor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TVendor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TMRPVendor">
+        <PropertyRef Name="VendorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

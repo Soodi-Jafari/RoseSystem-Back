@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IdcModelStoreContainer" CdmEntityContainer="ROSEDBIdcEntities">
+    <EntitySetMapping Name="t100SecutityUserType">
+      <EntityTypeMapping TypeName="IdcModel.t100SecutityUserType">
+        <MappingFragment StoreEntitySet="t100SecutityUserType">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="DateUpDate" ColumnName="DateUpDate" />
+          <ScalarProperty Name="Disable" ColumnName="Disable" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIDCs">
+      <EntityTypeMapping TypeName="IdcModel.TIDC">
+        <MappingFragment StoreEntitySet="TIDCs">
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FileDirection" ColumnName="FileDirection" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DesciplineID" ColumnName="DesciplineID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIDCDistributions">
+      <EntityTypeMapping TypeName="IdcModel.TIDCDistribution">
+        <MappingFragment StoreEntitySet="TIDCDistributions">
+          <ScalarProperty Name="LastModifiedUserID" ColumnName="LastModifiedUserID" />
+          <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="CreationUserID" ColumnName="CreationUserID" />
+          <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="ReplyComment" ColumnName="ReplyComment" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ResponseStatus" ColumnName="ResponseStatus" />
+          <ScalarProperty Name="DesciplineID" ColumnName="DesciplineID" />
+          <ScalarProperty Name="IDCID" ColumnName="IDCID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAutoIDCs">
+      <EntityTypeMapping TypeName="IdcModel.TAutoIDC">
+        <MappingFragment StoreEntitySet="TAutoIDCs">
+          <ScalarProperty Name="Safety" ColumnName="Safety" />
+          <ScalarProperty Name="Process" ColumnName="Process" />
+          <ScalarProperty Name="Piping" ColumnName="Piping" />
+          <ScalarProperty Name="MechanicalFix" ColumnName="MechanicalFix" />
+          <ScalarProperty Name="MechanicalRotary" ColumnName="MechanicalRotary" />
+          <ScalarProperty Name="HVAC" ColumnName="HVAC" />
+          <ScalarProperty Name="Instrument" ColumnName="Instrument" />
+          <ScalarProperty Name="Electrical" ColumnName="Electrical" />
+          <ScalarProperty Name="Civil" ColumnName="Civil" />
+          <ScalarProperty Name="DocumentTypeID" ColumnName="DocumentTypeID" />
+          <ScalarProperty Name="DocumentType" ColumnName="DocumentType" />
+          <ScalarProperty Name="DocumentDisciplineID" ColumnName="DocumentDisciplineID" />
+          <ScalarProperty Name="DocumentDiscipline" ColumnName="DocumentDiscipline" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VDocuments">
+      <EntityTypeMapping TypeName="IdcModel.VDocument">
+        <MappingFragment StoreEntitySet="VDocument">
+          <ScalarProperty Name="doc_catg_name" ColumnName="doc_catg_name" />
+          <ScalarProperty Name="doc_catg_id" ColumnName="doc_catg_id" />
+          <ScalarProperty Name="DisciplineId" ColumnName="DisciplineId" />
+          <ScalarProperty Name="DisciplineName" ColumnName="DisciplineName" />
+          <ScalarProperty Name="DisciplineShort" ColumnName="DisciplineShort" />
+          <ScalarProperty Name="DisciplineType" ColumnName="DisciplineType" />
+          <ScalarProperty Name="DocTitle" ColumnName="DocTitle" />
+          <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="ProjId" ColumnName="ProjId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="t100SecurityUsers">
+      <EntityTypeMapping TypeName="IdcModel.t100SecurityUsers">
+        <MappingFragment StoreEntitySet="t100SecurityUsers">
+          <ScalarProperty Name="NoMandateTimesheet" ColumnName="NoMandateTimesheet" />
+          <ScalarProperty Name="IsChangedUserPassword" ColumnName="IsChangedUserPassword" />
+          <ScalarProperty Name="HisPassword" ColumnName="HisPassword" />
+          <ScalarProperty Name="HisUserName" ColumnName="HisUserName" />
+          <ScalarProperty Name="Enable" ColumnName="Enable" />
+          <ScalarProperty Name="PicContentType" ColumnName="PicContentType" />
+          <ScalarProperty Name="PicSize" ColumnName="PicSize" />
+          <ScalarProperty Name="PicName" ColumnName="PicName" />
+          <ScalarProperty Name="Pic" ColumnName="Pic" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PersonalEmail" ColumnName="PersonalEmail" />
+          <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+          <ScalarProperty Name="StartJob" ColumnName="StartJob" />
+          <ScalarProperty Name="ExtensionNo" ColumnName="ExtensionNo" />
+          <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="SexID" ColumnName="SexID" />
+          <ScalarProperty Name="IsMan" ColumnName="IsMan" />
+          <ScalarProperty Name="PersianFirstName" ColumnName="PersianFirstName" />
+          <ScalarProperty Name="PersianLastName" ColumnName="PersianLastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PersonelCode" ColumnName="PersonelCode" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
